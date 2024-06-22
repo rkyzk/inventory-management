@@ -23,7 +23,11 @@
           <div class="row">   
             <div class="mt-1 col-6">
               <label for="category" class="item-label">Category：</label>
-              <p>select box</p>
+              <select class="form-select" id="category" th:field="*{categoryId}">
+                <option th:each="item : ${T(ims.enums.CategoryEnum).values()}"
+                  th:value="${item.categoryCode}" th:text="${item.category}">
+                </option>
+              </select>
             </div>
             <div class="col-6">
 	          <label for="quantity" class="item-label">Qty per package：</label>
