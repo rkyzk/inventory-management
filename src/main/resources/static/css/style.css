@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+/* --------------
+
+Common to all pages
+
+------------------*/
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "sans-serif";
+  font-size: 1.2rem;
+}
+
+.header-area {
+  width: 100%;
+  height: 50px;
+}
+
+h1 {
+  font-size: 1.8rem;	
+}
+
+.link {
+  color: #2477A9;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #112F41;
+  text-decoration: underline;
+}
+
+/** ---------------------------
+
+Register page
+ 
+---------------------------- */
+.navbar {
+  margin-left: calc(50vw + 40px);
+}
+
+.link-to-list {
+  margin-top: 8px;
+}
+
+.navlink.active {
+  border-bottom: 1px solid;
+  border-bottom-width: 3px;
+}
+
+
