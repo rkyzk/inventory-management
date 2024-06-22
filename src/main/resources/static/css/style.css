@@ -33,11 +33,6 @@ h1 {
   text-decoration: underline;
 }
 
-/** ---------------------------
-
-Register page
- 
----------------------------- */
 .navbar {
   margin-left: calc(50vw + 40px);
 }

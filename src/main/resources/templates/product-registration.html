@@ -10,6 +10,55 @@
   </head>
   <body>
     <div th:replace="~{header :: header}"></div>
+    <main class="container-fluid mt-3">
+      <h2 class="text-center">Register Products</h2>
+      <div class="container content-box">
+        <form th:object="${product}" method="post"
+          action="/product-registration" enctype="multipart/form-data" role="form">
+          <div>
+	        <label for="product-name" class="item-label">Product Name：</label>
+	        <input class="form-control" th:field="*{name}"
+	          type="text" aria-label="product-name" id="product-name" />
+          </div> 
+          <div class="row">   
+            <div class="mt-1 col-6">
+              <label for="category" class="item-label">Category：</label>
+              <p>select box</p>
+            </div>
+            <div class="col-6">
+	          <label for="quantity" class="item-label">Qty per package：</label>
+	          <input class="form-control" th:field="*{quantity}"
+	            type="number" aria-label="quantity" id="quantity" />
+            </div> 
+          </div>
+          <div class="row">          
+            <div class="col-6">
+	          <label for="price" class="item-label">Price：</label>
+	          <div class="d-flex">
+	            <span class="mt-1">$</span>
+	            <input class="form-control mx-2 price" id="price"
+	              th:field="*{price}" type="text" />
+	          </div>
+	        </div>
+	        <div class="col-6">
+	          <label for="stock" class="item-label">Stock：</label>
+	          <input class="form-control" id="stock" th:field="*{stock}" type="number"/>
+	        </div>
+          </div>
+          <div class="mt-1">
+            <label for="description" class="item-label">Description：</label>
+            <textarea class="form-control" id="description" th:field="*{description}"></textarea>
+          </div>
+          <div class="mt-1 col-6">
+	        <label for="image" class="item-label">Image：</label>
+	        <input name="image" class="form-control" id="image" th:field="*{multipartFile}" type="file"/>
+	      </div>
+	      <div class="my-3">
+	        <button class="btn py-1 px-2" type="submit">register</button>
+	      </div>   
+	    </form>
+      </div>
+    </main>
     <!-- font awesome script -->
     <script src="https://kit.fontawesome.com/b78a20097c.js" crossorigin="anonymous"></script>
   </body>
