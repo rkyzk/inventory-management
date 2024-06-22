@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Inventory Management System</title>
+  </head>
+  <body>
+    <header th:fragment="header">
+      <div class="header-area mt-0 px-1">
+        <h1 class="text-center my-3">Inventory Management System</h1>
+      </div>
+      <nav class="d-flex">
+        <div class="navbar navlink">
+          <a class="link" href="http://localhost:8080/product-registration">
+            <i class="fa-regular fa-pen-to-square"></i>
+            register new products
+          </a>
+        </div>
+        <div class="mx-4 link-to-list navlink">
+          <a class="link" href="#">
+            <i class="fa-regular fa-rectangle-list"></i>
+            product list
+          </a>
+        </div>
+      </nav>
+    </header>
+  </body>
+</html>
