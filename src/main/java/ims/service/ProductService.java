@@ -1,5 +1,7 @@
 package ims.service;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Options;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +36,13 @@ public class ProductService {
 		productMapper.insertProduct(product);
 		priceStockMapper.insertProductData(product);
 	}
-
+	
+	/**
+	 * Get product list.
+	 * 
+	 * @return product list
+	 */
+	public List<Product> getProductList() {
+		return productMapper.getProductList();
+	}
 }
