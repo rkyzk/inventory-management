@@ -5,6 +5,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import ims.validation.FileSizeValidator;
+import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
 
@@ -14,6 +16,7 @@ import jakarta.validation.Payload;
  * @author R.Yazaki
  * @version 1.0.0
  */
+@Constraint(validatedBy=FileSizeValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FileSize {
@@ -28,14 +31,14 @@ public @interface FileSize {
 	/**
 	 * Generate error messages.
 	 *
-	 * @return エラーメッセージ
+	 * @return error message
 	 */
 	String message() default "{EMSG103}";
 
 	/**
 	 * Apply different validation depending on groups.
 	 *
-	 * @return デフォルトのグループ
+	 * @return default group
 	 */
 	Class<?>[] groups() default {};
 
