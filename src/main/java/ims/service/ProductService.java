@@ -1,6 +1,7 @@
 package ims.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ims.entity.Product;
@@ -13,6 +14,7 @@ import ims.repository.ProductMapper;
  * @author R.Yazaki
  * @version 1.0.0
  */
+@Service
 public class ProductService {
 	@Autowired
 	private ProductMapper productMapper;

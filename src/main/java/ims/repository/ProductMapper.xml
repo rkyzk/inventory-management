@@ -5,7 +5,7 @@
 <mapper>
   <!-- insert product -->
   <insert id="insertProduct"
-    parameterType="natureblossom.ims.entity.Product">
+    parameterType="ims.entity.Product">
     INSERT INTO product_entity (
         name,
         category_id,
