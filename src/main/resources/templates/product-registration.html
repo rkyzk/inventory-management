@@ -61,6 +61,7 @@
           <div class="mt-1 col-6">
 	        <label for="image" class="item-label">Image：</label>
 	        <input name="image" class="form-control" id="image" th:field="*{multipartFile}" type="file"/>
+	        <p class="text-danger" th:if="${#fields.hasErrors('multipartFile')}" th:errors="*{multipartFile}"/>      
 	      </div>
 	      <div class="my-3">
 	        <button class="btn py-1 px-2" type="submit">register</button>
