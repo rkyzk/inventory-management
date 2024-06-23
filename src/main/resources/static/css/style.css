@@ -75,3 +75,47 @@ h2 {
   margin-top: 20px;
 }
 
+/** ---------------------------
+
+Product list page
+ 
+---------------------------- */
+.no-item-msg {
+  width: 100px;
+  margin: 20px auto;
+}
+
+.items-count {
+  width: 180px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;	
+}
+
+.table-style {
+  width: 100%;
+}
+
+.update-btn, .register-btn {
+  padding: 0;
+}
+
+.table-headding {
+  background-color: rgb(151, 194, 204);
+}
+
+.image-col {
+  width: 180px;
+}
+
+.image > img {
+  max-height: 100px;
+}
+
+.name-col {
+  width: 150px; 
+}
+
+
