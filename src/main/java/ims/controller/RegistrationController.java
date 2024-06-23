@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +27,9 @@ public class RegistrationController {
 	
 	@Autowired
 	ImageUploadService imgUploadService;
+	
+	@Autowired
+	MessageSource msg;
 
 	/**
 	 * Display product registration page.
@@ -70,6 +74,8 @@ public class RegistrationController {
 		}
 		// insert product in DB
 		productService.insertProduct(product);
-		return null;
+		// send success message to the list controller
+		redirectAttributes.addFlashAttribute("message", msg.getMessage("REGSUC", null, locale));
+		return "redirect:/product-list";
 	}
 }
