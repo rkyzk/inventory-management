@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper>
+  <!-- insert product price & stock data -->
+  <insert id="insertProductData" parameterType="natureblossom.ims.entity.Product">
+    INSERT INTO price_stock (
+        product_id,
+        quantity,
+        price,
+        stock
+    ) VALUES (
+        #{id},
+        #{quantity},
+        #{price},
+        #{stock}
+    )
+  </insert>
+</mapper>
