@@ -38,6 +38,35 @@
 	          </tr>
 	        </thead>
 	        <tbody>
+	          <tr class="table-rows" th:each="item: ${prodList}">
+	            <td class="px-1 image">
+	              <!-- Show image.  If imagePath is an empty string, show no_image.png -->
+	              <img th:if="*{item.imagePath}" th:src="${awsUrl} + ${item.imagePath}"
+	                th:alt="${item.name}"
+	                onerror="this.src=
+	                  'https://ims-images-bucket.s3.ap-northeast-1.amazonaws.com/images/no_image.png';" />
+	              <!-- If imagePath is null, show no_image.png -->
+	              <img th:unless="*{item.imagePath}"
+	                   src="https://ims-images-bucket.s3.ap-northeast-1.amazonaws.com/images/no_image.png">        	              
+                </td>
+	            <td class="id-price-format px-1 text-center"><span th:text="${item.id}"></span></td>
+	            <!-- <td class="id-price-format px-1 text-center"><span th:text="${item.categoryId}"></span></td> -->
+	            <td class="format">
+                  <label th:text="${T(ims.enums.CategoryEnum).getValueByCode(item.categoryId).getCategory()}"></label>
+                </td>
+	            <td class="px-1"><span th:text="${item.name}"></span></td>
+	            <td class="px-1"><span th:text="${item.quantity}"></span></td>
+	            <td class="px-1">
+	              $<span th:text="${#numbers.formatDecimal(item.price,1,2)}"></span>
+	            </td>
+	            <td class="px-1 text-center"><span th:text="${item.stock}"></span></td>
+	            <td class="px-1 text-center">
+	              update button
+	            </td>
+	            <td class="px-1 text-center">
+	              delete button
+	            </td>
+	          </tr>
 	        </tbody>
           </table>
         </div>
