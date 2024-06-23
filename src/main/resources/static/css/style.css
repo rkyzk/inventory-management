@@ -118,4 +118,13 @@ table, th, td {
   width: 150px; 
 }
 
+.btn-icon {
+  border: none;
+  background-color: transparent;
+  color: #2477A9;
+}
+
+.btn-icon:hover {
+  color: #112F41;
+}
 
