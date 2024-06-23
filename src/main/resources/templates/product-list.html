@@ -61,10 +61,16 @@
 	            </td>
 	            <td class="px-1 text-center"><span th:text="${item.stock}"></span></td>
 	            <td class="px-1 text-center">
-	              update button
+	              <button class="btn-icon py-0 px-0" type="submit">
+	                  <i class="fa-regular fa-pen-to-square"></i>
+	              </button>
 	            </td>
 	            <td class="px-1 text-center">
-	              delete button
+	              <button type="button" class="btn-icon py-0 px-0"
+	                  data-bs-toggle="modal"
+	                  th:data-bs-target="'#del-' + ${item.id}">
+	                  <i class="fa-regular fa-trash-can"></i>
+	              </button>
 	            </td>
 	          </tr>
 	        </tbody>
