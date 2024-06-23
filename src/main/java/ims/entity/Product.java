@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import org.springframework.web.multipart.MultipartFile;
 
 import ims.annotation.FileName;
+import ims.annotation.FileType;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Max;
@@ -66,6 +67,7 @@ public class Product {
 	
 	/** image file (not to be inserted in DB) */
 	@FileName(maxLength=30)
+	@FileType
 	private MultipartFile multipartFile;
 
 	/** created at */

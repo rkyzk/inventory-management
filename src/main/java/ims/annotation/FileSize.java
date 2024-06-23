@@ -5,37 +5,42 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import ims.validation.FileTypeValidator;
-import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
+
 /**
- * Validate file type
+ * Check file size.
  *
  * @author R.Yazaki
  * @version 1.0.0
  */
-@Constraint(validatedBy=FileTypeValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface FileType {
+public @interface FileSize {
 
 	/**
-	 * Generate error messages
+	 * Set max file size.
 	 *
-	 * @return error messages
+	 * @return max file size
 	 */
-	String message() default "{EMSG102}";
+	int maxSize();
 
 	/**
-	 * Apply different validations depending on the group
+	 * Generate error messages.
 	 *
-	 * @return default group
+	 * @return エラーメッセージ
+	 */
+	String message() default "{EMSG103}";
+
+	/**
+	 * Apply different validation depending on groups.
+	 *
+	 * @return デフォルトのグループ
 	 */
 	Class<?>[] groups() default {};
 
 	/**
-	 * Give meta data to the object to be validated.
+	 * Provide meta data to the object being validated.
 	 *
 	 * @return meta data
 	 */
