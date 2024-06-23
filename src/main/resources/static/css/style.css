@@ -65,4 +65,13 @@ h2 {
   border-bottom-width: 3px;
 }
 
+/** ---------------------------
+
+ Register Page
+ 
+---------------------------- */
+.content-box {
+  max-width: 750px;
+  margin-top: 20px;
+}
 
