@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper>
+<mapper namespace="ims.repository.PriceStockMapper">
   <!-- insert product price & stock data -->
-  <insert id="insertProductData" parameterType="natureblossom.ims.entity.Product">
+  <insert id="insertProductData" parameterType="ims.entity.Product">
     INSERT INTO price_stock (
         product_id,
         quantity,

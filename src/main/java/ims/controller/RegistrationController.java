@@ -47,7 +47,6 @@ public class RegistrationController {
 		    @ModelAttribute("product") Product product) throws IOException {
 		// insert product in DB
 		productService.insertProduct(product);
-		// redirect to product list page.
-		return "redirect:/product-list";
+		return null;
 	}
 }

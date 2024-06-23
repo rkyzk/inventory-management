@@ -1,5 +1,6 @@
 package ims.service;
 
+import org.apache.ibatis.annotations.Options;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,7 @@ public class ProductService {
 	 * @param product
 	 */
 	@Transactional
+	@Options(useGeneratedKeys=true)
 	public void insertProduct(Product product) {
 		productMapper.insertProduct(product);
 		priceStockMapper.insertProductData(product);
