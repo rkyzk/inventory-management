@@ -29,7 +29,7 @@ public class Product {
 	
 	/** Product name */
 	@NotBlank
-	@Size(max = 40)
+	@Size(max = 40, message = "must not exceed {max} characters")
 	private String name;
 	
 	/** Category */
@@ -43,7 +43,7 @@ public class Product {
 	private int quantity;
 	
 	/** Price */
-	@NotNull
+	@NotNull(message = "must not be blank")
 	@DecimalMin(value = "0.00", inclusive = true)
 	@Digits(integer=5, fraction=2)
 	private BigDecimal price;
@@ -54,7 +54,7 @@ public class Product {
 	private int stock;
 	
 	/** Description */
-	@Size
+	@Size(max = 200, message = "must not exceed {max} characters")
 	private String description;
 	
 	/** image file name */
