@@ -45,4 +45,15 @@ public class ProductService {
 	public List<Product> getProductList() {
 		return productMapper.getProductList();
 	}
+	
+	/**
+	 * get product.
+	 * 
+	 * @param product
+	 */
+	@Transactional
+	public Product getProduct(int id) {
+		productMapper.getProduct(id);
+		priceStockMapper.getProductData(id);
+	}
 }

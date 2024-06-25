@@ -25,5 +25,4 @@ public class UpdateController {
 		model.addAttribute("awsUrl", endpoint);
 		return null;	
 	}
-
 }
