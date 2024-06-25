@@ -89,6 +89,12 @@ Product list page
   width: 180px;
 }
 
+.list-content {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 20px;	
+}
+
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;	
