@@ -53,7 +53,6 @@ public class ProductService {
 	 */
 	@Transactional
 	public Product getProduct(int id) {
-		productMapper.getProduct(id);
-		priceStockMapper.getProductData(id);
+		return productMapper.getProduct(id);
 	}
 }
