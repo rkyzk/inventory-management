@@ -51,8 +51,20 @@ public class ProductService {
 	 * 
 	 * @param product
 	 */
-	@Transactional
 	public Product getProduct(int id) {
 		return productMapper.getProduct(id);
+	}
+	
+	/**
+	 * update product.
+	 * 
+	 * @param id
+	 * @return return code
+	 */
+	@Transactional
+	public int updateProduct(int id) {
+		int retCode = productMapper.updateProduct(id);
+		int retCode2 = priceStockMapper.updateProductData(id);
+		if (retCode == 1 && retCode2 ==1) return 1; else return 0;		
 	}
 }
