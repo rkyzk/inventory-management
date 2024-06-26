@@ -42,11 +42,20 @@ public class UpdateController {
 	
 	@PostMapping("/product-update")
 	public String postUpdate(Model model, Locale locale,
+			@RequestParam(name="curr-img", required=false) boolean currImg,
 			RedirectAttributes redirectAttributes,
 			@ModelAttribute @Valid Product product,
 			BindingResult bindingResult) throws IOException {
 		if (bindingResult.hasErrors()) {
 			return "product-update";
+		}
+		/** If image has been removed, delete the image from AWS storage
+		 *  and set imagePath & imageName empty string.
+		 */
+		if (currImg) {
+			imgUploadService.deleteImg(product.getImagePath());
+			product.setImagePath("");
+			product.setImageName("");
 		}
 		// if image has been added, upload it to S3 bucket
 		if(product.getMultipartFile() != null && !product.getMultipartFile().isEmpty()) {
