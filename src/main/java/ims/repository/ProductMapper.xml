@@ -67,4 +67,19 @@
         product_entity.category_id ASC,
         product_entity.id ASC
   </select>
+  
+  <!-- update product -->
+  <update id="updateProduct" parameterType="ims.entity.Product">
+    UPDATE
+        product_entity
+    SET
+        name = #{name},
+        category_id = #{categoryId},
+        description = #{description},
+        image_name = #{imageName},
+        image_path = #{imagePath},
+        updated_at = CURRENT_TIMESTAMP
+    WHERE
+        id = #{id}
+  </update>
 </mapper>
