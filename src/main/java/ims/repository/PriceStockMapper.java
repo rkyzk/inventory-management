@@ -8,4 +8,6 @@ import ims.entity.Product;
 public interface PriceStockMapper {
 	/** insert product data */
 	public void insertProductData(Product product);
+	/** update product data */
+	public int updateProductData(int id);
 }
