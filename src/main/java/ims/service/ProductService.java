@@ -62,9 +62,9 @@ public class ProductService {
 	 * @return return code
 	 */
 	@Transactional
-	public int updateProduct(int id) {
-		int retCode = productMapper.updateProduct(id);
-		int retCode2 = priceStockMapper.updateProductData(id);
+	public int updateProduct(Product product) {
+		int retCode = productMapper.updateProduct(product);
+		int retCode2 = priceStockMapper.updateProductData(product);
 		if (retCode == 1 && retCode2 ==1) return 1; else return 0;		
 	}
 }

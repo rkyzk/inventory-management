@@ -9,5 +9,5 @@ public interface PriceStockMapper {
 	/** insert product data */
 	public void insertProductData(Product product);
 	/** update product data */
-	public int updateProductData(int id);
+	public int updateProductData(Product product);
 }

@@ -16,5 +16,5 @@ public interface ProductMapper {
 	 * @param id */
 	public Product getProduct(int id);	
 	/** update product */
-	public int updateProduct(int id);
+	public int updateProduct(Product product);
 }
