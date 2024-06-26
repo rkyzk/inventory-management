@@ -12,4 +12,9 @@ public interface ProductMapper {
 	public void insertProduct(Product product);
 	/** get product list */
 	public List<Product> getProductList();
+	/** get product 
+	 * @param id */
+	public Product getProduct(int id);	
+	/** update product */
+	public int updateProduct(Product product);
 }

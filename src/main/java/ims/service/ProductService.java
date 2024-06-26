@@ -45,4 +45,26 @@ public class ProductService {
 	public List<Product> getProductList() {
 		return productMapper.getProductList();
 	}
+	
+	/**
+	 * get product.
+	 * 
+	 * @param product
+	 */
+	public Product getProduct(int id) {
+		return productMapper.getProduct(id);
+	}
+	
+	/**
+	 * update product.
+	 * 
+	 * @param id
+	 * @return return code
+	 */
+	@Transactional
+	public int updateProduct(Product product) {
+		int retCode = productMapper.updateProduct(product);
+		int retCode2 = priceStockMapper.updateProductData(product);
+		if (retCode == 1 && retCode2 ==1) return 1; else return 0;		
+	}
 }

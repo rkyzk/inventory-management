@@ -17,4 +17,16 @@
         #{stock}
     )
   </insert>
+  
+  <!-- update product -->
+  <update id="updateProductData" parameterType="ims.entity.Product">
+    UPDATE
+        price_stock
+    SET
+        quantity = #{quantity},
+        price = #{price},
+        stock = #{stock}
+    WHERE
+        product_id = #{id}
+  </update>
 </mapper>

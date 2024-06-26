@@ -39,5 +39,4 @@ public class ProductListController {
 		model.addAttribute("awsUrl", endpoint);
 		return "product-list";
 	}
-
 }
