@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +28,9 @@ public class UpdateController {
 	
 	@Autowired
 	ImageUploadService imgUploadService;
+	
+	@Autowired
+	MessageSource msg;
 	
 	@Value("${aws.endpoint.url}")
 	private String endpoint;
@@ -68,9 +72,17 @@ public class UpdateController {
 				imageName);		
 		    product.setImagePath(imagePath);
 	    }
-		productService.updateProduct(product);
-	
-		return null;
+		int retVal = productService.updateProduct(product);
+		if (retVal == 1) {
+	    	// set success message to display on the list controller
+	    	redirectAttributes.addFlashAttribute(
+	    			"message", msg.getMessage("UPDSUC", null, locale));
+	    } else {
+	    	// set error message
+	    	redirectAttributes.addFlashAttribute(
+	    			"message", msg.getMessage("UPDERR", null, locale));
+	    }	
+		return "redirect:/product-list";
 		
 	}
 }
