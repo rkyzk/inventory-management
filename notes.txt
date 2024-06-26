@@ -1,2 +1,3 @@
-6/25
-correct update html
+6/26
+when no image, if delete what happens?
+when no image don't show the checkbox
