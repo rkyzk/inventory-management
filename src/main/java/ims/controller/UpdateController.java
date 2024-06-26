@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ims.entity.Product;
+import ims.enums.CategoryEnum;
+import ims.service.ImageUploadService;
 import ims.service.ProductService;
 import jakarta.validation.Valid;
 
@@ -22,6 +24,9 @@ import jakarta.validation.Valid;
 public class UpdateController {
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	ImageUploadService imgUploadService;
 	
 	@Value("${aws.endpoint.url}")
 	private String endpoint;
@@ -43,9 +48,19 @@ public class UpdateController {
 		if (bindingResult.hasErrors()) {
 			return "product-update";
 		}
-		//productService.updateProduct(product);
-		
-		
+		// if image has been added, upload it to S3 bucket
+		if(product.getMultipartFile() != null && !product.getMultipartFile().isEmpty()) {
+		    String imageName = product.getMultipartFile().getOriginalFilename();
+		    product.setImageName(imageName);
+		    String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategory();
+		    String imagePath = imgUploadService.uploadImg(
+				product.getMultipartFile(),
+				categoryName,
+				imageName);		
+		    product.setImagePath(imagePath);
+	    }
+		productService.updateProduct(product);
+	
 		return null;
 		
 	}
