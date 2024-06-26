@@ -30,7 +30,7 @@
                 <th class="text-center px-1">id</th>
                 <th class="text-center category-col">category</th> 
 	            <th class="text-center name-col">name</th>
-	            <th class="text-center">qty. per pck</th>  
+	            <th class="text-center qty-col">qty / pck</th>  
 	            <th class="text-center">price</th>
 	            <th class="text-center px-1">stock</th>
 	            <th class="text-center" colspan="2">edit/delete</th>
@@ -49,24 +49,30 @@
 	                   src="https://ims-images-bucket.s3.ap-northeast-1.amazonaws.com/images/no_image.png">        	              
                 </td>
 	            <td class="id-price-format px-1 text-center"><span th:text="${item.id}"></span></td>
-	            <td class="format">
+	            <td class="format text-center">
                   <label th:text="${T(ims.enums.CategoryEnum).getValueByCode(item.categoryId).getCategory()}"></label>
                 </td>
 	            <td class="px-1"><span th:text="${item.name}"></span></td>
-	            <td class="px-1"><span th:text="${item.quantity}"></span></td>
+	            <td class="px-1 text-center"><span th:text="${item.quantity}"></span></td>
 	            <td class="px-1">
 	              $<span th:text="${#numbers.formatDecimal(item.price,1,2)}"></span>
 	            </td>
 	            <td class="px-1 text-center"><span th:text="${item.stock}"></span></td>
 	            <td class="px-1 text-center">
-	              <button class="btn-icon py-0 px-0" type="submit">
+                  <form action="/product-update" method="get">
+	                <input type="hidden" th:value="${item.id}" name="id"/>
+	                <button class="btn-icon py-0 px-0" type="submit">
 	                  <i class="fa-regular fa-pen-to-square"></i>
-	              </button>
+	                </button>
+	              </form>
 	            </td>
 	            <td class="px-1 text-center">
-	              <button type="button" class="btn-icon py-0 px-0">
+	              <form th:action="#" th:method="post">
+	                <input type="hidden" th:value="${item.id}" name="id"/>
+	                <button type="button" class="btn-icon py-0 px-0">
 	                  <i class="fa-regular fa-trash-can"></i>
-	              </button>
+	                </button>
+	              </form>
 	            </td>
 	          </tr>
 	        </tbody>

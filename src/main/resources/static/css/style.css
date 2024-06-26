@@ -124,6 +124,10 @@ table, th, td {
   width: 150px; 
 }
 
+.qty-col {
+  width: 60px;
+}
+
 .btn-icon {
   border: none;
   background-color: transparent;
