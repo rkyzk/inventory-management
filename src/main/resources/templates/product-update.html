@@ -15,6 +15,10 @@
       <div class="container content-box">
         <form th:object="${product}" method="post"
           action="#" enctype="multipart/form-data" role="form">
+          <input type="hidden" th:field="*{imageName}" />
+          <input type="hidden" th:field="*{imagePath}" />
+          <input type="hidden" th:field="*{createdAt}" />
+          <input type="hidden" th:field="*{updatedAt}" />
           <span>
             <label for="id">ID:</label>
             <input class="input-id" type="text" th:field="*{id}" readonly/>
