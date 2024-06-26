@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ims.entity.Product;
 import ims.service.ProductService;
 
 @Controller
@@ -20,9 +21,9 @@ public class UpdateController {
 	@GetMapping("/product-update")
 	public String getUpdate(Model model,
 			@RequestParam("id") int id) {
-		// Product product = productService.getProduct(id);
-		// model.addAttribute("product", product);
+		Product product = productService.getProduct(id);
+		model.addAttribute("product", product);
 		model.addAttribute("awsUrl", endpoint);
-		return null;	
+		return "product-update";	
 	}
 }

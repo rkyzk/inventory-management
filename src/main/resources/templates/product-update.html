@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Update Products</title>
+    <link rel="stylesheet"
+	  th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+  </head>
+  <body>
+    <div th:replace="~{header :: header}"></div>
+    <main class="container-fluid mt-3">
+      <h2 class="text-center">Update Products</h2>
+      <div class="container content-box">
+        <form th:object="${product}" method="post"
+          action="#" enctype="multipart/form-data" role="form">
+          <span>
+            <label for="id">ID:</label>
+            <input class="input-id" type="text" th:field="*{id}" readonly/>
+          </span>
+          <div>
+	        <label for="product-name" class="item-label">Product Name：</label>
+	        <input class="form-control" th:field="*{name}"
+	          type="text" aria-label="product-name" id="product-name" />
+	        <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+          </div> 
+          <div class="row">   
+            <div class="mt-1 col-6">
+              <label for="category" class="item-label">Category：</label>
+              <select class="form-select" id="category" th:field="*{categoryId}">
+                <option th:each="item : ${T(ims.enums.CategoryEnum).values()}"
+                  th:value="${item.categoryCode}" th:text="${item.category}">
+                </option>
+              </select>
+            </div>
+            <div class="col-6">
+	          <label for="quantity" class="item-label">Qty per package：</label>
+	          <input class="form-control" th:field="*{quantity}"
+	            type="number" aria-label="quantity" id="quantity" />
+	          <p class="text-danger" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"/>
+            </div> 
+          </div>
+          <div class="row">          
+            <div class="col-6">
+	          <label for="price" class="item-label">Price：</label>
+	          <div class="d-flex">
+	            <span class="mt-1">$</span>
+	            <input class="form-control mx-2 price" id="price"
+	              th:field="*{price}" type="text" />
+	          </div>
+	          <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
+	        </div>
+	        <div class="col-6">
+	          <label for="stock" class="item-label">Stock：</label>
+	          <input class="form-control" id="stock" th:field="*{stock}" type="number"/>
+	          <p class="text-danger" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"/>
+	        </div>
+          </div>
+          <div class="mt-1">
+            <label for="description" class="item-label">Description：</label>
+            <textarea class="form-control" id="description" th:field="*{description}"></textarea>
+            <p class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
+          </div>
+          <div class="mt-1 col-6">
+	        <label for="image" class="item-label">Image：</label>
+	        <input name="image" class="form-control" id="image" th:field="*{multipartFile}" type="file"/>
+	        <p class="text-danger" th:if="${#fields.hasErrors('multipartFile')}" th:errors="*{multipartFile}"/>      
+	      </div>
+	      <div class="my-3">
+	        <button class="btn py-1 px-2" type="submit">update</button>
+	        <a class="btn py-1 px-2" href="http://localhost:8080/product-list">cancel</a>
+	      </div>   
+	    </form>
+      </div>
+    </main>
+    <!-- font awesome script -->
+    <script src="https://kit.fontawesome.com/b78a20097c.js" crossorigin="anonymous"></script>
+  </body>
+</html>
