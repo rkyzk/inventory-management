@@ -82,4 +82,15 @@
     WHERE
         id = #{id}
   </update>
+  
+  <!--  delete product -->
+  <update id="deleteProduct" parameterType="ims.entity.Product">
+    UPDATE
+        product_entity
+    SET
+        updated_at = CURRENT_TIMESTAMP
+        deleted_at = CURRENT_TIMESTAMP
+    WHERE
+        id = #{id}
+  </update>
 </mapper>

@@ -50,15 +50,16 @@ public class ProductListController {
 	public String deleteProduct(Model model, Locale locale,
 			RedirectAttributes redirectAttributes,
 			@RequestParam("id") int id) {
-		int retVal = productService.deleteProduct(id);
-		String message;
-		if (retVal == 1) {
-	    	// set success message
-	    	message =  msg.getMessage("DELSUC", null, locale);
-	    } else {
-	    	// set error message
-	    	message =  msg.getMessage("DELERR", null, locale);
-	    }
+		System.out.println(id);
+//		int retVal = productService.deleteProduct(id);
+//		String message;
+//		if (retVal == 1) {
+//	    	// set success message
+//	    	message =  msg.getMessage("DELSUC", null, locale);
+//	    } else {
+//	    	// set error message
+//	    	message =  msg.getMessage("DELERR", null, locale);
+//	    }
 		List<Product> prodList = productService.getProductList();
 		model.addAttribute("prodList", prodList);
 		model.addAttribute("itemCount", prodList.size());
