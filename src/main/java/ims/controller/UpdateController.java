@@ -54,12 +54,15 @@ public class UpdateController {
 			return "product-update";
 		}
 		/** If image has been removed, delete the image from AWS storage
-		 *  and set imagePath & imageName empty string.
+		 *  and set imagePath & imageName null
 		 */
 		if (currImg) {
 			imgUploadService.deleteImg(product.getImagePath());
-			product.setImagePath("");
-			product.setImageName("");
+			product.setImagePath(null);
+			// set null rather than an empty string so the checkbox
+			// for removing the image won't appear on 
+			// update page (see product-update.html ln 76)
+			product.setImageName(null);
 		}
 		// if image has been added, upload it to S3 bucket
 		if(product.getMultipartFile() != null && !product.getMultipartFile().isEmpty()) {
@@ -82,7 +85,6 @@ public class UpdateController {
 	    	redirectAttributes.addFlashAttribute(
 	    			"message", msg.getMessage("UPDERR", null, locale));
 	    }	
-		return "redirect:/product-list";
-		
+		return "redirect:/product-list";	
 	}
 }

@@ -73,6 +73,7 @@
 	            th:field="*{multipartFile}" type="file"/>
 	          <p class="text-danger" th:if="${#fields.hasErrors('multipartFile')}" th:errors="*{multipartFile}"/>
 	        </div>
+	        <!--  show a checkbox for removing the image if there's an image -->
 	        <div class="col-6 fs-6 mt-4 d-flex flex-column" th:if="*{imageName}">
 	          <span>Current image file: <label th:text=*{imageName}></label></span>
 	          <span>
