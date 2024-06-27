@@ -75,16 +75,18 @@ public class UpdateController {
 				imageName);		
 		    product.setImagePath(imagePath);
 	    }
+		// update product
 		int retVal = productService.updateProduct(product);
+		String message;
 		if (retVal == 1) {
-	    	// set success message to display on the list controller
-	    	redirectAttributes.addFlashAttribute(
-	    			"message", msg.getMessage("UPDSUC", null, locale));
+	    	// set success message
+	    	message =  msg.getMessage("UPDSUC", null, locale);
 	    } else {
 	    	// set error message
-	    	redirectAttributes.addFlashAttribute(
-	    			"message", msg.getMessage("UPDERR", null, locale));
-	    }	
+	    	message =  msg.getMessage("UPDERR", null, locale);
+	    }
+		// set the message to be displayed on the list page
+    	redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/product-list";	
 	}
 }
