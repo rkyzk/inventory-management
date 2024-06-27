@@ -17,4 +17,6 @@ public interface ProductMapper {
 	public Product getProduct(int id);	
 	/** update product */
 	public int updateProduct(Product product);
+	/** delete product */
+	public int deleteProduct(int id);
 }
