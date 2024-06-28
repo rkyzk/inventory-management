@@ -7,6 +7,7 @@
 	  th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{/css/style.css}">
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/formatPriceValues.js}" defer></script>
   </head>
   <body>
     <div th:replace="~{header :: header}"></div>
@@ -51,7 +52,8 @@
 	          <div class="d-flex">
 	            <span class="mt-1">$</span>
 	            <input class="form-control mx-2 price" id="price"
-	              th:field="*{price}" type="text" />
+	              th:field="*{price}" type="text"
+	              onBlur="formatPriceValue()"/>
 	          </div>
 	          <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
 	        </div>

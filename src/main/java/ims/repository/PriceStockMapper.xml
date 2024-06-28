@@ -34,7 +34,7 @@
     UPDATE
         price_stock
     SET
-        updated_at = CURRENT_TIMESTAMP
+        updated_at = CURRENT_TIMESTAMP,
         deleted_at = CURRENT_TIMESTAMP
     WHERE
         product_id = #{id}

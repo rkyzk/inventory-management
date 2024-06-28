@@ -50,7 +50,6 @@ public class ProductListController {
 	public String deleteProduct(Model model, Locale locale,
 			RedirectAttributes redirectAttributes,
 			@RequestParam("id") int id) {
-		System.out.println(id);
 		int retVal = productService.deleteProduct(id);
 		String message;
 		if (retVal == 1) {
@@ -64,7 +63,7 @@ public class ProductListController {
 		model.addAttribute("prodList", prodList);
 		model.addAttribute("itemCount", prodList.size());
 		model.addAttribute("awsUrl", endpoint);	
-		model.addAttribute("awsUrl", message);	
+		model.addAttribute("message", message);	
 		return "product-list";
 	}
 	
