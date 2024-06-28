@@ -8,15 +8,16 @@
 	<link rel="stylesheet" th:href="@{/css/style.css}">
     <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/displayMessage.js}" defer></script>
   </head>
   <body>
     <div th:replace="~{header :: header}"></div>
     <main class="container mt-3">
       <h2 class="text-center">Product List</h2>
-      <!--  <div id="message" th:if="${message}" role="alert"
-        class="alert alert-success alert-dismissible text-center">
+      <div id="message" th:if="${message}" role="alert"
+        class="alert-success alert alert-dismissible text-center">
         <span th:text="${message}"></span>
-      </div>-->
+      </div>
       <p th:unless="${itemCount}" class="no-item-msg">No Items.</p>
       <div th:if="${itemCount}" class="list-content">
         <div class="d-flex justify-content-end">
@@ -67,11 +68,14 @@
 	              </form>
 	            </td>
 	            <td class="px-1 text-center">
-	              <form>
+	              <form th:action="@{/}" th:method="post">
 	                <input type="hidden" th:value="${item.id}" name="id"/>
-	                <button type="button" class="btn-icon py-0 px-0">
+	                <button type="button" class="btn-icon py-0 px-0"
+	                  data-bs-toggle="modal"
+	                  th:data-bs-target="'#del-' + ${item.id}">
 	                  <i class="fa-regular fa-trash-can"></i>
 	                </button>
+	                <div th:replace="~{modal :: modal}"></div>
 	              </form>
 	            </td>
 	          </tr>

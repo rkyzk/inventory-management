@@ -64,7 +64,20 @@ public class ProductService {
 	@Transactional
 	public int updateProduct(Product product) {
 		int retCode = productMapper.updateProduct(product);
-		int retCode2 = priceStockMapper.updateProductData(product);
-		if (retCode == 1 && retCode2 ==1) return 1; else return 0;		
+		if (retCode == 1) return priceStockMapper.updateProductData(product);
+		else return 0;
+	}
+	
+	/**
+	 * delete product.
+	 * 
+	 * @param id
+	 * @return return code
+	 */
+	@Transactional
+	public int deleteProduct(int id) {
+		int retCode = priceStockMapper.deleteProductData(id);
+		if (retCode == 1) return productMapper.deleteProduct(id);
+		else return 0;		
 	}
 }

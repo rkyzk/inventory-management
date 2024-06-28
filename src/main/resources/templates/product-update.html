@@ -7,6 +7,7 @@
 	  th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{/css/style.css}">
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/formatPriceValues.js}" defer></script>
   </head>
   <body>
     <div th:replace="~{header :: header}"></div>
@@ -51,7 +52,8 @@
 	          <div class="d-flex">
 	            <span class="mt-1">$</span>
 	            <input class="form-control mx-2 price" id="price"
-	              th:field="*{price}" type="text" />
+	              th:field="*{price}" type="text"
+	              onBlur="formatPriceValue()"/>
 	          </div>
 	          <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
 	        </div>
@@ -73,6 +75,7 @@
 	            th:field="*{multipartFile}" type="file"/>
 	          <p class="text-danger" th:if="${#fields.hasErrors('multipartFile')}" th:errors="*{multipartFile}"/>
 	        </div>
+	        <!--  show a checkbox for removing the image if there's an image -->
 	        <div class="col-6 fs-6 mt-4 d-flex flex-column" th:if="*{imageName}">
 	          <span>Current image file: <label th:text=*{imageName}></label></span>
 	          <span>
