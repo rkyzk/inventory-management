@@ -9,7 +9,7 @@ import ims.entity.Product;
 @Mapper
 public interface ProductMapper {
 	/** insert product */
-	public void insertProduct(Product product);
+	public int insertProduct(Product product);
 	/** get product list */
 	public List<Product> getProductList();
 	/** get product 

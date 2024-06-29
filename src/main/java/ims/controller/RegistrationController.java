@@ -73,8 +73,8 @@ public class RegistrationController {
 			product.setImagePath(imagePath);
 		}
 		// insert product in DB
-		productService.insertProduct(product);
-		// send success message to the list controller
+	    productService.insertProduct(product);
+	    // send success message to the list controller
 		redirectAttributes.addFlashAttribute("message", msg.getMessage("REGSUC", null, locale));
 		return "redirect:/product-list";
 	}
