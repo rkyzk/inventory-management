@@ -37,11 +37,14 @@ public class ProductService {
 		priceStockMapper.insertProductData(product);
 	}
 	
+	/**
+	 * Get Product List
+	 * 
+	 * @return product list
+	 */
 	public List<Product> getProductList() {
 		return productMapper.getProductList();
 	}
-
-
 	
 	/**
 	 * get product.
