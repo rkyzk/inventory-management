@@ -45,9 +45,12 @@ public class RegistrationController {
 	}
 	
 	/**
-	 * Insert product data in DB.
+	 * Validates user input,
+	 * upload images to s3 bucket,
+	 * and insert product data in DB.
 	 *
 	 * @param model
+	 * @param locale
 	 * @param redirectAttributes
 	 * @param product
 	 * @param bindingResult

@@ -32,13 +32,10 @@ public class ProductListController {
 	 * Display product list page.
 	 *
 	 * @param model
-	 * @param locale
-	 * @param redirectAttributes
 	 * @return product list page
 	 */
 	@GetMapping("/product-list")
-	public String getProductList(Model model, Locale locale,
-			RedirectAttributes redirectAttributes) {	
+	public String getProductList(Model model) {
 		List<Product> prodList = productService.getProductList();
 		model.addAttribute("prodList", prodList);
 		model.addAttribute("itemCount", prodList.size());
@@ -46,6 +43,14 @@ public class ProductListController {
 		return "product-list";
 	}
 	
+	/**
+	 * 
+	 * @param model
+	 * @param locale
+	 * @param redirectAttributes
+	 * @param id
+	 * @return product list page
+	 */
 	@PostMapping("/delete")
 	public String deleteProduct(Model model, Locale locale,
 			RedirectAttributes redirectAttributes,
@@ -65,6 +70,5 @@ public class ProductListController {
 		model.addAttribute("awsUrl", endpoint);	
 		model.addAttribute("message", message);	
 		return "product-list";
-	}
-	
+	}	
 }

@@ -1,14 +1,9 @@
 package ims.service;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Options;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,31 +37,11 @@ public class ProductService {
 		priceStockMapper.insertProductData(product);
 	}
 	
-	/** product list */
-	final private List<Product> products = productMapper.getProductList();
-	
-	/**
-	 * return page with product list
-	 * 
-	 * @param pageable
-	 * @return page
-	 */
-	public Page<Product> getProductPage(Pageable pageable) {
-        int pageSize = pageable.getPageSize();
-        int currentPage = pageable.getPageNumber();
-        int startItem = currentPage * pageSize;
-        List<Product> prodList;
-        if (products.size() < startItem) {
-            prodList = Collections.emptyList();
-        } else {
-            int toIndex = Math.min(startItem + pageSize, products.size());
-            prodList = products.subList(startItem, toIndex);
-        }
-        Page<Product> productPage
-          = new PageImpl<Product>(prodList,
-        		  PageRequest.of(currentPage, pageSize), products.size());
-        return productPage;
-    }
+	public List<Product> getProductList() {
+		return productMapper.getProductList();
+	}
+
+
 	
 	/**
 	 * get product.

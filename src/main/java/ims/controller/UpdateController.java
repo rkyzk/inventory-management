@@ -35,6 +35,14 @@ public class UpdateController {
 	@Value("${aws.endpoint.url}")
 	private String endpoint;
 	
+	/**
+	 * Get product data from DB using the given id
+	 * and display product update page
+	 * 
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/product-update")
 	public String getUpdate(Model model,
 			@RequestParam("id") int id) {
@@ -44,6 +52,20 @@ public class UpdateController {
 		return "product-update";	
 	}
 	
+	/**
+	 * Validate user input,
+	 * add/remove image to/from S3 bucket,
+	 * update product data in DB.
+	 * 
+	 * @param model
+	 * @param locale
+	 * @param currImg
+	 * @param redirectAttributes
+	 * @param product
+	 * @param bindingResult
+	 * @return
+	 * @throws IOException
+	 */
 	@PostMapping("/product-update")
 	public String postUpdate(Model model, Locale locale,
 			@RequestParam(name="curr-img", required=false) boolean currImg,
@@ -53,15 +75,13 @@ public class UpdateController {
 		if (bindingResult.hasErrors()) {
 			return "product-update";
 		}
-		/** If image has been removed, delete the image from AWS storage
+		/** If image has been removed,
+		 *  delete the image from AWS storage
 		 *  and set imagePath & imageName null
 		 */
 		if (currImg) {
 			imgUploadService.deleteImg(product.getImagePath());
 			product.setImagePath(null);
-			// set null rather than an empty string so the checkbox
-			// for removing the image won't appear on 
-			// update page (see product-update.html ln 76)
 			product.setImageName(null);
 		}
 		// if image has been added, upload it to S3 bucket

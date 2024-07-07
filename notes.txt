@@ -1,3 +1,6 @@
-message display JS
-price JS
-page
+
+8080 already in use:
+lsof -i :8080 //returns the PID (process id) that runs on port 8080
+kill 1234 //kill the process using PID (used dummy PID here)
+lsof -i :8443
+kill 4321
