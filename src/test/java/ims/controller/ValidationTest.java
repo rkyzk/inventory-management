@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.validation.BindException;
@@ -85,5 +87,17 @@ public class ValidationTest {
 			assertThat(action.getPropertyPath().toString()).isEqualTo("name");
 			assertThat(action.getMessage()).isEqualTo("must not exceed 40 characters");
 		});
+	}
+	
+	@ParameterizedTest
+	@ValueSource(ints = {1, 9999})
+	@Disabled
+    void test_quantity1to9999IsOk(int input) throws Exception {
+		product.setQuantity(input);
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		assertNull(bindingResult.getFieldError());
+		assertEquals(violations.size(), 0);	
 	}
 }
