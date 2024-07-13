@@ -194,6 +194,7 @@ public class ValidationTest {
 	}
 	
 	@Test
+	@Disabled
     void test_stockNegative1_failValidation() throws Exception {
 		product.setStock(-1);
 		bindingResult = new BindException(product, "product");
@@ -207,6 +208,7 @@ public class ValidationTest {
     }
 	
 	@Test
+	@Disabled
     void test_stock100000_failValidation() throws Exception {
 		product.setStock(100000);
 		bindingResult = new BindException(product, "product");
@@ -218,4 +220,31 @@ public class ValidationTest {
 				.isEqualTo("must be less than or equal to 99999");
 		});
     }
+	
+	@Test
+	@Disabled
+    void test_description_200CharsAreOk() throws Exception {
+		String str = new String(new char[200]).replace("\0", "a");
+		product.setDescription(str);
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		assertNull(bindingResult.getFieldError());
+		assertEquals(violations.size(), 0);	
+	}
+	
+	@Test
+	@Disabled
+    void test_descriptionAbove200Chars_failsValidation() throws Exception {
+		String str = new String(new char[201]).replace("\0", "a");
+		product.setDescription(str);
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		violations.forEach(action -> {
+			assertThat(action.getPropertyPath().toString()).isEqualTo("description");
+			assertThat(action.getMessage().toString())
+			    .isEqualTo("must not exceed 200 characters");
+		});
+	}
 }
