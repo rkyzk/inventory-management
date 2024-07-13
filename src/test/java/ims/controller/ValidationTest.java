@@ -180,4 +180,42 @@ public class ValidationTest {
 			    .isEqualTo("numeric value out of bounds (<5 digits>.<2 digits> expected)");
 		});
     }
+	
+	@ParameterizedTest
+	@ValueSource(ints = {0, 99999})
+	@Disabled
+    void test_stock0And99999AreOk() throws Exception {
+		product.setStock(0);
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		assertNull(bindingResult.getFieldError());
+		assertEquals(violations.size(), 0);	
+	}
+	
+	@Test
+    void test_stockNegative1_failValidation() throws Exception {
+		product.setStock(-1);
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		violations.forEach(action -> {
+			assertThat(action.getPropertyPath().toString()).isEqualTo("stock");
+			assertThat(action.getMessage())
+				.isEqualTo("must be greater than or equal to 0");
+		});
+    }
+	
+	@Test
+    void test_stock100000_failValidation() throws Exception {
+		product.setStock(100000);
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		violations.forEach(action -> {
+			assertThat(action.getPropertyPath().toString()).isEqualTo("stock");
+			assertThat(action.getMessage())
+				.isEqualTo("must be less than or equal to 99999");
+		});
+    }
 }
