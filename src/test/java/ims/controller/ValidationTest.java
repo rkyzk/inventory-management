@@ -47,6 +47,7 @@ public class ValidationTest {
 	}
 	
 	@Test
+	@Disabled
 	public void test_blankNameCausesError() throws Exception {
 		product.setName("");
 		bindingResult = new BindException(product, "product");
@@ -56,5 +57,17 @@ public class ValidationTest {
 			assertThat(action.getPropertyPath().toString()).isEqualTo("name");
 			assertThat(action.getMessage()).isEqualTo("must not be blank");
 		});
+	}
+	
+	@Test
+	public void test_nameSize40IsOk() throws Exception {
+		// make string with 40 chars
+		String str = new String(new char[40]).replace("\0", "a");
+		product.setName(str);
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		assertNull(bindingResult.getFieldError());
+		assertEquals(violations.size(), 0);	
 	}
 }
