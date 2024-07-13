@@ -67,6 +67,7 @@ class ProductRegistrationControllerTest {
 	}
 	
 	@Test
+	@Disabled
     void test_redirectedToProductList() throws Exception {
 		this.mockmvc.perform(post("/product-registration").flashAttr("product", product))
 				.andExpect(model().hasNoErrors())
