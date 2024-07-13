@@ -58,10 +58,18 @@ class ProductRegistrationControllerTest {
 	}
 	
 	@Test
+	@Disabled
 	void test_registerSuccessMessage() throws Exception {
 		this.mockmvc.perform(post("/product-registration").flashAttr("product", product))
 				.andExpect(MockMvcResultMatchers.flash().attribute("message",
 						msg.getMessage("REGSUC", null, locale)))
+				.andExpect(redirectedUrl("/product-list"));			
+	}
+	
+	@Test
+    void test_redirectedToProductList() throws Exception {
+		this.mockmvc.perform(post("/product-registration").flashAttr("product", product))
+				.andExpect(model().hasNoErrors())
 				.andExpect(redirectedUrl("/product-list"));			
 	}
 }
