@@ -44,6 +44,7 @@ public class ProductListController {
 	}
 	
 	/**
+	 * Delete product.
 	 * 
 	 * @param model
 	 * @param locale
