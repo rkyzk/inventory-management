@@ -100,4 +100,18 @@ public class ValidationTest {
 		assertNull(bindingResult.getFieldError());
 		assertEquals(violations.size(), 0);	
 	}
+	
+	@Test
+	@Disabled
+    void test_quantity0CausesError() throws Exception {
+		product.setQuantity(0);
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		violations.forEach(action -> {
+			assertThat(action.getPropertyPath().toString()).isEqualTo("quantity");
+			assertThat(action.getMessage())
+				.isEqualTo("must be greater than or equal to 1");
+		});
+	}
 }
