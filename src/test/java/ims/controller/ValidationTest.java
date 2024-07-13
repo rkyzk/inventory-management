@@ -3,6 +3,7 @@ package ims.controller;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -113,5 +114,43 @@ public class ValidationTest {
 			assertThat(action.getMessage())
 				.isEqualTo("must be greater than or equal to 1");
 		});
+	}
+
+	@Test
+	@Disabled
+    void test_priceNullCausesError() throws Exception {
+		product.setPrice(null);
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		violations.forEach(action -> {
+			assertThat(action.getPropertyPath().toString()).isEqualTo("price");
+			assertThat(action.getMessage())
+				.isEqualTo("must not be blank");
+		});
+	}
+	
+	@Test
+	@Disabled
+    void test_priceMin0IsOk() throws Exception {
+		product.setPrice(new BigDecimal("0.00"));
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		assertNull(bindingResult.getFieldError());
+		assertEquals(violations.size(), 0);	
+	}
+	
+	@Test
+    void test_priceNegativeValCausesError() throws Exception {
+		product.setPrice(new BigDecimal("-0.50"));
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		violations.forEach(action -> {
+			assertThat(action.getPropertyPath().toString()).isEqualTo("price");
+			assertThat(action.getMessage().toString())
+			    .isEqualTo("must be greater than or equal to 0.00");
+		});	
 	}
 }
