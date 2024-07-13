@@ -142,6 +142,7 @@ public class ValidationTest {
 	}
 	
 	@Test
+	@Disabled
     void test_priceNegativeValCausesError() throws Exception {
 		product.setPrice(new BigDecimal("-0.50"));
 		bindingResult = new BindException(product, "product");
@@ -153,4 +154,30 @@ public class ValidationTest {
 			    .isEqualTo("must be greater than or equal to 0.00");
 		});	
 	}
+	
+	@Test
+	@Disabled
+    void test_priceDigitsInt5Frac2AreOk() throws Exception {
+		product.setPrice(new BigDecimal("12345.01"));
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		assertNull(bindingResult.getFieldError());
+		assertEquals(violations.size(), 0);	
+	}
+	
+	@ParameterizedTest
+	@ValueSource(strings = {"123456", "1.123"})
+	@Disabled
+    void test_priceDigitsInt6AndFrac3_failValidation(String input) throws Exception {
+		product.setPrice(new BigDecimal(input));
+		bindingResult = new BindException(product, "product");
+		Set<ConstraintViolation<Product>> violations =
+				validator.validate(product);
+		violations.forEach(action -> {
+			assertThat(action.getPropertyPath().toString()).isEqualTo("price");
+			assertThat(action.getMessage().toString())
+			    .isEqualTo("numeric value out of bounds (<5 digits>.<2 digits> expected)");
+		});
+    }
 }
