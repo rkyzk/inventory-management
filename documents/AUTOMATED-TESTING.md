@@ -9,11 +9,10 @@
 | 3 |Method postProduct will redirect to the list page if the input data is valid.|P        |2024/7/13|
 | 4 |Message 'The product has been registered' will be displayed on the list page upon successful registration.|P        |2024/7/13   |
 
-[Link to the image](./documents/images/automated-testing-regController.jpg)
+[Link to the image](./images/automated-testing/automated-testing-regController.jpg)
 
 **The following tests are covered in the manual testing**
 - If an image is uploaded, the image is stored in the AWS S3bucket<br>
-(the bucket name is specified in 'application-local.properties'.)
 - If an image is uploaded, the image name is stored in the DB.
 - If an image is uploaded, the image path is stored in the DB.
 - Product data is stored in the DB.
@@ -39,7 +38,7 @@
 | 16|max = 200        |description|200 chars|validation passes|P   |-- |2024/7/13 |
 | 17|max = 200        |description|201 chars|validation error|P   |-- |2024/7/13 |
 
-[Link to the image](./documents/images/automated-testing-validation.jpg)
+[Link to the image](./images/automated-testing/automated-testing-validation.jpg)
 
 3. Product List Page
 
