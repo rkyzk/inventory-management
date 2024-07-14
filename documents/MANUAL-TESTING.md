@@ -31,8 +31,20 @@ Enter the standard data written below unless specified otherwise:
 |7 | price||||||||10.50 is inserted in the column price.|P|see image for test No.1|2024/7/14|
 |8 | stock||||||||10 is inserted in the column stock.|P|see image for test No.1|2024/7/14|
 |9 | description|test9|enter the standard data||||test description|don't upload any image| "test description" is inserted in the column description.|P|see image for test No.1|2024/7/14|
-|10 | image name|test10|enter the standard data|||||upload 'test.jpg'|'test.jpg + (timestamp)'  will be inserted in the column image_name. |P|see image for test No.1|2024/7/14|
+|10 | image name|test10|enter the standard data|||||upload 'test.jpg'|'test.jpg + (timestamp)'  will be inserted in the column image_name. |P|[image](./images/manual-testing/1-2-10.jpg)<br>[image](./images/manual-testing/1-2-price_stock.jpg)|2024/7/14|
 |11 | image path|||||||upload 'test.jpg'|'tulips/test.jpg + (timestamp)' will be inserted in the column image_path. |P|see image for test No.10|2024/7/14|
 |12 | created_at||||||||The time the product was registered will be inserted in the column created_at  |P|see image for test No. 1|2024/7/14|
 |13 | updated_at||||||||The time the product was registered will be inserted in the column updated_at  |P|see image for test No. 1|2024/7/14|
 |14 | deleted_at||||||||The deleted_at will be null.|P|see image for test No. 1|2024/7/14|
+
+1-3 Test validations (test only the items that weren't covered in automated testing.)
+|Nr|Feature tested|name|category|qty./pack|price|stock|descrip|img|expected result|Pass/Fail|image|Date|
+|:-|:-------------------|:--------|:--------|:--------|:-|:-------|:---|:--------|:--------|:-----------|:--|:--|
+|1 | file with extension 'jpg' can be uploaded |enter standard data||||||upload 'test.jpg' |The file is succesfully uploaded.|P|[image](./images/manual-testing/1-3-1.jpg)<br>[image](./images/manual-testing/1-3-file-ext.jpg)|2024/7/14|
+|2 | file with extension 'jpeg' can be uploaded |enter standard data||||||upload 'test.jpeg' |The file is succesfully uploaded.|P|[image](./images/manual-testing/1-3-2.jpg)<br>[image](./images/manual-testing/1-3-file-ext.jpg)|2024/7/14|
+|3 | file with extension 'png' can be uploaded |enter standard data||||||upload 'test.png' |The file is succesfully uploaded.|P|[image](./images/manual-testing/1-3-3.jpg)<br>[image](./images/manual-testing/1-3-file-ext.jpg)|2024/7/14|
+|4 | file with extension 'gif' can't be uploaded |enter standard data||||||upload 'test.gif' |validation error: 'Only jpeg or png are accepted.'|P|[image](./images/manual-testing/1-3-4.jpg)<br>[image](./images/manual-testing/1-3-4-2.jpg)|2024/7/14|
+|5 | file with size of 800KB can be uploaded |enter standard data||||||upload 'test1.jpg' |The file is succesfully uploaded.|P|||
+|6 | file with size of 801KB can't be uploaded |enter standard data||||||upload 'test1.jpg' |validation error: 'File size must be less than 800KB.'||||
+|7 | file with name length of 30 characters can be uploaded |enter standard data||||||upload 'test1.jpg' |The file is succesfully uploaded.||||
+|8 | file with name length of 31 characters can't be uploaded |enter standard data||||||upload 'test1.jpg' |validation error: 'File name must be less than 30 characters.'||||
