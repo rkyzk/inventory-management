@@ -27,12 +27,12 @@ Enter the standard data written below unless specified otherwise:
 |3 | category: crocus|test2|crocus|enter the standard data|||||"1" is inserted in the column category.|P|[image](./images/manual-testing/1-2-3.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
 |4 | category: hyacinth|test3|hyacinth|enter the standard data|||||"2" is inserted in the column category.|P|[image](./images/manual-testing/1-2-4.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
 |5 | category: others|test4|others|enter the standard data|||||"3" is inserted in the column category.|P|[image](./images/manual-testing/1-2-5.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
-|6 | quantity||||||||20 is inserted in the column quantity.|P|[image](./images/manual-testing/1-2-6.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
-|7 | price||||||||10.50 is inserted in the column price.|P|[image](./images/manual-testing/1-2-7.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
-|8 | stock||||||||10 is inserted in the column stock.|P|[image](./images/manual-testing/1-2-8.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
-|9 | description|test9|enter the standard data||||test description|don't upload any image| "test description" is inserted in the column description.|P|[image](./images/manual-testing/1-2-9.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
-|10 | image name|test10|enter the standard data|||||upload 'test.jpg'|'test.jpg' will be inserted in the column image_name. |P|[image](./images/manual-testing/1-2-10.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
-|11 | image path|||||||upload 'test.jpg'|'tulips/test.jpg' will be inserted in the column image_path. |P|see image for test No.10|2024/7/14|
+|6 | quantity||||||||20 is inserted in the column quantity.|P|see image for test No.1|2024/7/14|
+|7 | price||||||||10.50 is inserted in the column price.|P|see image for test No.1|2024/7/14|
+|8 | stock||||||||10 is inserted in the column stock.|P|see image for test No.1|2024/7/14|
+|9 | description|test9|enter the standard data||||test description|don't upload any image| "test description" is inserted in the column description.|P|see image for test No.1|2024/7/14|
+|10 | image name|test10|enter the standard data|||||upload 'test.jpg'|'test.jpg + (timestamp)'  will be inserted in the column image_name. |P|see image for test No.1|2024/7/14|
+|11 | image path|||||||upload 'test.jpg'|'tulips/test.jpg + (timestamp)' will be inserted in the column image_path. |P|see image for test No.10|2024/7/14|
 |12 | created_at||||||||The time the product was registered will be inserted in the column created_at  |P|see image for test No. 1|2024/7/14|
 |13 | updated_at||||||||The time the product was registered will be inserted in the column updated_at  |P|see image for test No. 1|2024/7/14|
-|14 | deleted_at|s|||||||The deleted_at will be null.|P|see image for test No. 1|2024/7/14|
+|14 | deleted_at||||||||The deleted_at will be null.|P|see image for test No. 1|2024/7/14|
