@@ -7,7 +7,7 @@ Browser: Google Chrome
 1. Registration Page
 1-1 Check the layout, link and clear button.
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
-|:-|:--------------|:-----------------------------------------------------------|:-|:--------|
+|:-|:-------------|:----------------------------------------|:-------------|:--|:---|:-----|
 |1|layout|check if all elements on the page are displayed fine for screen sizes between 1000px and 1300px|All elements are displayed fine in the specified range of screen sizes.|p|[image](./images/manual-testing/1-1-1.jpg)|2024/7/14|
 |2|link|click the link to product list page|redirected to product list page|p|[image](./images/manual-testing/1-1-2.jpg)|2024/7/14|
 
@@ -21,8 +21,8 @@ Enter the standard data written below unless specified otherwise:
 |test1|tulips|20|10.50|10|(leave blank)|don't upload any image|
 
 |Nr|Feature tested|name|category|qty. per pack|price|stock|descrip|img|expected result|Pass/Fail|image|Date|
-|:-|:-------------------|:--------|:--------|:--------|:-|:-------|:---|:--------|:--------|:-----------|:--|:--|:--|
-|1 | name||||||||"test1" is inserted in the column name.|P|[image](./images/manual-testing/1-2-1.jpg)[image](./images/manual-testing/1-2-1-2.jpg)|||
+|:-|:-------------------|:--------|:--------|:--|:-----|:--|:------------|:--|:--------|:--|:--|:--|:--|
+|1 | name||||||||"test1" is inserted in the column name.|P|[image](./images/manual-testing/1-2-1.jpg)<br>[image](./images/manual-testing/1-2-1-2.jpg)|||
 |2 | category: tulips||||||||"0" is inserted in the column category.||see image for test No.1||
 |3 | category: crocus|test2|crocus|enter the standard data|||||"1" is inserted in the column category.||||
 |4 | category: hyacinth|test3|hyacinth|enter the standard data|||||"2" is inserted in the column category.||||
