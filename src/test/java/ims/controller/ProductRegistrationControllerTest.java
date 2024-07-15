@@ -17,8 +17,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import entity.ProductBuilder;
 import ims.entity.Product;
+import ims.entity.ProductBuilder;
 
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc

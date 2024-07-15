@@ -40,7 +40,7 @@ Enter the standard data written below unless specified otherwise:
 1-3 Test validations (test only the items that weren't covered in automated testing.)
 |Nr|Feature tested|name|category|qty./pack|price|stock|descrip|img|expected result|Pass/Fail|image|Date|
 |:-|:-------------------|:--------|:--------|:--------|:-|:-------|:---|:--------|:--------|:-----------|:--|:--|
-|1 | file with extension 'jpg' can be uploaded |enter standard data||||||upload 'test.jpg' |The file is succesfully uploaded.|P|[image](./images/manual-testing/1-3-1.jpg)<br>[image](./images/manual-testing/1-3-file-ext.jpg)|2024/7/14|
+|1 | file with extension 'jpg' can be uploaded |enter standard data||||||upload 'test.jpg' |The file is succesfully uploaded.|P|[image](./images/manual-testing/1-3-file-ext.jpg)|2024/7/14|
 |2 | file with extension 'jpeg' can be uploaded |enter standard data||||||upload 'test.jpeg' |The file is succesfully uploaded.|P|[image](./images/manual-testing/1-3-2.jpg)<br>[image](./images/manual-testing/1-3-file-ext.jpg)|2024/7/14|
 |3 | file with extension 'png' can be uploaded |enter standard data||||||upload 'test.png' |The file is succesfully uploaded.|P|[image](./images/manual-testing/1-3-3.jpg)<br>[image](./images/manual-testing/1-3-file-ext.jpg)|2024/7/14|
 |4 | file with extension 'gif' can't be uploaded |enter standard data||||||upload 'test.gif' |validation error: 'Only jpeg or png are accepted.'|P|[image](./images/manual-testing/1-3-4.jpg)<br>[image](./images/manual-testing/1-3-4-2.jpg)|2024/7/14|

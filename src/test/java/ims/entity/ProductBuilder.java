@@ -1,4 +1,4 @@
-package entity;
+package ims.entity;
 
 import java.math.BigDecimal;
 
