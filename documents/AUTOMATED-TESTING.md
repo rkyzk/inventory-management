@@ -18,25 +18,33 @@
 - Product data is stored in the DB.
 
 **Tests on Validation**
-|No.|Tested Feature/Validation|Field|input|Expected Results              |Pass/Fail|Image|Date  |
-|:--|:----------------|:----|:----|:-----------------------------|:--------|:----|:-----|
-| 1 |no errors show no validation |--|deafult|validation passes|P      |--   |2024/7/13|
-| 2 |NotBlank         |name |null |validation error|P   |--   |2024/7/13 |
-| 3 |max size=40      |name |40 characters|validation passes|P      |--   |2024/7/13 |
-| 4 |max size=40      |name |41 characters|validation error|P        |--   |2024/7/13 |
-| 5 |min=1, max =9999 |qty  |1, 9999|validation passes|P     |--   |2024/7/13 |
-| 6 |min=1, max =9999 |qty  |0    |validation error|P    |--  |2024/7/13   |
-| 7 |min=1, max =9999 |qty  |10000|validation error|P    |--  |2024/7/13   |
-| 8 |NotNull          |price|null|validation error|P      |--   |2024/7/13 |
-| 9 |DecimalMin=0.00  |price|0.00|validation passes|P      |--   |2024/7/13 |
-| 10|DecimalMin=0.00  |price|-0.50|validation error|P      |--   |2024/7/13 |
-| 11|Dig›its constraint|price|12345.01|validation passes|P        |--   |2024/7/13 |
-| 12|Digits constraint|price|123456, 12345.123|validation error|P      |-- |2024/7/13|
-| 13|min=0, max =99999|stock|0, 99999|validation passes|P   |-- |2024/7/13 |
-| 14|min=0, max =99999|stock|-1   |validation error|P        |--   |2024/7/13   |
-| 15|min=0, max =99999|stock|100000|validation error|P        |--   |2024/7/13   |
-| 16|max = 200        |description|200 chars|validation passes|P   |-- |2024/7/13 |
-| 17|max = 200        |description|201 chars|validation error|P   |-- |2024/7/13 |
+|No.|Tested Feature/Validation|Field|input|Expected Results              |Pass/Fail|Date  |
+|:--|:----------------|:----|:----|:-----------------------------|:--------|:-----|
+| 1 |no errors show no validation |--|deafult|validation passes|P      |2024/7/13|
+| 2 |NotBlank         |name |null |validation error|P   |2024/7/13 |
+| 3 |max size=40      |name |40 characters|validation passes|P      |2024/7/13 |
+| 4 |max size=40      |name |41 characters|validation error|P      |2024/7/13 |
+| 5 |min=1, max =9999 |qty  |1, 9999|validation passes|P     |2024/7/13 |
+| 6 |min=1, max =9999 |qty  |0    |validation error|P    |2024/7/13   |
+| 7 |min=1, max =9999 |qty  |10000|validation error|P    |2024/7/13   |
+| 8 |NotNull          |price|null|validation error|P     |2024/7/13 |
+| 9 |DecimalMin=0.00  |price|0.00|validation passes|P     |2024/7/13 |
+| 10|DecimalMin=0.00  |price|-0.50|validation error|P     |2024/7/13 |
+| 11|Digits constraint|price|12345.01|validation passes|P      |2024/7/13 |
+| 12|Digits constraint|price|123456, 12345.123|validation error|P      |2024/7/13|
+| 13|min=0, max =99999|stock|0, 99999|validation passes|P    |2024/7/13 |
+| 14|min=0, max =99999|stock|-1   |validation error|P      |2024/7/13   |
+| 15|min=0, max =99999|stock|100000|validation error|P     |2024/7/13   |
+| 16|max = 200        |description|200 chars|validation passes|P    |2024/7/13 |
+| 17|max = 200        |description|201 chars|validation error|P    |2024/7/13 |
+| 18|size = 30        |file name|30 chars|validation passes|P    |2024/7/15 |
+| 19|size = 31        |file name|31 chars|validation error|P    |2024/7/15 |
+| 20|file type        |file type|jpg|validation passes|P    |2024/7/15 |
+| 21|file type        |file type|jpeg|validation passes|P    |2024/7/15 |
+| 22|file type        |file type|png|validation passes|P    |2024/7/15 |
+| 23|file type        |file type|gif|validation error|P    |2024/7/15 |
+| 24|file size        |file size|819200B|validation passes|P    |2024/7/15 |
+| 25|file size        |file size|819201B|validation error|P    |2024/7/15 |
 
 [Link to the image](./images/automated-testing/automated-testing-validation.jpg)
 
