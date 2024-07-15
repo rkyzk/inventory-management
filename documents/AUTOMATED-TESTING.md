@@ -13,9 +13,13 @@
 
 **The following tests are covered in the manual testing**
 - If an image is uploaded, the image is stored in the AWS S3bucket<br>
-- If an image is uploaded, the image name is stored in the DB.
-- If an image is uploaded, the image path is stored in the DB.
-- Product data is stored in the DB.
+ --> **See Manual Testing 1. Registration Page Test No.1-3-1**
+- If an image is uploaded, the image name is stored in the DB.<br>
+ --> **See Manual Testing 1. Registration Page Test No.1-2-10**
+- If an image is uploaded, the image path is stored in the DB.<br>
+ --> **See Manual Testing 1. Registration Page Test No.1-2-11**
+- Product data is stored in the DB.<br>
+ --> **See Manual Testing 1. Registration Page Test No.1-2-1〜14**
 
 **Tests on Validation**
 |No.|Tested Feature/Validation|Field|input|Expected Results              |Pass/Fail|Date  |
