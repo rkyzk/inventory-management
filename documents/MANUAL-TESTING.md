@@ -48,4 +48,4 @@ Enter the standard data written below unless specified otherwise:
 
 |Nr|Feature tested|procedure|expected result|Pass/Fail|image|Date|
 |:-|:------------|:-----------------|:--------------|:--|:---|:--|
-|1|clear button|enter standard data, "test description" for description, upload test.jpg and click 'clear'|all entries will be cleared.|P|[image](./images/manual-testing/1-4-1.jpg)<br>[image](./images/manual-testing/1-4-1-2.jpg)|2024/7/15|
+|1|clear button|enter "crocus" for category, "test description" for description, enter standard data, upload test.jpg and click 'clear'|all entries will be cleared.|P|[image](./images/manual-testing/1-4-1.jpg)<br>[image](./images/manual-testing/1-4-1-2.jpg)|2024/7/15|

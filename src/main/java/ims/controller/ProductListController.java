@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -17,6 +18,7 @@ import ims.entity.Product;
 import ims.service.ProductService;
 
 @Controller
+@RequestMapping("/product-list")
 public class ProductListController {
 
 	@Autowired
@@ -34,7 +36,7 @@ public class ProductListController {
 	 * @param model
 	 * @return product list page
 	 */
-	@GetMapping("/product-list")
+	@GetMapping("")
 	public String getProductList(Model model) {
 		List<Product> prodList = productService.getProductList();
 		model.addAttribute("prodList", prodList);

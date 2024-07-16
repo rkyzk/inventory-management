@@ -34,7 +34,7 @@ public class ValidationTest {
 
 	private final Validator validator =
 			Validation.buildDefaultValidatorFactory().getValidator();
-	
+
 	@BeforeEach
 	public void getDefaultProduct() {
 		builder = new ProductBuilder();
@@ -382,9 +382,8 @@ public class ValidationTest {
 				validator.validate(product);
 		violations.forEach(action -> {
 			assertThat(action.getPropertyPath().toString()).isEqualTo("multipartFile");
-			System.out.println(action.getMessage().toString());
-			// assertThat(action.getMessage().toString())
-			//    .isEqualTo("File size must not be larger than 800KB.");
+			assertThat(action.getMessage().toString())
+			    .isEqualTo("{EMSG103}");
 		});
 	}
 }

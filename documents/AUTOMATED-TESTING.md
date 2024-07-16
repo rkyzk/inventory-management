@@ -21,7 +21,7 @@
 - Product data is stored in the DB.<br>
  --> **See Manual Testing 1. Registration Page Test No.1-2-1〜14**
 
-**Tests on Validation**
+## 2. Tests on Validation
 |No.|Tested Feature/Validation|Field|input|Expected Results              |Pass/Fail|Date  |
 |:--|:----------------|:----|:----|:-----------------------------|:--------|:-----|
 | 1 |no errors show no validation |--|deafult|validation passes|P      |2024/7/13|
@@ -52,7 +52,7 @@
 
 [Link to the image](./images/automated-testing/automated-testing-validation.jpg)
 
-3. Product List Page
+## 3. Product List Page
 
 4. Update Page
 
