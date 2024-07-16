@@ -54,6 +54,28 @@
 
 ## 3. Product List Page
 
+** getProductList method **
+|No.|Tested features                          |Pass/Fail|Date        |
+|:--|:----------------------------------------|:--------|:-----------|
+| 1 |Method getProductList will get product list page. |P        |2024/7/16|
+| 2 |model attribute 'prodList' holds the right value. |P        |2024/7/16|
+| 3 |model attribute 'itemCount' holds the right value.|P        |2024/7/16|
+| 4 |model attribute 'endpoint' holds the right value. |P        |2024/7/16|
+
+** deleteProduct method **
+|No.|Tested features                          |Pass/Fail|Date        |
+|:--|:----------------------------------------|:--------|:-----------|
+| 1 |retVal = 1 sets delete success message to attribute 'message.'|P    |2024/7/16|
+| 2 |retVal = 0 sets delete error message to attribute 'message.'|P    |2024/7/16|
+| 4 |model attribute 'prodList' holds the right value. |P        |2024/7/16|
+| 5 |model attribute 'itemCount' holds the right value.|P        |2024/7/16|
+| 6 |model attribute 'endpoint' holds the right value. |P        |2024/7/16|
+| 7 |Method 'deleteProduct' shows product list page.   |P        |2024/7/16|
+
+
+
+
+
 4. Update Page
 
 5. Service class
