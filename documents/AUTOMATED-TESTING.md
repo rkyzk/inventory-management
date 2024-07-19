@@ -21,7 +21,7 @@
 - Product data is stored in the DB.<br>
  --> **See Manual Testing 1. Registration Page Test No.1-2-1〜14**
 
-## 2. Tests on Validation
+### Tests on Validation
 |No.|Tested Feature/Validation|Field|input|Expected Results              |Pass/Fail|Date  |
 |:--|:----------------|:----|:----|:-----------------------------|:--------|:-----|
 | 1 |no errors show no validation |--|deafult|validation passes|P      |2024/7/13|
@@ -52,7 +52,7 @@
 
 [Link to the image](./images/automated-testing/automated-testing-validation.jpg)
 
-## 3. Product List Page
+## 2. ProductList Controller
 
 ** getProductList method **
 |No.|Tested features                          |Pass/Fail|Date        |
@@ -70,12 +70,8 @@
 | 4 |model attribute 'prodList' holds the right value. |P        |2024/7/16|
 | 5 |model attribute 'itemCount' holds the right value.|P        |2024/7/16|
 | 6 |model attribute 'endpoint' holds the right value. |P        |2024/7/16|
-| 7 |Method 'deleteProduct' shows product list page.   |P        |2024/7/16|
+| 7 |The deleteProductMethod will return the list page.|P        |2024/7/16|
 
-
-
-
-
-4. Update Page
+## 3. Update Controller
 
 5. Service class
