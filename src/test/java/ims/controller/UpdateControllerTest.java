@@ -52,7 +52,7 @@ public class UpdateControllerTest {
 
 	@Test
 	@Disabled
-	void test_getUpdatePage() throws Exception {
+	void test_getUpdate() throws Exception {
 		List<Product> list = productService.getProductList();
 		String id = String.valueOf(list.get(0).getId());
 		this.mockmvc.perform(get("/product-update")
@@ -86,7 +86,7 @@ public class UpdateControllerTest {
 	
 	@Test
 	@Disabled
-    void test_validationErrorsReturnsUpdatePage() throws Exception {
+    void test_validationErrorsReturnUpdatePage() throws Exception {
 		product.setName("");
 		this.mockmvc.perform(post("/product-update")
 				.flashAttr("product", product))

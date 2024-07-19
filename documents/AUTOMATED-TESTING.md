@@ -4,7 +4,7 @@
 
 |No.|Tested features                          |Pass/Fail|Date        |
 |:--|:----------------------------------------|:--------|:-----------|
-| 1 |Method getProductRegistration will get product registration page.|P        |2024/7/13|
+| 1 |Method getProductRegistration will return product registration page.|P        |2024/7/13|
 | 2 |validationErrorsReturnsRegistrationPage. |P        |2024/7/13   |
 | 3 |Method postProduct will redirect to the list page if the input data is valid.|P        |2024/7/13|
 | 4 |Message 'The product has been registered' will be displayed on the list page upon successful registration.|P        |2024/7/13   |
@@ -73,5 +73,20 @@
 | 7 |The deleteProductMethod will return the list page.|P        |2024/7/16|
 
 ## 3. Update Controller
+
+** getUpdate method **
+|No.|Tested features                          |Pass/Fail|Date        |
+|:--|:----------------------------------------|:--------|:-----------|
+| 1 |Method getUpdate will return update page.|P        |2024/7/19  |
+| 2 |model attribute 'product' holds the right value. |P        |2024/7/19|
+| 3 |model attribute 'endpoint' holds the right value. |P        |2024/7/19|
+
+** postUpdate method **
+|No.|Tested features                          |Pass/Fail|Date        |
+|:--|:----------------------------------------|:--------|:-----------|
+| 1 |Validation error returns update page.    |P        |2024/7/19   |
+| 2 |After update success update success message will be stored in msg.|P        |2024/7/19|
+| 3 |If update operation fails, update error message will be stored in msg.|P        |2024/7/19|
+| 4 |If vaidation passes, redirected to list page.|P        |2024/7/19|
 
 5. Service class
