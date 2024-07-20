@@ -20,11 +20,12 @@
  --> **See Manual Testing 1. Registration Page Test No.1-2-11**
 - Product data is stored in the DB.<br>
  --> **See Manual Testing 1. Registration Page Test No.1-2-1〜14**
+ [Link to MANUAL-TESTING](./MANUAL-TESTING.md)
 
 ### Tests on Validation
 |No.|Tested Feature/Validation|Field|input|Expected Results              |Pass/Fail|Date  |
 |:--|:----------------|:----|:----|:-----------------------------|:--------|:-----|
-| 1 |no errors show no validation |--|deafult|validation passes|P      |2024/7/13|
+| 1 |no errors show no validation |--|all default values |validation passes|P      |2024/7/13|
 | 2 |NotBlank         |name |null |validation error|P   |2024/7/13 |
 | 3 |max size=40      |name |40 characters|validation passes|P      |2024/7/13 |
 | 4 |max size=40      |name |41 characters|validation error|P      |2024/7/13 |
@@ -54,7 +55,7 @@
 
 ## 2. ProductList Controller
 
-** getProductList method **
+**getProductList method**
 |No.|Tested features                          |Pass/Fail|Date        |
 |:--|:----------------------------------------|:--------|:-----------|
 | 1 |Method getProductList will get product list page. |P        |2024/7/16|
@@ -62,7 +63,7 @@
 | 3 |model attribute 'itemCount' holds the right value.|P        |2024/7/16|
 | 4 |model attribute 'endpoint' holds the right value. |P        |2024/7/16|
 
-** deleteProduct method **
+**deleteProduct method**
 |No.|Tested features                          |Pass/Fail|Date        |
 |:--|:----------------------------------------|:--------|:-----------|
 | 1 |retVal = 1 sets delete success message to attribute 'message.'|P    |2024/7/16|
@@ -74,14 +75,14 @@
 
 ## 3. Update Controller
 
-** getUpdate method **
+**getUpdate method**
 |No.|Tested features                          |Pass/Fail|Date        |
 |:--|:----------------------------------------|:--------|:-----------|
 | 1 |Method getUpdate will return update page.|P        |2024/7/19  |
 | 2 |model attribute 'product' holds the right value. |P        |2024/7/19|
 | 3 |model attribute 'endpoint' holds the right value. |P        |2024/7/19|
 
-** postUpdate method **
+**postUpdate method**
 |No.|Tested features                          |Pass/Fail|Date        |
 |:--|:----------------------------------------|:--------|:-----------|
 | 1 |Validation error returns update page.    |P        |2024/7/19   |

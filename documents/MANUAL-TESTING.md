@@ -8,8 +8,8 @@ Browser: Google Chrome
 1-1 Check the layout, link and clear button.
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:--------------------|:-------------|:--|:--|:---|
-|1|layout|check if all elements on the page are displayed fine for screen sizes between 1000px and 1300px|All elements are displayed fine in the specified range of screen sizes.|p|[image](./images/manual-testing/1-1-1.jpg)|2024/7/14|
-|2|link|click the link to product list page|redirected to product list page|p|[image](./images/manual-testing/1-1-2.png)|2024/7/14|
+|1 |layout        |check if all elements on the page are displayed fine for screen sizes between 1000px and 1300px|All elements are displayed fine in the specified range of screen sizes.|p|[image](./images/manual-testing/1-1-1.jpg)|2024/7/14|
+|2 |link          |click the link to product list page|redirected to product list page|p|[image](./images/manual-testing/1-1-2.png)|2024/7/14|
 
 1-2 Test if the product data will be inserted into DB.<br>
 Procedure: Enter the following product data, and click 'register.'
@@ -49,3 +49,8 @@ Enter the standard data written below unless specified otherwise:
 |Nr|Feature tested|procedure|expected result|Pass/Fail|image|Date|
 |:-|:------------|:-----------------|:--------------|:--|:---|:--|
 |1|clear button|enter "crocus" for category, "test description" for description, enter standard data, upload test.jpg and click 'clear'|all entries will be cleared.|P|[image](./images/manual-testing/1-4-1.jpg)<br>[image](./images/manual-testing/1-4-1-2.jpg)|2024/7/15|
+
+3. Update Page
+|Nr|Feature tested|procedure|expected result|Pass/Fail|image|Date|
+|:-|:------------|:-----------------|:--------------|:--|:---|:--|
+|1 |

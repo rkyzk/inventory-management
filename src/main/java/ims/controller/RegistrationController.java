@@ -59,26 +59,36 @@ public class RegistrationController {
 	public String postProduct(Model model, Locale locale,
 			RedirectAttributes redirectAttributes,
 		    @ModelAttribute("product") @Valid Product product,
-			BindingResult bindingResult) throws IOException {	
+			BindingResult bindingResult) throws IOException {
+		/** flash message */
+		String message = "";
 		// if there're validation errors, display register product page again.
 		if (bindingResult.hasErrors()) {
 			return "product-registration";
 		}
 		// if image has been added, upload it to S3 bucket
-		if(product.getMultipartFile() != null && !product.getMultipartFile().isEmpty()) {
+		if (product.getMultipartFile() != null && !product.getMultipartFile().isEmpty()) {
 			String imageName = product.getMultipartFile().getOriginalFilename();
-			product.setImageName(imageName);
 			String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategory();
 			String imagePath = imgUploadService.uploadImg(
 					product.getMultipartFile(),
 					categoryName,
-					imageName);		
-			product.setImagePath(imagePath);
+					imageName);
+			if (imagePath == null) {
+				// set message saying the product is registered,
+				// but the image wasn't stored.
+				message = msg.getMessage("ERRUPL", null, locale);
+			} else {
+				// set image name, image path and registration success message
+				product.setImageName(imageName);
+			    product.setImagePath(imagePath);
+			    message = msg.getMessage("REGSUC", null, locale);
+			}
 		}
 		// insert product in DB
 	    productService.insertProduct(product);
 	    // send success message to the list controller
-		redirectAttributes.addFlashAttribute("message", msg.getMessage("REGSUC", null, locale));
+		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/product-list";
 	}
 }

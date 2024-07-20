@@ -50,7 +50,7 @@ public class ImageUploadService {
 			amazonS3.putObject(bucketName, filePath, file);
 			file.delete();
 		} catch (Exception e){
-			e.printStackTrace();
+			return null;
 		}
 		return filePath;
 	}
