@@ -45,8 +45,8 @@ public class RegistrationController {
 	}
 	
 	/**
-	 * Validates user input,
-	 * upload images to s3 bucket,
+	 * Validate user input,
+	 * upload image to s3 bucket,
 	 * and insert product data in DB.
 	 *
 	 * @param model
@@ -60,7 +60,7 @@ public class RegistrationController {
 			RedirectAttributes redirectAttributes,
 		    @ModelAttribute("product") @Valid Product product,
 			BindingResult bindingResult) throws IOException {
-		// if there're validation errors, display register product page again.
+		// if validation fails, display register page again.
 		if (bindingResult.hasErrors()) {
 			return "product-registration";
 		}
