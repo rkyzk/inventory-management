@@ -88,7 +88,6 @@ public class RegistrationController {
 		}
 		// insert product in DB
 	    int code = productService.insertProduct(product);
-	    System.out.println(code);
 	    if (code == 0) message = msg.getMessage("REGERR", null, locale);
 	    // send success message to the list controller
 		redirectAttributes.addFlashAttribute("message", message);
