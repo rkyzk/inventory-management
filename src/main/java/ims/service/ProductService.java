@@ -32,9 +32,11 @@ public class ProductService {
 	 */
 	@Transactional
 	@Options(useGeneratedKeys=true)
-	public void insertProduct(Product product) {
-		productMapper.insertProduct(product);
-		priceStockMapper.insertProductData(product);
+	public int insertProduct(Product product) {
+		int code = productMapper.insertProduct(product);
+		int code2 = priceStockMapper.insertProductData(product);
+		if (code > 0 && code2 > 0) return product.getId();
+		else return 0;
 	}
 	
 	/**

@@ -72,6 +72,8 @@ public class UpdateController {
 			RedirectAttributes redirectAttributes,
 			@ModelAttribute @Valid Product product,
 			BindingResult bindingResult) throws IOException {
+		// set update success message (change later if update fails)
+		String message = msg.getMessage("UPDSUC", null, locale);;
 		if (bindingResult.hasErrors()) {
 			return "product-update";
 		}
@@ -80,32 +82,40 @@ public class UpdateController {
 		 *  and set imagePath & imageName null
 		 */
 		if (currImg) {
-			imgUploadService.deleteImg(product.getImagePath());
-			product.setImagePath(null);
-			product.setImageName(null);
+			boolean imgDeleted = imgUploadService.deleteImg(product.getImagePath());
+			if (imgDeleted) {
+			    product.setImagePath(null);
+			    product.setImageName(null);
+			} else {
+				// set message that says 'the product has been deleted,
+				// but the image wasn't removed from the storage.'
+			}
 		}
 		// if image has been added, upload it to S3 bucket
 		if(product.getMultipartFile() != null && !product.getMultipartFile().isEmpty()) {
 		    String imageName = product.getMultipartFile().getOriginalFilename();
-		    product.setImageName(imageName);
 		    String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategory();
 		    String imagePath = imgUploadService.uploadImg(
 				product.getMultipartFile(),
 				categoryName,
-				imageName);		
-		    product.setImagePath(imagePath);
+				imageName);
+		    if (imagePath == null) {
+				// set message saying the product has been updated,
+				// but the image wasn't stored.
+				message = msg.getMessage("ERRUPL", null, locale);		    	
+		    } else {
+		    	// set image name and image path
+			    product.setImageName(imageName);
+			    product.setImagePath(imagePath);
+		    }
 	    }
 		// update product
 		int retVal = productService.updateProduct(product);
-		String message;
-		if (retVal == 1) {
-	    	// set success message
-	    	message =  msg.getMessage("UPDSUC", null, locale);
-	    } else {
+		if (retVal == 0) {
 	    	// set error message
 	    	message =  msg.getMessage("UPDERR", null, locale);
 	    }
-		// set the message to be displayed on the list page
+		// set flash message on the list page
     	redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/product-list";	
 	}

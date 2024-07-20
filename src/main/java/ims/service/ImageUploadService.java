@@ -55,19 +55,27 @@ public class ImageUploadService {
 		return filePath;
 	}
 	
-	public void deleteImg(final String fileName) {
+	/*
+	 * Delete files from AWS S3 bucket.
+	 * 
+	 * @params file name
+	 * @return return code
+	 */
+	public boolean deleteImg(final String fileName) {
 		final DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(bucketName, fileName);
 	    try {
 	    	amazonS3.deleteObject(deleteObjectRequest);
 	    } catch (AmazonServiceException e) {
             // The call was transmitted successfully, but Amazon S3 couldn't process
-            // it, so it returned an error response.
             e.printStackTrace();
+            return false;
         } catch (SdkClientException e) {
             // Amazon S3 couldn't be contacted for a response, or the client
             // couldn't parse the response from Amazon S3.
             e.printStackTrace();
+            return false;
         }
+	    return true;
 	}
 	
 	/*

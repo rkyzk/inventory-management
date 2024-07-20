@@ -7,7 +7,7 @@ import ims.entity.Product;
 @Mapper
 public interface PriceStockMapper {
 	/** insert product data */
-	public void insertProductData(Product product);
+	public int insertProductData(Product product);
 	/** update product data */
 	public int updateProductData(Product product);
 	/** delete product data */
