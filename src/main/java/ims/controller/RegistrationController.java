@@ -79,7 +79,7 @@ public class RegistrationController {
 			if (imagePath == null) {
 				// set message saying the product has been registered,
 				// but the image wasn't stored.
-				message = msg.getMessage("ERRUPL", null, locale);
+				message = msg.getMessage("IMGUPLERR", null, locale);
 			} else {
 				// set image name, image path and registration success message
 				product.setImageName(imageName);

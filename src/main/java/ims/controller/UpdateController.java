@@ -102,7 +102,7 @@ public class UpdateController {
 		    if (imagePath == null) {
 				// set message saying the product has been updated,
 				// but the image wasn't stored.
-				message = msg.getMessage("ERRUPL", null, locale);		    	
+				message = msg.getMessage("IMGUPLERR", null, locale);		    	
 		    } else {
 		    	// set image name and image path
 			    product.setImageName(imageName);

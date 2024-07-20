@@ -47,8 +47,10 @@ Enter the standard data written below unless specified otherwise:
 1-4 Test other features on Registration page
 
 |Nr|Feature tested|procedure|expected result|Pass/Fail|image|Date|
-|:-|:------------|:-----------------|:--------------|:--|:---|:--|
+|:-|:------------|:----------------------------|:--------------|:--|:---|:--|
 |1|clear button|enter "crocus" for category, "test description" for description, enter standard data, upload test.jpg and click 'clear'|all entries will be cleared.|P|[image](./images/manual-testing/1-4-1.jpg)<br>[image](./images/manual-testing/1-4-1-2.jpg)|2024/7/15|
+|2|image upload error message|Add a line "throw new Exception();" in the uploadImg method in ImageUploadService class. enter standard data, upload test.jpg and click 'register'|Redirected to list page. Message "ERRUPL" will be displayed.|P|||
+|3|Registration error message|Change insertProduct method in ProductService class so that it retuns 0 in all cases. Enter standard data and click 'register'|Redirected to list page. Message "REGERR" will be displayed.|P|||
 
 3. Update Page
 |Nr|Feature tested|procedure|expected result|Pass/Fail|image|Date|
