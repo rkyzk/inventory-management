@@ -75,8 +75,36 @@ Enter the standard data written below unless specified otherwise:
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
 |1 |layout        |check if all elements on the page are displayed fine for screen sizes between 1000px and 1300px|All elements are displayed fine in the specified range of screen sizes.|p|[image](./images/manual-testing/3-1-1.jpg)<br>[image](./images/manual-testing/3-1-1-2.jpg)|2024/7/21|
-|2 |link          |click the link to registration page|redirected to registration page|p|[image](./images/manual-testing/3-1-2.png)|2024/7/21|
+|2 |link          |click the link to registration page|redirected to registration page|p|[image](./images/manual-testing/3-1-2.jpg)|2024/7/21|
+|3 |link          |click the link to list page|redirected to list page|p|[image](./images/manual-testing/3-1-3.jpg)|2024/7/21|
 
-|Nr|Feature tested|procedure|expected result|Pass/Fail|image|Date|
-|:-|:------------|:-----------------|:--------------|:--|:---|:--|
-|1 |
+3-2 Test if the correct data is displayed after initial load of the page<br>
+Procedure: On registration page register the following product.<br>
+On list page click the edit icon of the product.
+
+*product data*
+|--|name|category|qty. per pack|price|stock|description|img|
+|:-|:--------|:--------|:--------|:-|:-------|:---|:--------|
+|data to register|test1|tulips|20|10.50|10|test description|test.jpg|
+
+|Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
+|:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
+|1 |initial data on update page|Check if all values are displayed correctly in comparison to the DB|All values are displayed correctly.|p|[image](./images/manual-testing/3-2-1.jpg)<br>[image](./images/manual-testing/3-2-1-2.jpg)|2024/7/21|
+
+3-3 Test if the product data in the DB will be updated.<br>
+Procedure: On the list page click edit icon of the product. On update page, update the data and click update.
+
+*data to update*
+|name|category|qty. per pack|price|stock|description|img|
+|:--------|:--------|:--------|:-|:-------|:---|:--------|
+|test updated|crocus|25|20.00|15|test description updated|test-update.jpg|
+
+|Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
+|:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
+|1 |update function|check if all items are updated correctly in the DB|All items are updated correctly.|p|[image](./images/manual-testing/3-3-1.jpg)<br>[image](./images/manual-testing/3-3-1-2.jpg)|2024/7/21|
+
+3-4 Test other features.<br>
+
+|Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
+|:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
+|1 |cancel button|display the updated page of the product updated in the previous test.|change the values of all entries, and then cancel.|Check that none of the data was updated.|p|[image](./images/manual-testing/3-4-1.jpg)<br>[image](./images/manual-testing/3-4-1-2.jpg)|2024/7/21|

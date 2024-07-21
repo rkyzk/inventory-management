@@ -55,6 +55,7 @@
         price_stock.quantity,
         price_stock.price,
         price_stock.stock,
+        product_entity.description,
         product_entity.image_name,
         product_entity.image_path
     FROM
