@@ -75,3 +75,10 @@ Manual Testing is documented [here](./documents/MANUAL-TESTING.md).
 
 ### Credit
 
+- The logo was made at [AI Logo Generator](https://www.design.com/s/logo?var=ai-logo-generator&code=25OFFSEM&utm_adgroup=aie&utm_keyword=ai+logo&utm_network=s&msclkid=b749abc8e8f218e63ddbcd55e7f16b09&utm_source=bing&utm_medium=cpc&utm_campaign=ROW:+03.+Generic:+Logos&utm_term=ai+logo&utm_content=ai[E]).
+
+- The favicon was taken from:<br>
+https://icons8.com/icons/set/favicon-flower
+
+- Font 'Montserrat' for the headings was imported from Google Fonts.
+

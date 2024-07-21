@@ -1,18 +1,18 @@
 # Manual Testing
 
-Machine: MacBook Air Retina, 13-inch, 2019
-MacOS: Ventura 13.2.1
+Machine: MacBook Air Retina, 13-inch, 2019<br>
+MacOS: Ventura 13.2.1<br>
 Browser: Google Chrome
 
-1. Registration Page
-1-1 Check the layout, link and clear button.
+## 1. Registration Page
+### 1-1 Check the layout, link and clear button.
 
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:--------------------|:-------------|:--|:--|:---|
 |1 |layout        |check if all elements on the page are displayed fine for screen sizes from 1000px to 1300px|All elements are displayed fine in the specified range of screen sizes.|p|[image](./images/manual-testing/1-1-1.jpg)|2024/7/14|
 |2 |link          |click the link to product list page|redirected to product list page|p|[image](./images/manual-testing/1-1-2.png)|2024/7/14|
 
-1-2 Test if the product data will be inserted into DB.<br>
+### 1-2 Test if the product data will be inserted into DB.<br>
 Procedure: Enter the following product data, and click 'register.'
 Enter the standard data written below unless specified otherwise:
 
@@ -38,14 +38,14 @@ Enter the standard data written below unless specified otherwise:
 |13 | updated_at||||||||The time the product was registered will be inserted in the column updated_at  |P|see image for test Nr. 1|2024/7/14|
 |14 | deleted_at||||||||The deleted_at will be null.|P|see image for test Nr. 1|2024/7/14|
 
-1-3 Test that image will be uploaded to AWS S3 bucket
+### 1-3 Test that image will be uploaded to AWS S3 bucket
 
 |Nr|Feature tested|procedure|expected result|Pass/Fail|image|Date|
 |:-|:-------|:-----------------|:---------------|:---|:--|:---|
 |1 |image upload|Check if the image "test.jpg", which was uploaded in test Nr. 1-2-10, is stored in s3bucket. |Image "test + (timestamp).jpg" is uploaded in S3 bucket|P|[image](./images/manual-testing/1-3-1.png)|2024/7/14|
 
 
-1-4 Test other features on Registration page
+### 1-4 Test other features on Registration page
 
 |Nr|Feature tested|procedure|expected result|Pass/Fail|image|Date|
 |:-|:------------|:----------------------------|:--------------|:--|:---|:--|
@@ -53,15 +53,15 @@ Enter the standard data written below unless specified otherwise:
 |2|image upload error message|Change 'return filePath' to 'return null;' in the uploadImg method in ImageUploadService class. enter standard data, upload test.jpg and click 'register'|Redirected to list page. Message IMGUPLERR will be displayed.|P|[image](./images/manual-testing/1-4-2.jpg)|2024/7/20|
 |3|Registration error message|Change insertProduct method in ProductService class so that it returns 0 in all cases. Enter standard data and click 'register'|Redirected to list page. Message REGERR will be displayed.|P|[image](./images/manual-testing/1-4-3.jpg)|2024/7/20|2024/7/20|
 
-2. List Page
-2-1 Check the layout and link
+## 2. List Page
+### 2-1 Check the layout and link
 
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
 |1 |layout        |check if all elements on the page are displayed fine for screen sizes between 1000px and 1300px|All elements are displayed fine in the specified range of screen sizes.|p|[image](./images/manual-testing/2-1-1.jpg)<br>[image](./images/manual-testing/2-1-1-2.jpg)|2024/7/20|
 |2 |link          |click the link to registration page|redirected to registration page|p|[image](./images/manual-testing/2-1-2.png)|2024/7/20|
 
-2-2 Check other features
+### 2-2 Check other features
 
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
@@ -69,8 +69,8 @@ Enter the standard data written below unless specified otherwise:
 |2 |edit icon |click the edit icon of the 1st product in the table|redirected to update page of the product|p|[image](./images/manual-testing/2-2-2.jpg)|2024/7/20|
 |3 |delete icon |click the delete icon of the 1st product in the table|Delete confirmation dialog will show up.|p|[image](./images/manual-testing/2-2-3.jpg)|2024/7/20|
 
-3. Update Page
-3-1 Check the layout and link
+## 3. Update Page
+### 3-1 Check the layout and link
 
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
@@ -78,7 +78,7 @@ Enter the standard data written below unless specified otherwise:
 |2 |link          |click the link to registration page|redirected to registration page|p|[image](./images/manual-testing/3-1-2.jpg)|2024/7/21|
 |3 |link          |click the link to list page|redirected to list page|p|[image](./images/manual-testing/3-1-3.jpg)|2024/7/21|
 
-3-2 Test if the correct data is displayed after initial load of the page<br>
+### 3-2 Test if the correct data is displayed after initial load of the page<br>
 Procedure: On registration page register the following product.<br>
 On list page click the edit icon of the product.
 
@@ -94,7 +94,7 @@ On list page click the edit icon of the product.
 |3 |Checkbox for removing image|Display the same update page as 3-2-1. Check the checkbox and click 'update'|The image name & path are removed from the DB.|p|[image](./images/manual-testing/3-2-3.jpg)<br>[image](./images/manual-testing/3-2-3-2.jpg)|2024/7/21|
 - Add again test.jpg after test 3-2-3.
 
-3-3 Test if the product data in the DB will be updated.<br>
+### 3-3 Test if the product data in the DB will be updated.<br>
 Procedure: On the list page click edit icon of the product. On update page, update the data and click update.
 
 *data to update*
@@ -106,15 +106,14 @@ Procedure: On the list page click edit icon of the product. On update page, upda
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
 |1 |update function|check if all items are updated correctly in the DB|All items are updated correctly.|p|[image](./images/manual-testing/3-3-1.jpg)<br>[image](./images/manual-testing/3-3-1-2.jpg)|2024/7/21|
 
-3-4 Test other features.<br>
+### 3-4 Test other features.<br>
 
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
 |1 |cancel button|display the updated page of the product updated in the previous test.|change the values of all entries, and then cancel.|Check that none of the data was updated.|p|[image](./images/manual-testing/3-4-1.jpg)<br>[image](./images/manual-testing/3-4-1-2.jpg)|2024/7/21|
 
-4. Tests on JavaScript
-
-4-1 Register Page
+## 4. Tests on JavaScript
+### 4-1 Registration Page
 
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
@@ -124,13 +123,13 @@ Procedure: On the list page click edit icon of the product. On update page, upda
 |4 |format price(dicimal digits will be complemented)|enter '100.1' for price and press tab key|The value will be '100.10'|p|[image](./images/manual-testing/4-1-4.jpg)<br>[image](./images/manual-testing/4-1-4-2.jpg)|2024/7/21|
 |5 |format price(leading 0s will be removed)|enter '00100.10' for price and press tab key|The value will be '100.10'|p|[image](./images/manual-testing/4-1-5.jpg)<br>[image](./images/manual-testing/4-1-5-2.jpg)|2024/7/21|
 
-4-2 List Page
+### 4-2 List Page
 
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
-|1 |Flash message disappears after seconds|||p|[image](./images/manual-testing/3-3-1.jpg)<br>[image](./images/manual-testing/3-3-1-2.jpg)|2024/7/21|
+|1 |Flash message disappears after 3.5 seconds|||p|[image](./images/manual-testing/3-3-1.jpg)<br>[image](./images/manual-testing/3-3-1-2.jpg)|2024/7/21|
 
-4-3 Update Page
+### 4-3 Update Page
 
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|

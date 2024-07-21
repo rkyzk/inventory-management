@@ -19,13 +19,20 @@ body {
   height: 50px;
 }
 
-h1 {
-  font-size: 1.8rem;	
+h1, h2 {
+  color: #333;
+  font-size: 2rem;
+  font-family: Montserrat, serif;
+  font-weight: 400;
 }
 
 h2 {
-  color: #333;
   font-size: 1.6rem;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
 }
 
 .btn {
