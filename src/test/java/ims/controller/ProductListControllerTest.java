@@ -1,31 +1,35 @@
 package ims.controller;
 
 import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.List;
 import java.util.Locale;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import ims.config.JavaConfig;
 import ims.entity.Product;
 import ims.entity.ProductBuilder;
+import ims.service.ImageUploadService;
 import ims.service.ProductService;
 
 @ExtendWith(SpringExtension.class)
-@AutoConfigureMockMvc
-@SpringBootTest
+@WebMvcTest({ProductListController.class})
+@Import({JavaConfig.class})
 class ProductListControllerTest {
 	@Autowired
     private MockMvc mockmvc;
@@ -36,17 +40,29 @@ class ProductListControllerTest {
 	@Value("${aws.endpoint.url}")
 	private String endpoint;
 
-	private static ProductBuilder builder;
-	private static Product product;
+	private ProductBuilder builder;
+	private Product product1;
+	private Product product2;
+	private List<Product> list;
 	private Locale locale;
 	
-	@Autowired
+	@MockBean
 	private ProductService productService;
 	
-	@BeforeAll
-	public static void buildDefaultProduct() {
+	@MockBean
+	private ImageUploadService imgUploadService;
+	
+	@BeforeEach
+	public void buildDefaultProduct() {
 		builder = new ProductBuilder();
-		product = builder.buildProduct();
+		product1 = builder.buildProduct();
+		product2 = builder.buildProduct();
+		product1.setId(1);
+		product1.setName("test001");
+		product2.setName("test002");
+		list = List.of(product1, product2);
+		when(productService.getProductList())
+		    .thenReturn(list);
 	}
 
 	@Test
@@ -60,7 +76,6 @@ class ProductListControllerTest {
 	@Test
 	@Disabled
     void test_prodListHoldsRightValue() throws Exception {
-		List<Product> list = productService.getProductList();
 		this.mockmvc.perform(get("/product-list"))
     		.andExpect(status().isOk())
     		.andExpect(model().attribute("prodList", equalTo(list)));
@@ -69,10 +84,9 @@ class ProductListControllerTest {
 	@Test
 	@Disabled
 	void test_itemCountHoldsRightValue() throws Exception {
-		List<Product> list = productService.getProductList();
 		this.mockmvc.perform(get("/product-list"))
 			.andExpect(status().isOk())
-			.andExpect(model().attribute("itemCount", equalTo(list.size())));		
+			.andExpect(model().attribute("itemCount", equalTo(2)));		
 	}
 	
 	@Test
@@ -86,18 +100,19 @@ class ProductListControllerTest {
 	@Test
 	@Disabled
     void test_retVal1ShowsDelSuccessMsg() throws Exception {
-		// insert a product and get the id
-		int code = productService.insertProduct(product);
-		String id = String.valueOf(code);
+		when(productService.deleteProduct(1))
+			.thenReturn(1);
 		this.mockmvc.perform(post("/product-list/delete")
-	            .param("id", id))               
+	            .param("id", "1"))               
 				.andExpect((model().attribute("message",
                     msg.getMessage("DELSUC", null, locale))));
 	}
 	
 	@Test
 	@Disabled
-    void test_retVal0ShowsDelErrMsg() throws Exception {
+	void test_retVal0ShowsDelErrMsg() throws Exception {
+		when(productService.deleteProduct(-1))
+		    .thenReturn(0);
 		this.mockmvc.perform(post("/product-list/delete")
 	            .param("id", "-1"))               
 				.andExpect((model().attribute("message",
@@ -107,7 +122,6 @@ class ProductListControllerTest {
 	@Test
 	@Disabled
     void test_post_prodListHoldsRightValue() throws Exception {
-		List<Product> list = productService.getProductList();
 		this.mockmvc.perform(post("/product-list/delete")
 	            .param("id", "-1"))               
 				.andExpect(model().attribute("prodList", equalTo(list)));
@@ -116,10 +130,9 @@ class ProductListControllerTest {
 	@Test
 	@Disabled
     void test_post_itemCountHoldsRightValue() throws Exception {
-		List<Product> list = productService.getProductList();
 		this.mockmvc.perform(post("/product-list/delete")
 	            .param("id", "-1"))               
-				.andExpect(model().attribute("itemCount", equalTo(list.size())));
+				.andExpect(model().attribute("itemCount", equalTo(2)));
 	}
 	
 	@Test
@@ -135,6 +148,7 @@ class ProductListControllerTest {
 	void test_post_showsProductListPage() throws Exception {
 		this.mockmvc.perform(post("/product-list/delete")
 		    .param("id", "-1"))
+		    .andExpect(status().isOk())
         	.andExpect(view().name("product-list"));
 	}
 }
