@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.List;
 import java.util.Locale;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,6 +20,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import ims.entity.Product;
+import ims.entity.ProductBuilder;
 import ims.service.ProductService;
 
 @ExtendWith(SpringExtension.class)
@@ -34,11 +36,18 @@ class ProductListControllerTest {
 	@Value("${aws.endpoint.url}")
 	private String endpoint;
 
-	private Product product;
+	private static ProductBuilder builder;
+	private static Product product;
 	private Locale locale;
 	
 	@Autowired
 	private ProductService productService;
+	
+	@BeforeAll
+	public static void buildDefaultProduct() {
+		builder = new ProductBuilder();
+		product = builder.buildProduct();
+	}
 
 	@Test
 	@Disabled
@@ -77,8 +86,9 @@ class ProductListControllerTest {
 	@Test
 	@Disabled
     void test_retVal1ShowsDelSuccessMsg() throws Exception {
-		List<Product> list = productService.getProductList();
-		String id = String.valueOf(list.get(0).getId());
+		// insert a product and get the id
+		int code = productService.insertProduct(product);
+		String id = String.valueOf(code);
 		this.mockmvc.perform(post("/product-list/delete")
 	            .param("id", id))               
 				.andExpect((model().attribute("message",

@@ -2,7 +2,7 @@
 
 ## 1. Registration Controller<br>
 
-|No.|Tested features                          |Pass/Fail|Date        |
+|Nr |Tested features                          |Pass/Fail|Date        |
 |:--|:----------------------------------------|:--------|:-----------|
 | 1 |Method getProductRegistration will return product registration page.|P        |2024/7/13|
 | 2 |validationErrorsReturnsRegistrationPage. |P        |2024/7/13   |
@@ -23,7 +23,7 @@
  [Link to MANUAL-TESTING](./MANUAL-TESTING.md)
 
 ### Tests on Validation
-|No.|Tested Feature/Validation|Field|input|Expected Results              |Pass/Fail|Date  |
+|Nr |Tested Feature/Validation|Field|input|Expected Results              |Pass/Fail|Date  |
 |:--|:----------------|:----|:----|:-----------------------------|:--------|:-----|
 | 1 |no errors show no validation |--|all default values |validation passes|P      |2024/7/13|
 | 2 |NotBlank         |name |null |validation error|P   |2024/7/13 |
@@ -56,7 +56,7 @@
 ## 2. ProductList Controller
 
 **getProductList method**
-|No.|Tested features                          |Pass/Fail|Date        |
+|Nr |Tested features                          |Pass/Fail|Date        |
 |:--|:----------------------------------------|:--------|:-----------|
 | 1 |Method getProductList will get product list page. |P        |2024/7/16|
 | 2 |model attribute 'prodList' holds the right value. |P        |2024/7/16|
@@ -64,7 +64,7 @@
 | 4 |model attribute 'endpoint' holds the right value. |P        |2024/7/16|
 
 **deleteProduct method**
-|No.|Tested features                          |Pass/Fail|Date        |
+|Nr |Tested features                          |Pass/Fail|Date        |
 |:--|:----------------------------------------|:--------|:-----------|
 | 1 |retVal = 1 sets delete success message to attribute 'message.'|P    |2024/7/16|
 | 2 |retVal = 0 sets delete error message to attribute 'message.'|P    |2024/7/16|
@@ -76,18 +76,18 @@
 ## 3. Update Controller
 
 **getUpdate method**
-|No.|Tested features                          |Pass/Fail|Date        |
+|Nr |Tested features                          |Pass/Fail|Date        |
 |:--|:----------------------------------------|:--------|:-----------|
 | 1 |Method getUpdate will return update page.|P        |2024/7/19  |
 | 2 |model attribute 'product' holds the right value. |P        |2024/7/19|
 | 3 |model attribute 'endpoint' holds the right value. |P        |2024/7/19|
 
 **postUpdate method**
-|No.|Tested features                          |Pass/Fail|Date        |
+|Nr |Tested features                          |Pass/Fail|Date        |
 |:--|:----------------------------------------|:--------|:-----------|
 | 1 |Validation error returns update page.    |P        |2024/7/19   |
-| 2 |After update success update success message will be stored in msg.|P        |2024/7/19|
+| 2 |If update is successful, update success message will be stored in msg.|P        |2024/7/19|
 | 3 |If update operation fails, update error message will be stored in msg.|P        |2024/7/19|
 | 4 |If vaidation passes, redirected to list page.|P        |2024/7/19|
 
-5. Service class
+[Link to the image](./images/automated-testing/update-controller.jpg)

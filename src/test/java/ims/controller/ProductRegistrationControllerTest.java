@@ -35,7 +35,7 @@ class ProductRegistrationControllerTest {
 	private Locale locale;
 	
 	@BeforeEach
-	public void getDefaultProduct() {
+	public void buildDefaultProduct() {
 		builder = new ProductBuilder();
 		product = builder.buildProduct();
 	}

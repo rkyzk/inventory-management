@@ -73,7 +73,7 @@ public class UpdateController {
 			@ModelAttribute @Valid Product product,
 			BindingResult bindingResult) throws IOException {
 		// set update success message (change later if update fails)
-		String message = msg.getMessage("UPDSUC", null, locale);;
+		String message = msg.getMessage("UPDSUC", null, locale);
 		if (bindingResult.hasErrors()) {
 			return "product-update";
 		}
