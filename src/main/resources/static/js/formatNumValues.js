@@ -28,6 +28,16 @@ const formatPriceValue = () => {
   }
 };
 
+/** format numbers (remove leading zeros from quantity and stock) */
+const formatNumber = (className) => {
+  let vals;
+  if (className == 'quantity')
+    vals = document.getElementsByClassName('quantity');
+  else
+	vals = document.getElementsByClassName('stock');
+  if (vals.length) vals[0].value = Number(vals[0].value);
+}
+
 /** check if the value contains only numbers */
 const containsOnlyNumbers = (str) => {
   return /^\d+$/.test(str);
