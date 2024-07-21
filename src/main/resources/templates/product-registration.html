@@ -33,7 +33,7 @@
             </div>
             <div class="col-6 mt-1">
 	          <label for="quantity" class="item-label">Qty per package：</label>
-	          <input class="form-control" th:field="*{quantity}"
+	          <input class="form-control" name="quantity" value="1"
 	            type="number" aria-label="quantity" id="quantity" />
 	          <p class="text-danger" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"/>
             </div> 
