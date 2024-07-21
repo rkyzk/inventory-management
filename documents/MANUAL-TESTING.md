@@ -111,3 +111,30 @@ Procedure: On the list page click edit icon of the product. On update page, upda
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
 |1 |cancel button|display the updated page of the product updated in the previous test.|change the values of all entries, and then cancel.|Check that none of the data was updated.|p|[image](./images/manual-testing/3-4-1.jpg)<br>[image](./images/manual-testing/3-4-1-2.jpg)|2024/7/21|
+
+4. Tests on JavaScript
+
+4-1 Register Page
+
+|Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
+|:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
+|1 |format quantity|enter '01' for quantity and press tab key|the value will be '1'|p|[image](./images/manual-testing/4-1-1.jpg)<br>[image](./images/manual-testing/4-1-1-2.jpg)|2024/7/21|
+|2 |format stock|enter '01' for stock and press tab key|the value will be '1'|p|[image](./images/manual-testing/4-1-2.jpg)<br>[image](./images/manual-testing/4-1-2-2.jpg)|2024/7/21|
+|3 |format price(dicimal digits will be complemented)|enter '100' for price and press tab key|The value will be '100.00'|p|[image](./images/manual-testing/4-1-3.jpg)<br>[image](./images/manual-testing/4-1-3-2.jpg)|2024/7/21|
+|4 |format price(dicimal digits will be complemented)|enter '100.1' for price and press tab key|The value will be '100.10'|p|[image](./images/manual-testing/4-1-4.jpg)<br>[image](./images/manual-testing/4-1-4-2.jpg)|2024/7/21|
+|5 |format price(leading 0s will be removed)|enter '00100.10' for price and press tab key|The value will be '100.10'|p|[image](./images/manual-testing/4-1-5.jpg)<br>[image](./images/manual-testing/4-1-5-2.jpg)|2024/7/21|
+
+4-2 List Page
+
+|Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
+|:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
+|1 |Flash message disappears after seconds|||p|[image](./images/manual-testing/3-3-1.jpg)<br>[image](./images/manual-testing/3-3-1-2.jpg)|2024/7/21|
+
+4-3 Update Page
+
+|Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
+|:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
+|1 |formate quantity|||p|[image](./images/manual-testing/3-3-1.jpg)<br>[image](./images/manual-testing/3-3-1-2.jpg)|2024/7/21|
+|2 |formate stock|||p|[image](./images/manual-testing/3-3-1.jpg)<br>[image](./images/manual-testing/3-3-1-2.jpg)|2024/7/21|
+|2 |formate price|||p|[image](./images/manual-testing/3-3-1.jpg)<br>[image](./images/manual-testing/3-3-1-2.jpg)|2024/7/21|
+

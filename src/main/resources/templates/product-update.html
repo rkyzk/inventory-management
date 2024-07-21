@@ -7,7 +7,7 @@
 	  th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{/css/style.css}">
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
-    <script th:src="@{/js/formatPriceValues.js}" defer></script>
+    <script th:src="@{/js/formatNumValues.js}" defer></script>
   </head>
   <body>
     <div th:replace="~{header :: header}"></div>
@@ -41,7 +41,8 @@
             </div>
             <div class="col-6 mt-2">
 	          <label for="quantity" class="item-label mt-1">Qty per package：</label>
-	          <input class="form-control" th:field="*{quantity}"
+	          <input class="form-control quantity" th:field="*{quantity}"
+	            onBlur="formatNumber('stock');"
 	            type="number" aria-label="quantity" id="quantity" />
 	          <p class="text-danger" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"/>
             </div> 
@@ -59,7 +60,8 @@
 	        </div>
 	        <div class="col-6">
 	          <label for="stock" class="item-label">Stock：</label>
-	          <input class="form-control" id="stock" th:field="*{stock}" type="number"/>
+	          <input class="form-control stock" id="stock" th:field="*{stock}"
+	            onBlur="formatNumber('stock');" type="number"/>
 	          <p class="text-danger" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"/>
 	        </div>
           </div>
