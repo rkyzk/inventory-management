@@ -70,6 +70,12 @@ Enter the standard data written below unless specified otherwise:
 |3 |delete icon |click the delete icon of the 1st product in the table|Delete confirmation dialog will show up.|p|[image](./images/manual-testing/2-2-3.jpg)|2024/7/20|
 
 3. Update Page
+3-1 Check the layout and link
+
+|Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
+|:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
+|1 |layout        |check if all elements on the page are displayed fine for screen sizes between 1000px and 1300px|All elements are displayed fine in the specified range of screen sizes.|p|[image](./images/manual-testing/3-1-1.jpg)<br>[image](./images/manual-testing/3-1-1-2.jpg)|2024/7/21|
+|2 |link          |click the link to registration page|redirected to registration page|p|[image](./images/manual-testing/3-1-2.png)|2024/7/21|
 
 |Nr|Feature tested|procedure|expected result|Pass/Fail|image|Date|
 |:-|:------------|:-----------------|:--------------|:--|:---|:--|
