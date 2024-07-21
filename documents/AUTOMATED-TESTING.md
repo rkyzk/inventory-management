@@ -11,17 +11,6 @@
 
 [Link to the image](./images/automated-testing/automated-testing-regController.jpg)
 
-**The following tests are covered in the manual testing**
-- If an image is uploaded, the image is stored in the AWS S3bucket<br>
- --> **See Manual Testing 1. Registration Page Test No.1-3-1**
-- If an image is uploaded, the image name is stored in the DB.<br>
- --> **See Manual Testing 1. Registration Page Test No.1-2-10**
-- If an image is uploaded, the image path is stored in the DB.<br>
- --> **See Manual Testing 1. Registration Page Test No.1-2-11**
-- Product data is stored in the DB.<br>
- --> **See Manual Testing 1. Registration Page Test No.1-2-1〜14**
- [Link to MANUAL-TESTING](./MANUAL-TESTING.md)
-
 ### Tests on Validation
 |Nr |Tested Feature/Validation|Field|input|Expected Results              |Pass/Fail|Date  |
 |:--|:----------------|:----|:----|:-----------------------------|:--------|:-----|

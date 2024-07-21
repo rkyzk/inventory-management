@@ -25,14 +25,14 @@ Enter the standard data written below unless specified otherwise:
 |:-|:----------|:---------|:---|:--|:---|:--|:-------|:--|:--------|:--|:--|:--|
 |1 | name||||||||"test1" is inserted in the column name.|P|[image](./images/manual-testing/1-2-1.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
 |2 | category: tulips||||||||"0" is inserted in the column category.|P|see image for test Nr.1|2024/7/14|
-|3 | category: crocus|test2|crocus|standard data|||||"1" is inserted in the column category.|P|[image](./images/manual-testing/1-2-3.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
-|4 | category: hyacinth|test3|hyacinth|standard data|||||"2" is inserted in the column category.|P|[image](./images/manual-testing/1-2-4.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
-|5 | category: others|test4|others|standard data|||||"3" is inserted in the column category.|P|[image](./images/manual-testing/1-2-5.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
+|3 | category: crocus|test2|crocus||||||"1" is inserted in the column category.|P|[image](./images/manual-testing/1-2-3.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
+|4 | category: hyacinth|test3|hyacinth||||||"2" is inserted in the column category.|P|[image](./images/manual-testing/1-2-4.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
+|5 | category: others|test4|others||||||"3" is inserted in the column category.|P|[image](./images/manual-testing/1-2-5.jpg)<br>[image](./images/manual-testing/1-2.jpg)|2024/7/14|
 |6 | quantity||||||||20 is inserted in the column quantity.|P|see image for test Nr.1|2024/7/14|
 |7 | price||||||||10.50 is inserted in the column price.|P|see image for test Nr.1|2024/7/14|
 |8 | stock||||||||10 is inserted in the column stock.|P|see image for test Nr.1|2024/7/14|
-|9 | description|test9|standard data||||test description|don't upload any image| "test description" is inserted in the column description.|P|see image for test Nr.1|2024/7/14|
-|10 | image name|test10|standard data|||||upload 'test.jpg'|'test.jpg + (timestamp)'  will be inserted in the column image_name. |P|[image](./images/manual-testing/1-2-10.jpg)<br>[image](./images/manual-testing/1-2-price_stock.jpg)|2024/7/14|
+|9 | description|test9|||||test description|don't upload any image| "test description" is inserted in the column description.|P|see image for test Nr.1|2024/7/14|
+|10 | image name|test10||||||upload 'test.jpg'|'test.jpg + (timestamp)'  will be inserted in the column image_name. |P|[image](./images/manual-testing/1-2-10.jpg)<br>[image](./images/manual-testing/1-2-price_stock.jpg)|2024/7/14|
 |11 | image path|||||||upload 'test.jpg'|'tulips/test.jpg + (timestamp)' will be inserted in the column image_path. |P|see image for test Nr.10|2024/7/14|
 |12 | created_at||||||||The time the product was registered will be inserted in the column created_at  |P|see image for test Nr. 1|2024/7/14|
 |13 | updated_at||||||||The time the product was registered will be inserted in the column updated_at  |P|see image for test Nr. 1|2024/7/14|
@@ -90,6 +90,9 @@ On list page click the edit icon of the product.
 |Nr|Feature tested|procedure|Expected Results|Pass/Fail|image|Date|
 |:-|:-------------|:---------------------------|:-------------|:--|:--|:---|
 |1 |initial data on update page|Check if all values are displayed correctly in comparison to the DB|All values are displayed correctly.|p|[image](./images/manual-testing/3-2-1.jpg)<br>[image](./images/manual-testing/3-2-1-2.jpg)|2024/7/21|
+|2 |Current image file|Check the statement 'Current image file; 'test.jpg' and the checkbox for removing image are shown in the screen shot taken in the previous test.|The statement is shown.|p|see the image for the previous test|2024/7/21|
+|3 |Checkbox for removing image|Display the same update page as 3-2-1. Check the checkbox and click 'update'|The image name & path are removed from the DB.|p|[image](./images/manual-testing/3-2-3.jpg)<br>[image](./images/manual-testing/3-2-3-2.jpg)|2024/7/21|
+- Add again test.jpg after test 3-2-3.
 
 3-3 Test if the product data in the DB will be updated.<br>
 Procedure: On the list page click edit icon of the product. On update page, update the data and click update.
