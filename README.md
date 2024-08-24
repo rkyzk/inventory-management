@@ -10,68 +10,41 @@
 1000px以上の画面で利用することを想定しているため
 それ以下のサイズの画面に対してはレスポンシブに対応しない。
 
-### Main Technologies Used
+### 使用言語、ライブラリ、フレームワーク、データベース
 HTML5, CSS3, Java (Spring Boot), Bootstrap5, jquery, PostgreSQL
 
-### Functions
-**Main functions**
-- Register product data including images
-- Display Product List
-- Update products data
-- Delete products
+### 機能
+**機能主要機能**
+- 画像を含む商品情報を登録
+- 商品一覧を表示
+- 商品情報を更新
+- 商品情報を削除
 
-**Supplementary functions**
-- Display success messages when products have been registered, updated or deleted.
-- Validate input data while registering and updating products and show error messages
-  if validation fails.
-- Display a confirmation modal before deleting products.
-- correct price format if the decimal digits are not complete (register & update pages)
+**その他の機能**
+- 登録、更新、削除の際、完了メッセージまたはエラーメッセージを表示
+- 登録、更新時、入力エラーがある際はエラーメッセージを表示
+- 削除の際確認ダイアログを表示
+- 登録、更新画面にて価格のフォーマットを修正
+
+### DB設計
 
 
-### User Stories
-
-*As user I...*
-
-|Nr.| User Stories                               | How they are achieved |
-| - | :----------------------------------------- | --------------------- |
-| 1 | can register product information.          | register product page |
-| 2 | can upload product image.                  | image can be uploaded on register & update pages |
-| 3 | get notified if input data is inappropriate| validation messages  |
-| 4 | can look at the product list               | product list page     |
-| 5 | can find out how many products are registered. | total number of items is displayed above the table on the right side on product list page     |
-| 6 | can update product information             | update product page   |
-| 7 | can delete product                         | product list page     |
-| 8 | get confirmation before deleting product   | a confirmation dialog will show up when user attempts to delete products.   |
-| 9 | can easily navigate through all pages      | navigation links, update buttons on list page |
-
-### Data Modeling
-
-### Each Page in Detail
-
-1.Product Registration page<br>
-2.Product List page<br>
-3.Update page<br>
+### 
 
 ### Deployment Process
 
 ### Automated Testing
-Automated Testing is documented [here](./documents/AUTOMATED-TESTING.md).
+自動テスト(./documents/AUTOMATED-TESTING.md).
 
-### Manual Testing
-Manual Testing is documented [here](./documents/MANUAL-TESTING.md).
+### 手動テスト
+(./documents/MANUAL-TESTING.md).
 
 ### Bugs
 
 ### Credit
-
-- The logo was made at [AI Logo Generator](https://www.design.com/s/logo?var=ai-logo-generator&code=25OFFSEM&utm_adgroup=aie&utm_keyword=ai+logo&utm_network=s&msclkid=b749abc8e8f218e63ddbcd55e7f16b09&utm_source=bing&utm_medium=cpc&utm_campaign=ROW:+03.+Generic:+Logos&utm_term=ai+logo&utm_content=ai[E]).
-
-- The favicon was taken from:<br>
+- ファビコン<br>
 https://icons8.com/icons/set/favicon-flower
-
-- Font 'Montserrat' for the headings was imported from Google Fonts.
-
-
+- フォント「Montserrat」はGoogle Fontより入手
 
 
 # Inventory Management System
