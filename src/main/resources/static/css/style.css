@@ -10,7 +10,7 @@ html {
   padding: 0;
 }
 body {
-  font-family: "sans-serif";
+  font-family: serif;
   font-size: 1.2rem;
 }
 
@@ -24,6 +24,10 @@ h1, h2 {
   font-size: 2rem;
   font-family: Montserrat, serif;
   font-weight: 400;
+}
+
+.navlink {
+  font-family: Montserrat, serif;	
 }
 
 h2 {
