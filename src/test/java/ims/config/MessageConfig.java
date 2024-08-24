@@ -12,7 +12,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
  * @version 1.0.0
  */
 @Configuration
-public class JavaConfig {
+public class MessageConfig {
 	/**
 	 * Specify messages properties file and character code.
 	 *

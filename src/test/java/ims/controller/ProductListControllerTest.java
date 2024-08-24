@@ -66,7 +66,6 @@ class ProductListControllerTest {
 	}
 
 	@Test
-	@Disabled
 	void test_getProductListPage() throws Exception {
 		this.mockmvc.perform(get("/product-list"))
         	.andExpect(status().isOk())
@@ -74,7 +73,6 @@ class ProductListControllerTest {
 	}
 	
 	@Test
-	@Disabled
     void test_prodListHoldsRightValue() throws Exception {
 		this.mockmvc.perform(get("/product-list"))
     		.andExpect(status().isOk())
