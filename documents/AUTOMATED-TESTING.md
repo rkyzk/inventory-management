@@ -12,6 +12,12 @@
 [エビデンス](./images/automated-testing/automated-testing-regController.jpg)
 
 ### 入力チェックのテスト
+*デフォルト入力値*
+|name|category|qty. per pack|price|stock|description|img|
+|:--------|:--------|:--------|:-|:-------|:---|:--------|
+|test1|tulips|20|10.50|10|ー|ー|
+
+
 |No |バリデーション|フィールド|入力値|想定結果              |Pass/Fail|日付  |
 |:--|:----------------|:----|:----|:-----------------------------|:--------|:-----|
 | 1 |エラーがない場合バリデーションエラーがないこと |--|デフォルト値 |バリデーションエラーがないこと|P      |2024/7/13|
@@ -37,8 +43,6 @@
 | 21|file type        |file type|jpeg|エラーとならないこと|P    |2024/7/15 |
 | 22|file type        |file type|png|エラーとならないこと|P    |2024/7/15 |
 | 23|file type        |file type|gif|エラーとなること|P    |2024/7/15 |
-| 24|file size        |file size|819200B|エラーとならないこと|P    |2024/7/15 |
-| 25|file size        |file size|819201B|エラーとなること|P    |2024/7/15 |
 
 [エビデンス](./images/automated-testing/automated-testing-validation.jpg)
 
@@ -102,9 +106,14 @@
 [Link to the image](./images/automated-testing/automated-testing-regController.jpg)
 
 ### Tests on Validation
+*Default data*
+|name|category|qty. per pack|price|stock|description|img|
+|:--------|:--------|:--------|:-|:-------|:---|:--------|
+|test1|tulips|20|10.50|10|(leave blank)|don't upload any image|
+
 |Nr |Tested Feature/Validation|Field|input|Expected Results              |Pass/Fail|Date  |
 |:--|:----------------|:----|:----|:-----------------------------|:--------|:-----|
-| 1 |no errors show no validation |--|all default values |validation passes|P      |2024/7/13|
+| 1 |no errors show no validation |--|default values |validation passes|P      |2024/7/13|
 | 2 |NotBlank         |name |null |validation error|P   |2024/7/13 |
 | 3 |max size=40      |name |40 characters|validation passes|P      |2024/7/13 |
 | 4 |max size=40      |name |41 characters|validation error|P      |2024/7/13 |

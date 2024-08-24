@@ -2,7 +2,6 @@ package ims.controller;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -351,39 +350,6 @@ public class ValidationTest {
 			System.out.println(action.getMessage().toString());
 			// assertThat(action.getMessage().toString())
 			//    .isEqualTo("Only jpeg or png are accepted.");
-		});
-	}
-	
-	@Test
-	@Disabled
-    void test_fileSizeUpTo800KBIsOk() throws Exception {
-		MockMultipartFile mockMultipartFile = mock(MockMultipartFile.class);
-		when(mockMultipartFile.getSize()).thenReturn((long) 819200);
-		when(mockMultipartFile.getOriginalFilename()).thenReturn("test.jpg");
-		when(mockMultipartFile.getContentType()).thenReturn("image/jpg");
-		product.setMultipartFile(mockMultipartFile);
-		bindingResult = new BindException(product, "product");
-		Set<ConstraintViolation<Product>> violations =
-				validator.validate(product);
-		assertNull(bindingResult.getFieldError());
-		assertEquals(violations.size(), 0);	
-	}
-	
-	@Test
-	@Disabled
-    void test_fileSizeAbove800KBFailsValidation() throws Exception {
-		MockMultipartFile mockMultipartFile = mock(MockMultipartFile.class);
-		when(mockMultipartFile.getSize()).thenReturn((long) 819201);
-		when(mockMultipartFile.getOriginalFilename()).thenReturn("test.jpg");
-		when(mockMultipartFile.getContentType()).thenReturn("image/jpg");
-		product.setMultipartFile(mockMultipartFile);
-		bindingResult = new BindException(product, "product");
-		Set<ConstraintViolation<Product>> violations =
-				validator.validate(product);
-		violations.forEach(action -> {
-			assertThat(action.getPropertyPath().toString()).isEqualTo("multipartFile");
-			assertThat(action.getMessage().toString())
-			    .isEqualTo("{EMSG103}");
 		});
 	}
 }
