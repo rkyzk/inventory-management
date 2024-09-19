@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Update Products</title>
+    <title>商品更新</title>
     <link rel="stylesheet"
 	  th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{/css/style.css}">
@@ -12,7 +12,7 @@
   <body>
     <div th:replace="~{header :: header}"></div>
     <main class="container-fluid mt-3">
-      <h2 class="text-center">Update Products</h2>
+      <h2 class="text-center">商品更新</h2>
       <div class="container content-box">
         <form th:object="${product}" method="post"
           action="#" enctype="multipart/form-data" role="form">
@@ -25,31 +25,24 @@
             <input class="input-id" type="text" th:field="*{id}" readonly/>
           </span>
           <div>
-	        <label for="product-name" class="item-label">Product Name：</label>
+	        <label for="product-name" class="item-label">商品名：</label>
 	        <input class="form-control" th:field="*{name}"
 	          type="text" aria-label="product-name" id="product-name" />
 	        <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
           </div> 
           <div class="row">   
             <div class="mt-1 col-6">
-              <label for="category" class="item-label">Category：</label>
+              <label for="category" class="item-label">カテゴリー：</label>
               <select class="form-select" id="category" th:field="*{categoryId}">
                 <option th:each="item : ${T(ims.enums.CategoryEnum).values()}"
                   th:value="${item.categoryCode}" th:text="${item.category}">
                 </option>
               </select>
             </div>
-            <div class="col-6 mt-2">
-	          <label for="quantity" class="item-label mt-1">Qty per package：</label>
-	          <input class="form-control quantity" th:field="*{quantity}"
-	            onBlur="formatNumber('stock');"
-	            type="number" aria-label="quantity" id="quantity" />
-	          <p class="text-danger" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"/>
-            </div> 
           </div>
           <div class="row mt-1">          
             <div class="col-6">
-	          <label for="price" class="item-label">Price：</label>
+	          <label for="price" class="item-label">値段：</label>
 	          <div class="d-flex">
 	            <span class="mt-1">$</span>
 	            <input class="form-control mx-2 price" id="price"
@@ -59,38 +52,38 @@
 	          <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
 	        </div>
 	        <div class="col-6">
-	          <label for="stock" class="item-label">Stock：</label>
+	          <label for="stock" class="item-label">在庫数：</label>
 	          <input class="form-control stock" id="stock" th:field="*{stock}"
 	            onBlur="formatNumber('stock');" type="number"/>
 	          <p class="text-danger" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"/>
 	        </div>
           </div>
           <div class="mt-2">
-            <label for="description" class="item-label">Description：</label>
+            <label for="description" class="item-label">商品説明：</label>
             <textarea class="form-control" id="description" th:field="*{description}"></textarea>
             <p class="text-danger" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
           </div>
           <div class="row mt-2">
 	        <div class="col-5">
-	          <label for="multipartFile">Image：</label>
+	          <label for="multipartFile">画像：</label>
 	          <input name="image" class="form-control"
 	            th:field="*{multipartFile}" type="file"/>
 	          <p class="text-danger" th:if="${#fields.hasErrors('multipartFile')}" th:errors="*{multipartFile}"/>
 	        </div>
-	        <!--  show a checkbox for removing the image if there's an image -->
+	        <!--  画像があるときは画像削除のチェックボックスを表示 -->
 	        <div class="col-6 fs-6 mt-4 d-flex flex-column" th:if="*{imageName}">
-	          <span>Current image file: <label th:text=*{imageName}></label></span>
+	          <span>画像: <label th:text=*{imageName}></label></span>
 	          <span>
                 <input class="form-check-input" type="checkbox" name="curr-img" id="curr-img">
                 <label class="form-check-label" for="curr-img">
-                  remove image
+                  削除
                 </label>
               </span>
             </div>
 	      </div>
 	      <div class="my-3">
-	        <button class="btn py-1 px-2" type="submit">update</button>
-	        <a class="btn py-1 px-2" href="http://localhost:8080/product-list">cancel</a>
+	        <button class="btn py-1 px-2" type="submit">更新</button>
+	        <a class="btn py-1 px-2" href="http://localhost:8080/product-list">キャンセル</a>
 	      </div>   
 	    </form>
       </div>

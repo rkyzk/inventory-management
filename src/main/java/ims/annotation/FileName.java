@@ -10,7 +10,7 @@ import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
 /**
- * Validate file name length.
+ * ファイル名の桁数を検証するアノテーションインターフェース.
  *
  * @author R.Yazaki
  * @version 1.0.0
@@ -21,30 +21,30 @@ import jakarta.validation.Payload;
 public @interface FileName {
 
 	/**
-	 * set max file name length
+	 * ファイル名最大桁数を設定.
 	 *
-	 * @return max size
+	 * @return 最大桁数
 	 */
 	int maxLength();
 
 	/**
-	 * Generate error messages
+	 * エラーメッセージを生成
 	 *
-	 * @return error message
+	 * @return エラーメッセージ
 	 */
 	String message() default "{EMSG101}";
 
 	/**
-	 * Set different criteria for different groups
+	 * グループごとに異なる制約チェックを行う場合に利用する.
 	 *
-	 * @return default
+	 * @return デフォルトのグループ
 	 */
 	Class<?>[] groups() default {};
 
 	/**
-	 * Provide meta data for object being validated.
+	 * チェック対象のオブジェクトにメタ情報を与えるための宣言.
 	 *
-	 * @return meta data
+	 * @return チェック対象オブジェクトのメタ情報
 	 */
 	Class<? extends Payload>[] payload() default {};
 }

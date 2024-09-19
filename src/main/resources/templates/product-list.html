@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8"></meta>
-    <title>Product List</title>
+    <title>在庫管理</title>
     <link rel="stylesheet"
 	  th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{/css/style.css}">
@@ -13,12 +13,12 @@
   <body>
     <div th:replace="~{header :: header}"></div>
     <main class="container mt-3">
-      <h2 class="text-center">Product List</h2>
+      <h2 class="text-center">商品リスト</h2>
       <div id="message" th:if="${message}" role="alert"
         class="alert-success alert alert-dismissible text-center">
         <span th:text="${message}"></span>
       </div>
-      <p th:unless="${itemCount}" class="no-item-msg">No Items.</p>
+      <p th:unless="${itemCount}" class="no-item-msg">商品なし</p>
       <div th:if="${itemCount}" class="list-content">
         <div class="d-flex justify-content-end">
           <label class="mt-3 items-count" th:text="'Total items: ' + ${itemCount}"></label>
@@ -27,25 +27,24 @@
           <table>
             <thead class="table-headding">
               <tr>
-                <th class="text-center image-col">image</th>
-                <th class="text-center px-1">id</th>
-                <th class="text-center category-col">category</th> 
-	            <th class="text-center name-col">name</th>
-	            <th class="text-center qty-col">qty / pck</th>  
-	            <th class="text-center">price</th>
-	            <th class="text-center px-1">stock</th>
-	            <th class="text-center" colspan="2">edit/delete</th>
+                <th class="text-center image-col">画像</th>
+                <th class="text-center px-1">ID</th>
+                <th class="text-center category-col">カテゴリー</th> 
+	            <th class="text-center name-col">商品名</th> 
+	            <th class="text-center">値段</th>
+	            <th class="text-center px-1">在庫数</th>
+	            <th class="text-center" colspan="2">更新/削除</th>
 	          </tr>
 	        </thead>
 	        <tbody>
 	          <tr class="table-rows" th:each="item: ${prodList}">
 	            <td class="px-1 image">
-	              <!-- Show image.  If imagePath is an empty string, show no_image.png -->
+	              <!-- イメージを表示　イメージURLが空文字のとき「no_image.png」を表示-->
 	              <img th:if="*{item.imagePath}" th:src="${awsUrl} + ${item.imagePath}"
 	                th:alt="${item.name}"
 	                onerror="this.src=
 	                  'https://ims-images-bucket.s3.ap-northeast-1.amazonaws.com/images/no_image.png';" />
-	              <!-- If imagePath is null, show no_image.png -->
+	              <!-- イメージURLがNullのとき「no_image.png」を表示 -->
 	              <img th:unless="*{item.imagePath}"
 	                   src="https://ims-images-bucket.s3.ap-northeast-1.amazonaws.com/images/no_image.png">        	              
                 </td>
