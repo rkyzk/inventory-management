@@ -7,12 +7,10 @@
   <insert id="insertProductData" parameterType="ims.entity.Product">
     INSERT INTO price_stock (
         product_id,
-        quantity,
         price,
         stock
     ) VALUES (
         #{id},
-        #{quantity},
         #{price},
         #{stock}
     )
@@ -23,7 +21,6 @@
     UPDATE
         price_stock
     SET
-        quantity = #{quantity},
         price = #{price},
         stock = #{stock}
     WHERE

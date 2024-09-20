@@ -12,12 +12,14 @@
     INSERT INTO product_entity (
         name,
         category_id,
+        color_id,
         description,
         image_name,
         image_path
     ) VALUES (
         #{name},
         #{categoryId},
+        #{colorId},
         #{description},
         #{imageName},
         #{imagePath}
@@ -30,6 +32,7 @@
         product_entity.id,
         product_entity.name,
         product_entity.category_id,
+        product_entity.color_id,
         price_stock.quantity,
         price_stock.price,
         price_stock.stock,
@@ -52,6 +55,7 @@
         product_entity.id,
         product_entity.name,
         product_entity.category_id,
+        product_entity.color_id,
         price_stock.quantity,
         price_stock.price,
         price_stock.stock,
@@ -76,6 +80,7 @@
     SET
         name = #{name},
         category_id = #{categoryId},
+        color_id = #{colorId},
         description = #{description},
         image_name = #{imageName},
         image_path = #{imagePath},

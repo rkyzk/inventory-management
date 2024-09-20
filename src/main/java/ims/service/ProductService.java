@@ -12,7 +12,7 @@ import ims.repository.PriceStockMapper;
 import ims.repository.ProductMapper;
 
 /**
- * Execute DB transactions.
+ * DB処理操作を行うサービスクラス.
  *
  * @author R.Yazaki
  * @version 1.0.0
@@ -26,7 +26,7 @@ public class ProductService {
 	private PriceStockMapper priceStockMapper;
 	
 	/**
-	 * Insert product.
+	 * 商品データを挿入する.
 	 * 
 	 * @param product
 	 */
@@ -40,16 +40,16 @@ public class ProductService {
 	}
 	
 	/**
-	 * Get Product List
+	 * 商品リストを取得する.
 	 * 
-	 * @return product list
+	 * @return 商品リスト
 	 */
 	public List<Product> getProductList() {
 		return productMapper.getProductList();
 	}
 	
 	/**
-	 * get product.
+	 * 商品データを取得する.
 	 * 
 	 * @param product
 	 */
@@ -58,10 +58,10 @@ public class ProductService {
 	}
 	
 	/**
-	 * update product.
+	 * 商品データを更新する.
 	 * 
 	 * @param id
-	 * @return return code
+	 * @return リターンコード
 	 */
 	@Transactional
 	public int updateProduct(Product product) {
@@ -71,10 +71,10 @@ public class ProductService {
 	}
 	
 	/**
-	 * delete product.
+	 * 商品データを削除する.
 	 * 
 	 * @param id
-	 * @return return code
+	 * @return リターンコード
 	 */
 	@Transactional
 	public int deleteProduct(int id) {
