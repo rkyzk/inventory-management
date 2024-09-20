@@ -16,6 +16,8 @@ body {
 
 .app-name {
   font-size: 1.6rem;
+  font-family: "Dancing Script", cursive;
+  color: #555;
 }
 
 .header-area {
@@ -35,8 +37,20 @@ h2 {
 }
 
 .logo {
-  width: 200px;
+  height: 100px
+}
+
+.logo-img {
+  width: 70px;
   height: auto;
+  background-image: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: 0 10px;
+}
+
+nav {
+  margin-top: 12px;
 }
 
 .btn {
@@ -53,13 +67,13 @@ h2 {
   color: #10438c;
 }
 
-.link {
-  color: #2477A9;
+.links {
+  color: #555;
   text-decoration: none;
 }
 
-.link:hover {
-  color: #112F41;
+.links:hover {
+  color: #222;
   text-decoration: underline;
 }
 

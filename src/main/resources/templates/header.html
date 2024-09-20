@@ -2,26 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>Inventory Management</title>
+    <title>在庫管理</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+      rel="stylesheet">
   </head>
   <body>
     <header th:fragment="header" class="d-flex justify-content-between mt-2">
-      <div class="logo d-flex" style="width:400px;">
-        <img src="../static/images/logo.png"
-          alt="logo with birds and flowers">
-        <span class="app-name" style="width:300px;">在庫管理</span>
+      <div class="d-flex logo" style="width:400px;">
+        <div class="logo-img"></div>
+        <span class="app-name mt-2" style="width:190px;">Nature Blossom</span>
       </div>
       <nav class="d-flex justify-content-end px-5">
         <div class="navlink">
-          <a class="link" href="http://localhost:8080/product-registration">
+          <a class="links" href="http://localhost:8080/product-registration">
             <i class="fa-regular fa-pen-to-square"></i>
             登録
           </a>
         </div>
         <div class="mx-4 navlink">
-          <a class="link" href="http://localhost:8080/product-list">
+          <a class="links" href="http://localhost:8080/product-list">
             <i class="fa-regular fa-rectangle-list"></i>
-            リスト
+            商品リスト
           </a>
         </div>
       </nav>
