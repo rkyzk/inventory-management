@@ -49,7 +49,7 @@
 	          <div class="d-flex">
 	            <input class="form-control price" id="price"
 	              th:field="*{price}" onBlur="formatPriceValue()" type="text" />
-	            <span>円</span>
+	            <span class="currency">円</span>
 	          </div>
 	          <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>
 	        </div>

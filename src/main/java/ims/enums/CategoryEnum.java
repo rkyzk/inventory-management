@@ -2,40 +2,40 @@ package ims.enums;
 
 
 /**
- * Enum of product categories.
+ * カテゴリーのEnum
  *
  * @author R.Yazaki
  * @version 1.0.0
  */
 public enum CategoryEnum {
 	/*
-	 * 0: tulips
+	 * 0: チューリップ
 	 */
-	TULIPS("0", "tulips"),
+	TULIPS("0", "チューリップ"),
 	/**
-	 * 1: crocus.
+	 * 1:  クロッカス
 	 */
-	CROCUS("1", "crocus"),
+	CROCUS("1", "クロッカス"),
 	/**
-	 * 2: hyacinth.
+	 * 2: ヒヤシンス
 	 */
-	HYACINTH("2", "hyacinth"),
+	HYACINTH("2", "ヒヤシンス"),
 	/**
-	 * 3: others.
+	 * 3: その他
 	 */
-	OTHERS("3", "others");
+	OTHERS("3", "その他");
 
-	/** category code */
+	/** カテゴリーコード */
 	private String categoryCode;
 
-	/** category name */
+	/** カテゴリー名 */
 	private String category;
 
 	/**
-	 * generate category
+	 * カテゴリーを生成
 	 *
-	 * @param categoryCode  category code
-	 * @param category  category
+	 * @param categoryCode  カテゴリーコード
+	 * @param category  カテゴリー
 	 */
 	private CategoryEnum(String categoryCode, String category) {
 		this.categoryCode = categoryCode;
@@ -43,28 +43,28 @@ public enum CategoryEnum {
 	}
 
 	/**
-	 * get category code
+	 * カテゴリーコードを取得
 	 *
-	 * @return category code
+	 * @return カテゴリーコード
 	 */
 	public String getCategoryCode() {
 		return this.categoryCode;
 	}
 
 	/**
-	 * get category name
+	 * カテゴリー名を取得
 	 *
-	 * @return category name
+	 * @return カテゴリー名
 	 */
 	public String getCategory() {
 		return this.category;
 	}
 
 	/**
-	 * get category by category code
+	 * コードを基にカテゴリーを取得
 	 *
-	 * @param category code
-	 * @return category
+	 * @param カテゴリーコード
+	 * @return カテゴリー
 	 */
 	public static CategoryEnum getValueByCode(String categoryCode) {
 		for (CategoryEnum category : CategoryEnum.values()) {

@@ -79,12 +79,16 @@ h2 {
 }
 
 .price {
-  width: 250px;
   margin-right: 2px;
 }
 
-.form-select {
-  width: 290px;
+.form-select, .price, .stock {
+  width: 250px;
+}
+
+.currency {
+  width: 60px;
+  margin-top: 3px;
 }
 
 /** ---------------------------
