@@ -17,7 +17,7 @@ import com.amazonaws.services.s3.model.DeleteObjectRequest;
 
 
 /**
- * Upload files to AWS S3 bucket.
+ * 画像ファイルを AWS S3 bucketにアップロードする.
  *
  * @author R.Yazaki
  * @version 1.0.0
@@ -31,10 +31,10 @@ public class ImageUploadService {
     private String bucketName;
 	
 	/*
-	 * Upload files to AWS S3 bucket.
+	 * 画像ファイルを AWS S3 bucketにアップロードする.
 	 * 
 	 * @params multipart file, folder name, file name
-	 * @return image url
+	 * @return 画像url
 	 */
 	public String uploadImg(MultipartFile multipartFile,
 			String folder, String origFileName) {
@@ -44,9 +44,9 @@ public class ImageUploadService {
 		            .replace(" ", "-").replace(":", "");
 		String filePath = folder + "/" + fileName;
 		try {
-			// convert multipart file to file.
+			// multipart file を fileに変換.
 			File file = convertMultipartFileToFile(multipartFile);
-			// upload the file to specified path
+			// 指定のパスにファイルをアップロード
 			amazonS3.putObject(bucketName, filePath, file);
 			file.delete();
 		} catch (Exception e){
@@ -56,17 +56,17 @@ public class ImageUploadService {
 	}
 	
 	/*
-	 * Delete files from AWS S3 bucket.
+	 * AWS S3 bucketから画像ファイルを削除.
 	 * 
 	 * @params file name
-	 * @return return code
+	 * @return リターンコード
 	 */
 	public boolean deleteImg(final String fileName) {
 		final DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(bucketName, fileName);
 	    try {
 	    	amazonS3.deleteObject(deleteObjectRequest);
 	    } catch (AmazonServiceException e) {
-            // The call was transmitted successfully, but Amazon S3 couldn't process
+            // Amazon S3 exception
             e.printStackTrace();
             return false;
         } catch (SdkClientException e) {
@@ -79,10 +79,10 @@ public class ImageUploadService {
 	}
 	
 	/*
-	 * Convert multipart file to file
+	 * Multipart file を fileに変換
 	 * 
 	 * @params multipart file
-	 * @return File: converted file
+	 * @return ファイル
 	 */
 	public File convertMultipartFileToFile(MultipartFile file) throws IOException {
 		File convertedFile = new File(file.getOriginalFilename());

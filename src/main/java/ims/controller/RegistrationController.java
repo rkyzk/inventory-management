@@ -32,11 +32,11 @@ public class RegistrationController {
 	MessageSource msg;
 
 	/**
-	 * Display product registration page.
+	 * 登録画面を表示.
 	 *
 	 * @param  model
 	 * @param  product
-	 * @return product registration page
+	 * @return 登録画面
 	 */
 	@GetMapping("/product-registration")
 	public String getProductRegistration(Model model,
@@ -45,9 +45,9 @@ public class RegistrationController {
 	}
 	
 	/**
-	 * Validate user input,
-	 * upload image to s3 bucket,
-	 * and insert product data in DB.
+	 * 入力データを検証し、エラーがあるときはエラーメッセージを表示.
+	 * 画像ファイルを s3 bucket にアップロード.
+	 * DBに商品データを格納.
 	 *
 	 * @param model
 	 * @param locale
@@ -60,36 +60,38 @@ public class RegistrationController {
 			RedirectAttributes redirectAttributes,
 		    @ModelAttribute("product") @Valid Product product,
 			BindingResult bindingResult) throws IOException {
-		// if validation fails, display register page again.
+		// エラーがあるときは登録画面を再度表示
 		if (bindingResult.hasErrors()) {
 			return "product-registration";
 		}
-		// set register success to flash message
-		// (change later if registration fails)
+		// 登録完了メッセージを設定（登録に問題があるときはあとでメッセージを変更）
 		String message = "";
 		message = msg.getMessage("REGSUC", null, locale);
-		// if image has been added, upload it to S3 bucket
+		// 画像がアップロードされたとき
 		if (product.getMultipartFile() != null && !product.getMultipartFile().isEmpty()) {
+			// ファイル名取得
 			String imageName = product.getMultipartFile().getOriginalFilename();
+			// 名取得
 			String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategory();
+			// S3 bucketに画像を格納
 			String imagePath = imgUploadService.uploadImg(
 					product.getMultipartFile(),
 					categoryName,
 					imageName);
-			if (imagePath == null) {
-				// set message saying the product has been registered,
-				// but the image wasn't stored.
+			// 画像アップロードに失敗のとき「商品データは格納されましたが画像は保存されませんでした。」と
+			// メッセージを設定
+			if (imagePath == null) { 
 				message = msg.getMessage("IMGUPLERR", null, locale);
 			} else {
-				// set image name, image path and registration success message
+				// 画像ファイル名、パスを設定
 				product.setImageName(imageName);
 			    product.setImagePath(imagePath);
 			}
 		}
-		// insert product in DB
+		// DBに商品データを格納
 	    int code = productService.insertProduct(product);
 	    if (code == 0) message = msg.getMessage("REGERR", null, locale);
-	    // send success message to the list controller
+	    // リストコントローラに送るメッセージをredirectAttributesに設定
 		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/product-list";
 	}

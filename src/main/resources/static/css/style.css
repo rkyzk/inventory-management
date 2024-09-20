@@ -144,19 +144,23 @@ table, th, td {
 }
 
 .image-col {
-  width: 180px;
+  width: 160px;
 }
 
 .image > img {
   max-height: 100px;
 }
 
+.category-col {
+  width: 100px; 
+}
+
 .name-col {
   width: 150px; 
 }
 
-.qty-col {
-  width: 60px;
+.category-val {
+  font-size: 0.9rem;
 }
 
 .alert {
