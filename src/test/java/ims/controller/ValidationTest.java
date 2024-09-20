@@ -91,46 +91,6 @@ public class ValidationTest {
 			assertThat(action.getMessage()).isEqualTo("must not exceed 40 characters");
 		});
 	}
-	
-	@ParameterizedTest
-	@ValueSource(ints = {1, 9999})
-	@Disabled
-    void test_quantity1to9999IsOk(int input) throws Exception {
-		product.setQuantity(input);
-		bindingResult = new BindException(product, "product");
-		Set<ConstraintViolation<Product>> violations =
-				validator.validate(product);
-		assertNull(bindingResult.getFieldError());
-		assertEquals(violations.size(), 0);	
-	}
-	
-	@Test
-	@Disabled
-    void test_quantity0CausesError() throws Exception {
-		product.setQuantity(0);
-		bindingResult = new BindException(product, "product");
-		Set<ConstraintViolation<Product>> violations =
-				validator.validate(product);
-		violations.forEach(action -> {
-			assertThat(action.getPropertyPath().toString()).isEqualTo("quantity");
-			assertThat(action.getMessage())
-				.isEqualTo("must be greater than or equal to 1");
-		});
-	}
-	
-	@Test
-	@Disabled
-    void test_quantity10000CausesError() throws Exception {
-		product.setQuantity(10000);
-		bindingResult = new BindException(product, "product");
-		Set<ConstraintViolation<Product>> violations =
-				validator.validate(product);
-		violations.forEach(action -> {
-			assertThat(action.getPropertyPath().toString()).isEqualTo("quantity");
-			assertThat(action.getMessage())
-				.isEqualTo("must be less than or equal to 9999");
-		});
-	}
 
 	@Test
 	@Disabled

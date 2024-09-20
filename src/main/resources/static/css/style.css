@@ -78,8 +78,8 @@ h2 {
   margin-top: 20px;
 }
 
-.price {
-  margin-right: 2px;
+.price, .stock {
+  text-align: right;
 }
 
 .form-select, .price, .stock {
@@ -89,6 +89,7 @@ h2 {
 .currency {
   width: 60px;
   margin-top: 3px;
+  margin-left: 2px;
 }
 
 /** ---------------------------
