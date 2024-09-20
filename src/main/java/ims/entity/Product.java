@@ -39,11 +39,9 @@ public class Product {
 	@NotNull
 	private String categoryId;
 	
-	/** Quantity per package */
+	/** Color */
 	@NotNull
-	@Min(1)
-	@Max(9999)
-	private int quantity;
+	private String colorId;
 	
 	/** Price */
 	@NotNull(message = "must not be blank")

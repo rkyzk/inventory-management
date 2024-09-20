@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>Inventory Management System</title>
+    <title>在庫管理</title>
   </head>
   <body>    
     <!-- Delete confirmation modal taken from Bootstrap5 -->
@@ -14,11 +14,11 @@
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        Are you sure you want to delete this product?
+	        削除してよろしいですか？
 	        <div class="d-flex justify-content-center mt-4">
-	          <button type="button" class="btn update-btn mx-2" data-bs-dismiss="modal">cancel</button>
+	          <button type="button" class="btn update-btn mx-2" data-bs-dismiss="modal">キャンセル</button>
 	          <button type="submit" name="_method"
-	          th:formaction="@{/delete}" class="btn update-btn">delete</button>
+	          th:formaction="@{/delete}" class="btn update-btn">削除</button>
 	        </div>
 	      </div>
 	    </div>

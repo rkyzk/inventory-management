@@ -5,23 +5,23 @@
     <title>Inventory Management</title>
   </head>
   <body>
-    <header th:fragment="header">
-      <div class="logo"><img src="../static/images/logo.png"
-        alt="logo with birds and flowers"></div>
-      <div class="header-area mt-0 px-1">
-        <h1 class="text-center my-3">Inventory Management</h1>
+    <header th:fragment="header" class="d-flex justify-content-between mt-2">
+      <div class="logo d-flex" style="width:400px;">
+        <img src="../static/images/logo.png"
+          alt="logo with birds and flowers">
+        <span class="app-name" style="width:300px;">在庫管理</span>
       </div>
-      <nav class="d-flex">
-        <div class="navbar navlink">
+      <nav class="d-flex justify-content-end px-5">
+        <div class="navlink">
           <a class="link" href="http://localhost:8080/product-registration">
             <i class="fa-regular fa-pen-to-square"></i>
-            register new products
+            登録
           </a>
         </div>
-        <div class="mx-4 link-to-list navlink">
+        <div class="mx-4 navlink">
           <a class="link" href="http://localhost:8080/product-list">
             <i class="fa-regular fa-rectangle-list"></i>
-            product list
+            リスト
           </a>
         </div>
       </nav>
