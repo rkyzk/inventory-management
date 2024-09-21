@@ -1,6 +1,5 @@
 package ims.entity;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -8,18 +7,15 @@ import org.springframework.web.multipart.MultipartFile;
 import ims.annotation.FileName;
 import ims.annotation.FileSize;
 import ims.annotation.FileType;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Entity class for 'Product' model.
+ * プロダクト model.
  *
  * @author R.Yazaki
  * @version 1.0.0
@@ -27,55 +23,55 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Product {
-	/** Product ID */
+	/** プロダクト ID */
 	private int id;
 	
-	/** Product name */
+	/** プロダクト名 */
 	@NotBlank
-	@Size(max = 40, message = "must not exceed {max} characters")
+	@Size(max = 40, message = "{max}文字以内で記入してください")
 	private String name;
 	
-	/** Category */
-	@NotNull
-	private String categoryId;
+	/** カテゴリー */
+	@Min(0)
+	@Max(20)
+	private int categoryId;
 	
-	/** Color */
-	@NotNull
-	private String colorId;
+	/** 色 */
+	@Min(0)
+	@Max(20)
+	private int colorId;
 	
-	/** Price */
-	@NotNull(message = "must not be blank")
-	@DecimalMin(value = "0.00", inclusive = true)
-	@Digits(integer=5, fraction=2)
-	private BigDecimal price;
+	/** 値段 */
+	@Min(0)
+	private int price;
 	
-	/** Stock */
+	/** 在庫数 */
 	@Min(0)
 	@Max(99999)
 	private int stock;
 	
-	/** Description */
-	@Size(max = 200, message = "must not exceed {max} characters")
+	/** 商品説明 */
+	@Size(max = 200, message = "{max} 文字以内で記入してください")
 	private String description;
 	
-	/** image file name */
+	/** 画像ファイル名 */
 	private String imageName;
 
-	/** image file path */
+	/** ファイルパス */
 	private String imagePath;
 	
-	/** image file (not to be inserted in DB) */
+	/** 画像ファイル */
 	@FileName(maxLength=30)
 	@FileType
 	@FileSize(maxSize = 819200)
 	private MultipartFile multipartFile;
 
-	/** created at */
+	/** 登録日 */
 	private LocalDateTime createdAt;
 
-	/** updated at */
+	/** 更新日 */
 	private LocalDateTime updatedAt;
 
-	/** deleted at */
+	/** 削除日 */
 	private LocalDateTime deletedAt;
 }

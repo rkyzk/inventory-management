@@ -11,35 +11,40 @@ public enum CategoryEnum {
 	/*
 	 * 0: チューリップ
 	 */
-	TULIPS("0", "チューリップ"),
+	TULIPS(0, "チューリップ", "tulips"),
 	/**
 	 * 1:  クロッカス
 	 */
-	CROCUS("1", "クロッカス"),
+	CROCUS(1, "クロッカス", "crocus"),
 	/**
 	 * 2: ヒヤシンス
 	 */
-	HYACINTH("2", "ヒヤシンス"),
+	HYACINTH(2, "ヒヤシンス", "hyacinth"),
 	/**
 	 * 3: その他
 	 */
-	OTHERS("3", "その他");
+	OTHERS(3, "その他", "others");
 
 	/** カテゴリーコード */
-	private String categoryCode;
+	private int categoryCode;
 
 	/** カテゴリー名 */
 	private String category;
+	
+	/** 英語カテゴリー名 */
+	private String categoryEn;
 
 	/**
 	 * カテゴリーを生成
 	 *
 	 * @param categoryCode  カテゴリーコード
 	 * @param category  カテゴリー
+	 * @param categoryEn 英語カテゴリー
 	 */
-	private CategoryEnum(String categoryCode, String category) {
+	private CategoryEnum(int categoryCode, String category, String categoryEn) {
 		this.categoryCode = categoryCode;
 		this.category = category;
+		this.categoryEn = categoryEn;
 	}
 
 	/**
@@ -47,7 +52,7 @@ public enum CategoryEnum {
 	 *
 	 * @return カテゴリーコード
 	 */
-	public String getCategoryCode() {
+	public int getCategoryCode() {
 		return this.categoryCode;
 	}
 
@@ -61,14 +66,23 @@ public enum CategoryEnum {
 	}
 
 	/**
+	 * カテゴリー名を取得
+	 *
+	 * @return カテゴリー名
+	 */
+	public String getCategoryEn() {
+		return this.categoryEn;
+	}
+
+	/**
 	 * コードを基にカテゴリーを取得
 	 *
 	 * @param カテゴリーコード
 	 * @return カテゴリー
 	 */
-	public static CategoryEnum getValueByCode(String categoryCode) {
+	public static CategoryEnum getValueByCode(int categoryCode) {
 		for (CategoryEnum category : CategoryEnum.values()) {
-			if (category.getCategoryCode().equals(categoryCode)) {
+			if (category.getCategoryCode() == categoryCode) {
 				return category;
 			}
 		}

@@ -72,7 +72,7 @@ public class RegistrationController {
 			// ファイル名取得
 			String imageName = product.getMultipartFile().getOriginalFilename();
 			// 名取得
-			String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategory();
+			String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategoryEn();
 			// S3 bucketに画像を格納
 			String imagePath = imgUploadService.uploadImg(
 					product.getMultipartFile(),

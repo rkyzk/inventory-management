@@ -36,8 +36,7 @@ public class UpdateController {
 	private String endpoint;
 	
 	/**
-	 * Get product data from DB using the given id
-	 * and display product update page
+	 * DBから商品データを取得し更新ページを表示.
 	 * 
 	 * @param model
 	 * @param id
@@ -53,9 +52,9 @@ public class UpdateController {
 	}
 	
 	/**
-	 * Validate user input,
-	 * add/remove image to/from S3 bucket,
-	 * update product data in DB.
+	 * 入力データを検証し、
+	 * 画像をS3 bucketにアップロードまたは削除.
+	 * DBの商品データを更新.
 	 * 
 	 * @param model
 	 * @param locale
@@ -94,7 +93,7 @@ public class UpdateController {
 		// if image has been added, upload it to S3 bucket
 		if(product.getMultipartFile() != null && !product.getMultipartFile().isEmpty()) {
 		    String imageName = product.getMultipartFile().getOriginalFilename();
-		    String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategory();
+		    String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategoryEn();
 		    String imagePath = imgUploadService.uploadImg(
 				product.getMultipartFile(),
 				categoryName,

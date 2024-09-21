@@ -48,7 +48,7 @@
 	          <label for="price" class="item-label">値段：</label>
 	          <div class="d-flex">
 	            <input class="form-control price" id="price"
-	              th:field="*{price}" onBlur="formatPriceValue()" type="text" />
+	              th:field="*{price}" type="text" />
 	            <span class="currency">円</span>
 	          </div>
 	          <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>

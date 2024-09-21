@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ims.entity.Product;
-import ims.repository.PriceStockMapper;
 import ims.repository.ProductMapper;
 
 /**
@@ -22,9 +21,6 @@ public class ProductService {
 	@Autowired
 	private ProductMapper productMapper;
 	
-	@Autowired
-	private PriceStockMapper priceStockMapper;
-	
 	/**
 	 * 商品データを挿入する.
 	 * 
@@ -34,8 +30,7 @@ public class ProductService {
 	@Options(useGeneratedKeys=true)
 	public int insertProduct(Product product) {
 		int code = productMapper.insertProduct(product);
-		int code2 = priceStockMapper.insertProductData(product);
-		if (code > 0 && code2 > 0) return product.getId();
+		if (code > 0) return product.getId();
 		else return 0;
 	}
 	
@@ -65,9 +60,8 @@ public class ProductService {
 	 */
 	@Transactional
 	public int updateProduct(Product product) {
-		int retCode = productMapper.updateProduct(product);
-		if (retCode == 1) return priceStockMapper.updateProductData(product);
-		else return 0;
+		int code = productMapper.updateProduct(product);
+		return code;
 	}
 	
 	/**
@@ -78,8 +72,7 @@ public class ProductService {
 	 */
 	@Transactional
 	public int deleteProduct(int id) {
-		int retCode = priceStockMapper.deleteProductData(id);
-		if (retCode == 1) return productMapper.deleteProduct(id);
-		else return 0;		
+		int code = productMapper.deleteProduct(id);
+		return code;	
 	}
 }

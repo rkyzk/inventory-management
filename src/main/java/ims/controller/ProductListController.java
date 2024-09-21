@@ -31,10 +31,10 @@ public class ProductListController {
 	MessageSource msg;
 	
 	/**
-	 * Display product list page.
+	 * 商品リストページを表示
 	 *
 	 * @param model
-	 * @return product list page
+	 * @return 商品リストページ
 	 */
 	@GetMapping("")
 	public String getProductList(Model model) {
@@ -46,7 +46,7 @@ public class ProductListController {
 	}
 	
 	/**
-	 * Delete product.
+	 * 商品データを削除.
 	 * 
 	 * @param model
 	 * @param locale
@@ -61,10 +61,10 @@ public class ProductListController {
 		int retVal = productService.deleteProduct(id);
 		String message;
 		if (retVal == 1) {
-	    	// set success message
+	    	// 削除成功メッセージを設定
 	    	message =  msg.getMessage("DELSUC", null, locale);
 	    } else {
-	    	// set error message
+	    	// 削除失敗メッセージを設定
 	    	message =  msg.getMessage("DELERR", null, locale);
 	    }
 		List<Product> prodList = productService.getProductList();

@@ -11,34 +11,34 @@ public enum ColorEnum {
 	/*
 	 * 0: 赤
 	 */
-	RED("0", "赤"),
+	RED(0, "赤"),
 	/**
 	 * 1: 黄
 	 */
-	YELLOW("1", "黄"),
+	YELLOW(1, "黄"),
 	/**
 	 * 2: オレンジ
 	 */
-	ORANGE("2", "オレンジ"),
+	ORANGE(2, "オレンジ"),
 	/**
 	 * 3: ピンク
 	 */
-	PINK("3", "ピンク"),
+	PINK(3, "ピンク"),
 	/**
 	 * 4: 白
 	 */
-	WHITE("4", "白"),
+	WHITE(4, "白"),
 	/**
 	 * 5: 紫
 	 */
-	PURPLE("5", "紫"),
+	PURPLE(5, "紫"),
 	/**
 	 * 6: 青
 	 */
-	BLUE("6", "青");
+	BLUE(6, "青");
 
 	/** カラーコード */
-	private String colorCode;
+	private int colorCode;
 
 	/** 色 */
 	private String color;
@@ -49,7 +49,7 @@ public enum ColorEnum {
 	 * @param colorCode  色コード
 	 * @param color  色
 	 */
-	private ColorEnum(String colorCode, String color) {
+	private ColorEnum(int colorCode, String color) {
 		this.colorCode = colorCode;
 		this.color = color;
 	}
@@ -59,7 +59,7 @@ public enum ColorEnum {
 	 *
 	 * @return 色コード
 	 */
-	public String getColorCode() {
+	public int getColorCode() {
 		return this.colorCode;
 	}
 
@@ -78,9 +78,9 @@ public enum ColorEnum {
 	 * @param 色コード
 	 * @return 色
 	 */
-	public static ColorEnum getValueByCode(String colorCode) {
+	public static ColorEnum getValueByCode(int colorCode) {
 		for (ColorEnum color : ColorEnum.values()) {
-			if (color.getColorCode().equals(colorCode)) {
+			if (color.getColorCode() == colorCode) {
 				return color;
 			}
 		}
