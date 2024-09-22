@@ -9,7 +9,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -54,7 +54,7 @@ public class ProductListController {
 	 * @param id
 	 * @return product list page
 	 */
-	@PostMapping("/delete")
+	@PutMapping("/delete")
 	public String deleteProduct(Model model, Locale locale,
 			RedirectAttributes redirectAttributes,
 			@RequestParam("id") int id) {

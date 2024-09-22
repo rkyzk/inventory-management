@@ -56,15 +56,16 @@ nav {
 .btn {
   color: #eee;
   font-size: 1.2rem;
-  background-color: #446688;
+  background-color: rgb(42, 93, 136);
   min-width: 80px;
   padding: 2px 3px;
   white-space: nowrap;
 }
 
 .btn:hover {
-  background-color: #ccebff;
-  color: #10438c;
+  background-color: rgb(16, 26, 106);
+  color: #eee;
+  opacity: 0.6;
 }
 
 .links {
@@ -80,6 +81,15 @@ nav {
 .navlink.active {
   border-bottom: 1px solid;
   border-bottom-width: 3px;
+}
+
+.error-msg {
+  font-size: 0.9rem;
+}
+
+.list-icon {
+  width: 24px;
+  margin-top: 5px;
 }
 
 /** ---------------------------
@@ -159,6 +169,14 @@ table, th, td {
   width: 150px; 
 }
 
+.price-val {
+  text-align: right;
+}
+
+.product-list {
+  font-size: 1.0rem;
+}
+
 .category-val {
   font-size: 0.9rem;
 }
@@ -180,6 +198,16 @@ table, th, td {
 
 .btn-icon:hover {
   color: #112F41;
+}
+
+.edit-del-icons {
+  border: 0;
+  margin-top: 38px;
+}
+
+.modal-btn > button {
+  font-size: 1rem;
+  padding: 2px 5px;
 }
 
 /** ---------------------------

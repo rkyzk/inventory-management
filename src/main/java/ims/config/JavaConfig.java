@@ -7,16 +7,16 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 /**
- *
+ * バリデーションメッセージを管理するためのクラス.
  * @author R.Yazaki
  * @version 1.0.0
  */
 @Configuration
 public class JavaConfig {
 	/**
-	 * Specify messages properties file and character code.
+	 * メッセージのプロパティファイル名と文字コードを指定するメソッド.
 	 *
-	 * @return Message source bean
+	 * @return メッセージソースのBean
 	 */
 	@Bean
 	public MessageSource messageSource() {
@@ -27,9 +27,9 @@ public class JavaConfig {
 	}
 
 	/**
-	 * overwrite validation message on message source.
+	 * バリデーションメッセージをメッセージソースに上書きする為のメソッド.
 	 *
-	 * @return Bean of LocalValidatorFactoryBean class
+	 * @return LocalValidatorFactoryBeanクラスのBean
 	 */
 	@Bean
 	public LocalValidatorFactoryBean getValidator() {

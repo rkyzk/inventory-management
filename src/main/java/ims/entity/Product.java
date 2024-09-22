@@ -10,6 +10,7 @@ import ims.annotation.FileType;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,30 +29,34 @@ public class Product {
 	
 	/** プロダクト名 */
 	@NotBlank
-	@Size(max = 40, message = "{max}文字以内で記入してください")
+	@Size(max = 40)
 	private String name;
 	
 	/** カテゴリー */
+	@NotNull
 	@Min(0)
 	@Max(20)
-	private int categoryId;
+	private Integer categoryId;
 	
 	/** 色 */
+	@NotNull
 	@Min(0)
 	@Max(20)
-	private int colorId;
+	private Integer colorId;
 	
-	/** 値段 */
+	/** 価格 */
+	@NotNull
 	@Min(0)
-	private int price;
+	private Integer price;
 	
 	/** 在庫数 */
+	@NotNull
 	@Min(0)
 	@Max(99999)
-	private int stock;
+	private Integer stock;
 	
 	/** 商品説明 */
-	@Size(max = 200, message = "{max} 文字以内で記入してください")
+	@Size(max = 200)
 	private String description;
 	
 	/** 画像ファイル名 */

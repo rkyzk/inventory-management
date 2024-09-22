@@ -60,8 +60,7 @@ public class ProductService {
 	 */
 	@Transactional
 	public int updateProduct(Product product) {
-		int code = productMapper.updateProduct(product);
-		return code;
+		return productMapper.updateProduct(product);
 	}
 	
 	/**
@@ -72,7 +71,6 @@ public class ProductService {
 	 */
 	@Transactional
 	public int deleteProduct(int id) {
-		int code = productMapper.deleteProduct(id);
-		return code;	
+		return productMapper.deleteProduct(id);	
 	}
 }

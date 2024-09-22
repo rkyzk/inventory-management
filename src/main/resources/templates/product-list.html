@@ -24,7 +24,7 @@
           <label class="mt-3 items-count" th:text="'件数: ' + ${itemCount}"></label>
         </div>
         <div class="d-flex justify-content-center">
-          <table>
+          <table class="product-list">
             <thead class="table-headding">
               <tr>
                 <th class="text-center image-col">画像</th>
@@ -33,7 +33,7 @@
 	            <th class="text-center name-col">商品名</th> 
 	            <th class="text-center">値段</th>
 	            <th class="text-center px-1">在庫数</th>
-	            <th class="text-center" colspan="2">更新/削除</th>
+	            <th class="text-center">更新/削除</th>
 	          </tr>
 	        </thead>
 	        <tbody>
@@ -43,10 +43,10 @@
 	              <img th:if="*{item.imagePath}" th:src="${awsUrl} + ${item.imagePath}"
 	                th:alt="${item.name}"
 	                onerror="this.src=
-	                  '../static/images/no_image.png';" />
+	                  '/images/no_image.png';" />
 	              <!-- イメージURLがNullのとき「no_image.png」を表示 -->
 	              <img th:unless="*{item.imagePath}"
-	                   src="../static/images/no_image.png">        	              
+	                src="/images/no_image.png">        	              
                 </td>
 	            <td class="id-price-format px-1 text-center"><span th:text="${item.id}"></span></td>
 	            <td class="format text-center">
@@ -54,20 +54,19 @@
                     class="category-val"></label>
                 </td>
 	            <td class="px-1"><span th:text="${item.name}"></span></td>
-	            <td class="px-1">
+	            <td class="px-1 price-val">
 	              <span th:text="${#numbers.formatDecimal(item.price,1,0)}"></span>円
 	            </td>
 	            <td class="px-1 text-center"><span th:text="${item.stock}"></span></td>
-	            <td class="px-1 text-center">
+	            <td class="px-1 text-center d-flex justify-content-around
+	              edit-del-icons">
                   <form action="/product-update" method="get">
 	                <input type="hidden" th:value="${item.id}" name="id"/>
 	                <button class="btn-icon py-0 px-0" type="submit">
 	                  <i class="fa-regular fa-pen-to-square"></i>
 	                </button>
 	              </form>
-	            </td>
-	            <td class="px-1 text-center">
-	              <form th:action="@{/}" th:method="post">
+	              <form th:action="@{/}" th:method="put">
 	                <input type="hidden" th:value="${item.id}" name="id"/>
 	                <button type="button" class="btn-icon py-0 px-0"
 	                  data-bs-toggle="modal"
