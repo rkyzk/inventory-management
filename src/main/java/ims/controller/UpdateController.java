@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -65,7 +65,7 @@ public class UpdateController {
 	 * @return
 	 * @throws IOException
 	 */
-	@PostMapping("/product-update")
+	@PutMapping("/product-update")
 	public String postUpdate(Model model, Locale locale,
 			@RequestParam(name="curr-img", required=false) boolean currImg,
 			RedirectAttributes redirectAttributes,
@@ -98,8 +98,8 @@ public class UpdateController {
 				categoryName,
 				imageName);
 		    if (imagePath == null) {
-				// 「商品データは保存されましたが画像は保存されませんでした。」のメッセージを
-		    	//　設定。
+				// 「商品データは保存されましたが画像は保存されませんでした。」の
+		    	//　メッセージを設定。
 				message = msg.getMessage("IMGUPLERR", null, locale);		    	
 		    } else {
 		    	// imageName と imagePathを設定
@@ -108,11 +108,16 @@ public class UpdateController {
 		    }
 	    }
 		// 商品データ更新
-		int retVal = productService.updateProduct(product);
-		if (retVal == 0) {
-	    	// 更新エラーメッセージを設定
-	    	message =  msg.getMessage("UPDERR", null, locale);
-	    }
+		try {
+		    int retVal = productService.updateProduct(product);
+		    if (retVal == 0) {
+	    	    // 「当該商品データは他ユーザにより更新されています。データを再度ご確認ください。」と表示。
+	    	    message =  msg.getMessage("UPDERR1", null, locale);
+	        }
+		} catch (Exception e) {
+			// 更新エラーメッセージを設定
+    	    message =  msg.getMessage("UPDERR2", null, locale);
+		}	
 		// メッセージをリダイレクトアトリビュートに設定
     	redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/product-list";	

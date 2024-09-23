@@ -61,7 +61,8 @@
         stock,
         description,
         image_name,
-        image_path
+        image_path,
+        updated_at
     FROM
         product_entity
     WHERE
@@ -87,6 +88,7 @@
         updated_at = CURRENT_TIMESTAMP
     WHERE
         id = #{id}
+        updated_at = #{updated_at}
   </update>
   
   <!--  商品データ削除 -->
