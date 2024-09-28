@@ -1,5 +1,6 @@
 package ims.service;
 
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Options;
@@ -46,10 +47,20 @@ public class ProductService {
 	/**
 	 * 商品データを取得する.
 	 * 
-	 * @param product
+	 * @param 商品id
 	 */
 	public Product getProduct(int id) {
 		return productMapper.getProduct(id);
+	}
+	
+	/**
+	 * 商品データをフィルターして取得する.
+	 * 
+	 * @param  カテゴリーコード、色コード
+	 * @return 商品リスト
+	 */
+	public List<Product> getFilteredProductList(Integer categoryId, Integer colorId) {
+		return productMapper.getFilteredProducts(categoryId, colorId);
 	}
 	
 	/**

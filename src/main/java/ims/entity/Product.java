@@ -16,7 +16,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * プロダクト model.
+ * 商品のmodel.
  *
  * @author R.Yazaki
  * @version 1.0.0
@@ -33,13 +33,11 @@ public class Product {
 	private String name;
 	
 	/** カテゴリー */
-	@NotNull
 	@Min(0)
 	@Max(20)
 	private Integer categoryId;
 	
 	/** 色 */
-	@NotNull
 	@Min(0)
 	@Max(20)
 	private Integer colorId;

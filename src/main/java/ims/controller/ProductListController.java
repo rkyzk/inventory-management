@@ -9,10 +9,10 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ims.entity.Product;
 import ims.service.ImageUploadService;
@@ -46,6 +46,9 @@ public class ProductListController {
 		model.addAttribute("prodList", prodList);
 		model.addAttribute("itemCount", prodList.size());
 		model.addAttribute("awsUrl", endpoint);
+		model.addAttribute("unselected", false);
+		model.addAttribute("categoryId", 0);
+		model.addAttribute("colorId", 0);
 		return "product-list";
 	}
 	
@@ -60,7 +63,6 @@ public class ProductListController {
 	 */
 	@PutMapping("/delete")
 	public String deleteProduct(Model model, Locale locale,
-			RedirectAttributes redirectAttributes,
 			@RequestParam("id") int id) {
 		//　画像がある場合S3 bucket から画像を削除
 	    Product product = productService.getProduct(id);
@@ -86,7 +88,44 @@ public class ProductListController {
 		model.addAttribute("prodList", prodList);
 		model.addAttribute("itemCount", prodList.size());
 		model.addAttribute("awsUrl", endpoint);	
-		model.addAttribute("message", message);	
+		model.addAttribute("message", message);
+		model.addAttribute("unselected", false);
+		model.addAttribute("categoryId", 0);
+		model.addAttribute("colorId", 0);
 		return "product-list";
-	}	
+	}
+	
+	/**
+	 * 商品データをフィルターする.
+	 * @param categoryId
+	 *        colorId
+	 *        model
+	 *        locale
+	 * @return 商品リストページ
+	 */
+	@PostMapping("/filter")
+	public String postFilteredList(Model model, Locale locale,
+			@RequestParam("category") Integer categoryId,
+			@RequestParam("color") Integer colorId) {
+		List<Product> prodList;
+		boolean unselected = false;
+        if (categoryId == 0) categoryId = null;
+        if (colorId == 0) colorId = null;
+		if (categoryId == null && colorId == null) {
+			// selected をfalseに設定（「検索条件を選択してください」とメッセージを表示）
+            unselected = true;
+			// 全件取得
+			prodList = productService.getProductList();
+		} else {
+			// 商品データを抽出して取得
+			prodList = productService.getFilteredProductList(categoryId, colorId);
+		}
+		model.addAttribute("prodList", prodList);
+		model.addAttribute("itemCount", prodList.size());
+		model.addAttribute("awsUrl", endpoint);
+		model.addAttribute("unselected", unselected);
+		model.addAttribute("categoryId", categoryId);
+		model.addAttribute("colorId", colorId);
+		return "product-list";
+	}
 }

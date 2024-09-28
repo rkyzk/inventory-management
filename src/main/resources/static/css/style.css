@@ -36,8 +36,8 @@ h2 {
   font-size: 1.6rem;
 }
 
-.logo {
-  height: 100px
+header {
+  height: 80px
 }
 
 .logo-img {
@@ -166,7 +166,7 @@ table, th, td {
 }
 
 .name-col {
-  width: 150px; 
+  width: 240px; 
 }
 
 .price-val {
@@ -207,6 +207,33 @@ table, th, td {
 .modal-btn > button {
   font-size: 1rem;
   padding: 2px 5px;
+}
+
+.search-box {
+  margin: 0 auto;
+  font-size: 1.0rem;
+}
+
+.search-box select {
+  width: 170px;
+  height: 35px;
+  font-size: 0.9rem;
+}
+
+.filter-btn {
+  font-size: 0.9rem;
+}
+
+.search-btn:hover {
+  background-color: #ccc;
+  opacity: 0.6;
+}
+
+.filter-error {
+  color: red;
+  font-size: 0.9rem;
+  text-align: right;
+  margin-top: 2px;
 }
 
 /** ---------------------------

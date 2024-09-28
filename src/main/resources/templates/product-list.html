@@ -12,11 +12,46 @@
   </head>
   <body>
     <div th:replace="~{header :: header}"></div>
-    <main class="container mt-1">
+    <main class="container">
       <h2 class="text-center">商品リスト</h2>
       <div id="message" th:if="${message}" role="alert"
         class="alert-success alert alert-dismissible text-center">
         <span th:text="${message}"></span>
+      </div>
+      <div class="search-box mt-4" style="width: 680px;">
+        <form class="d-flex" method="post" action="/product-list/filter">
+          <div class="d-flex align-items-center">
+            <label for="category" class="item-label">カテゴリー：</label>
+            <select class="form-select" id="category" name="category">
+              <option th:value="0" th:text="下より選択"></option>
+              <option
+                th:each="item : ${T(ims.enums.CategoryEnum).values()}"
+                th:value="${item.categoryCode}"
+                th:text="${item.category}"
+                th:selected="${item.categoryCode == categoryId}"
+              >
+              </option>
+            </select>
+          </div>
+          <div class="d-flex align-items-center mx-3">
+            <label for="color" class="item-label">色：</label>
+            <select class="form-select" id="color" name="color">
+              <option th:value="0" th:text="下より選択"></option>
+              <option
+                th:each="item : ${T(ims.enums.ColorEnum).values()}"
+                th:value="${item.colorCode}"
+                th:text="${item.color}"
+                th:selected="${item.colorCode == colorId}"
+              >
+              </option>
+            </select>
+          </div>
+          <div class="d-flex align-items-center">
+            <button class="filter-btn btn">フィルター</button>
+            <a class="filter-btn btn mx-1" href="http://localhost:8080/product-list">クリア</a>
+          </div>
+        </form>
+        <p th:if="${unselected}" class="filter-error">検索条件を選択してください。</p>
       </div>
       <p th:unless="${itemCount}" class="no-item-msg">商品なし</p>
       <div th:if="${itemCount}" class="list-content">

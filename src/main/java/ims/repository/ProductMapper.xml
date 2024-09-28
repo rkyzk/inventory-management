@@ -72,6 +72,32 @@
         id ASC
   </select>
   
+  <!-- フィルターした商品リスト取得 -->
+  <select id="getFilteredProducts" resultType="ims.entity.Product">
+    SELECT
+        id,
+        name,
+        category_id,
+        color_id,
+        price,
+        stock,
+        image_name,
+        image_path
+    FROM
+        product_entity
+    WHERE
+        deleted_at IS NULL
+    <if test = "categoryId != null">
+        AND category_id = #{categoryId}
+    </if>
+    <if test = "colorId != null">
+        AND color_id = #{colorId}
+    </if>
+    ORDER BY
+        category_id ASC,
+        id ASC
+  </select>
+  
   <!-- 商品データ更新 -->
   <update id="updateProduct" parameterType="ims.entity.Product">
     UPDATE
@@ -88,7 +114,7 @@
         updated_at = CURRENT_TIMESTAMP
     WHERE
         id = #{id}
-        updated_at = #{updated_at}
+        AND updated_at = #{updated_at}
   </update>
   
   <!--  商品データ削除 -->

@@ -8,22 +8,22 @@ package ims.enums;
  * @version 1.0.0
  */
 public enum CategoryEnum {
-	/*
-	 * 0: チューリップ
-	 */
-	TULIPS(0, "チューリップ", "tulips"),
 	/**
-	 * 1:  クロッカス
+	 * 1: チューリップ
 	 */
-	CROCUS(1, "クロッカス", "crocus"),
+	TULIPS(1, "チューリップ", "tulips"),
 	/**
-	 * 2: ヒヤシンス
+	 * 2:  クロッカス
 	 */
-	HYACINTH(2, "ヒヤシンス", "hyacinth"),
+	CROCUS(2, "クロッカス", "crocus"),
 	/**
-	 * 3: その他
+	 * 3: ヒヤシンス
 	 */
-	OTHERS(3, "その他", "others");
+	HYACINTH(3, "ヒヤシンス", "hyacinth"),
+	/**
+	 * 4: その他
+	 */
+	OTHERS(4, "その他", "others");
 
 	/** カテゴリーコード */
 	private int categoryCode;
