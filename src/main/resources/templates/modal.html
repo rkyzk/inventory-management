@@ -5,7 +5,7 @@
     <title>在庫管理</title>
   </head>
   <body>    
-    <!-- Delete confirmation modal taken from Bootstrap5 -->
+    <!-- 確認ダイアログ Bootstrap5より引用 -->
     <div th:fragment="modal" class="modal fade" th:id="'del-' + ${item.id}"
       tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -15,10 +15,10 @@
 	      </div>
 	      <div class="modal-body">
 	        削除してよろしいですか？
-	        <div class="d-flex justify-content-center mt-4">
+	        <div class="d-flex justify-content-center mt-4 modal-btn">
 	          <button type="button" class="btn update-btn mx-2" data-bs-dismiss="modal">キャンセル</button>
 	          <button type="submit" name="_method"
-	          th:formaction="@{/delete}" class="btn update-btn">削除</button>
+	            th:formaction="@{/product-list/delete}" class="btn update-btn">削除</button>
 	        </div>
 	      </div>
 	    </div>

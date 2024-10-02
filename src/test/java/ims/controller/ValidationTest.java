@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.math.BigDecimal;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -91,25 +90,11 @@ public class ValidationTest {
 			assertThat(action.getMessage()).isEqualTo("must not exceed 40 characters");
 		});
 	}
-
-	@Test
-	@Disabled
-    void test_priceNullCausesError() throws Exception {
-		product.setPrice(null);
-		bindingResult = new BindException(product, "product");
-		Set<ConstraintViolation<Product>> violations =
-				validator.validate(product);
-		violations.forEach(action -> {
-			assertThat(action.getPropertyPath().toString()).isEqualTo("price");
-			assertThat(action.getMessage())
-				.isEqualTo("must not be blank");
-		});
-	}
 	
 	@Test
 	@Disabled
     void test_priceMin0IsOk() throws Exception {
-		product.setPrice(new BigDecimal("0.00"));
+		product.setPrice(0);
 		bindingResult = new BindException(product, "product");
 		Set<ConstraintViolation<Product>> violations =
 				validator.validate(product);
@@ -120,7 +105,7 @@ public class ValidationTest {
 	@Test
 	@Disabled
     void test_priceNegativeValCausesError() throws Exception {
-		product.setPrice(new BigDecimal("-0.50"));
+		product.setPrice(-1000);
 		bindingResult = new BindException(product, "product");
 		Set<ConstraintViolation<Product>> violations =
 				validator.validate(product);
@@ -131,31 +116,21 @@ public class ValidationTest {
 		});	
 	}
 	
-	@Test
-	@Disabled
-    void test_priceDigitsInt5Frac2AreOk() throws Exception {
-		product.setPrice(new BigDecimal("12345.01"));
-		bindingResult = new BindException(product, "product");
-		Set<ConstraintViolation<Product>> violations =
-				validator.validate(product);
-		assertNull(bindingResult.getFieldError());
-		assertEquals(violations.size(), 0);	
-	}
-	
-	@Disabled
-	@ParameterizedTest
-	@ValueSource(strings = {"123456", "1.123"})
-    void test_priceDigitsInt6AndFrac3_failValidation(String input) throws Exception {
-		product.setPrice(new BigDecimal(input));
-		bindingResult = new BindException(product, "product");
-		Set<ConstraintViolation<Product>> violations =
-				validator.validate(product);
-		violations.forEach(action -> {
-			assertThat(action.getPropertyPath().toString()).isEqualTo("price");
-			assertThat(action.getMessage().toString())
-			    .isEqualTo("numeric value out of bounds (<5 digits>.<2 digits> expected)");
-		});
-    }
+	// 少数不可？
+//	@Disabled
+//	@ParameterizedTest
+//	@ValueSource(strings = {"123456", "1.123"})
+//    void test_priceDigitsInt6AndFrac3_failValidation(String input) throws Exception {
+//		product.setPrice(new BigDecimal(input));
+//		bindingResult = new BindException(product, "product");
+//		Set<ConstraintViolation<Product>> violations =
+//				validator.validate(product);
+//		violations.forEach(action -> {
+//			assertThat(action.getPropertyPath().toString()).isEqualTo("price");
+//			assertThat(action.getMessage().toString())
+//			    .isEqualTo("numeric value out of bounds (<5 digits>.<2 digits> expected)");
+//		});
+//    }
 	
 	@Disabled
 	@ParameterizedTest

@@ -64,15 +64,15 @@ public class RegistrationController {
 		if (bindingResult.hasErrors()) {
 			return "product-registration";
 		}
-		// 登録完了メッセージを設定（登録に問題があるときはあとでメッセージを変更）
+		// 登録完了メッセージを設定（登録に問題があるときは先の処理でメッセージを変更）
 		String message = "";
 		message = msg.getMessage("REGSUC", null, locale);
 		// 画像がアップロードされたとき
 		if (product.getMultipartFile() != null && !product.getMultipartFile().isEmpty()) {
 			// ファイル名取得
 			String imageName = product.getMultipartFile().getOriginalFilename();
-			// 名取得
-			String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategory();
+			// カテゴリー名取得
+			String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategoryEn();
 			// S3 bucketに画像を格納
 			String imagePath = imgUploadService.uploadImg(
 					product.getMultipartFile(),
@@ -89,8 +89,12 @@ public class RegistrationController {
 			}
 		}
 		// DBに商品データを格納
-	    int code = productService.insertProduct(product);
-	    if (code == 0) message = msg.getMessage("REGERR", null, locale);
+	    try {
+	    	productService.insertProduct(product);
+	    } catch (Exception e) {
+	    	// 登録エラーメッセージを設定
+	        message = msg.getMessage("REGERR", null, locale);
+	    }
 	    // リストコントローラに送るメッセージをredirectAttributesに設定
 		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/product-list";

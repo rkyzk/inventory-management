@@ -36,8 +36,8 @@ h2 {
   font-size: 1.6rem;
 }
 
-.logo {
-  height: 100px
+header {
+  height: 80px
 }
 
 .logo-img {
@@ -56,15 +56,16 @@ nav {
 .btn {
   color: #eee;
   font-size: 1.2rem;
-  background-color: #446688;
+  background-color: rgb(42, 93, 136);
   min-width: 80px;
   padding: 2px 3px;
   white-space: nowrap;
 }
 
 .btn:hover {
-  background-color: #ccebff;
-  color: #10438c;
+  background-color: rgb(16, 26, 106);
+  color: #eee;
+  opacity: 0.6;
 }
 
 .links {
@@ -80,6 +81,15 @@ nav {
 .navlink.active {
   border-bottom: 1px solid;
   border-bottom-width: 3px;
+}
+
+.error-msg {
+  font-size: 0.9rem;
+}
+
+.list-icon {
+  width: 24px;
+  margin-top: 5px;
 }
 
 /** ---------------------------
@@ -117,6 +127,7 @@ nav {
 }
 
 .items-count {
+  font-size: 1.0rem;
   width: 180px;
 }
 
@@ -156,7 +167,15 @@ table, th, td {
 }
 
 .name-col {
-  width: 150px; 
+  width: 240px; 
+}
+
+.price-val {
+  text-align: right;
+}
+
+.product-list {
+  font-size: 1.0rem;
 }
 
 .category-val {
@@ -180,6 +199,53 @@ table, th, td {
 
 .btn-icon:hover {
   color: #112F41;
+}
+
+.edit-del-icons {
+  margin-top: 38px;
+}
+
+.modal-btn > button {
+  font-size: 1rem;
+  padding: 2px 5px;
+}
+
+.search-box {
+  margin: 0 auto;
+  font-size: 1.0rem;
+}
+
+.search-box select {
+  width: 170px;
+  height: 35px;
+  font-size: 0.9rem;
+}
+
+.filter-btn {
+  font-size: 0.9rem;
+}
+
+.search-btn:hover {
+  background-color: #ccc;
+  opacity: 0.6;
+}
+
+.filter-error {
+  color: red;
+  font-size: 0.9rem;
+  text-align: right;
+  margin-top: 2px;
+}
+
+.hidden {
+  display: none;
+}
+
+.prev-btn, .next-btn {
+  font-size: 0.9rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
 /** ---------------------------

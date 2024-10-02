@@ -8,37 +8,37 @@ package ims.enums;
  * @version 1.0.0
  */
 public enum ColorEnum {
-	/*
-	 * 0: 赤
-	 */
-	RED("0", "赤"),
 	/**
-	 * 1: 黄
+	 * 1: 赤
 	 */
-	YELLOW("1", "黄"),
+	RED(1, "赤"),
 	/**
-	 * 2: オレンジ
+	 * 2: 黄
 	 */
-	ORANGE("2", "オレンジ"),
+	YELLOW(2, "黄"),
 	/**
-	 * 3: ピンク
+	 * 3: オレンジ
 	 */
-	PINK("3", "ピンク"),
+	ORANGE(3, "オレンジ"),
 	/**
-	 * 4: 白
+	 * 4: ピンク
 	 */
-	WHITE("4", "白"),
+	PINK(4, "ピンク"),
 	/**
-	 * 5: 紫
+	 * 5: 白
 	 */
-	PURPLE("5", "紫"),
+	WHITE(5, "白"),
 	/**
-	 * 6: 青
+	 * 6: 紫
 	 */
-	BLUE("6", "青");
+	PURPLE(6, "紫"),
+	/**
+	 * 7: 青
+	 */
+	BLUE(7, "青");
 
-	/** カラーコード */
-	private String colorCode;
+	/** 色コード */
+	private int colorCode;
 
 	/** 色 */
 	private String color;
@@ -49,7 +49,7 @@ public enum ColorEnum {
 	 * @param colorCode  色コード
 	 * @param color  色
 	 */
-	private ColorEnum(String colorCode, String color) {
+	private ColorEnum(int colorCode, String color) {
 		this.colorCode = colorCode;
 		this.color = color;
 	}
@@ -59,7 +59,7 @@ public enum ColorEnum {
 	 *
 	 * @return 色コード
 	 */
-	public String getColorCode() {
+	public int getColorCode() {
 		return this.colorCode;
 	}
 
@@ -78,9 +78,9 @@ public enum ColorEnum {
 	 * @param 色コード
 	 * @return 色
 	 */
-	public static ColorEnum getValueByCode(String colorCode) {
+	public static ColorEnum getValueByCode(int colorCode) {
 		for (ColorEnum color : ColorEnum.values()) {
-			if (color.getColorCode().equals(colorCode)) {
+			if (color.getColorCode() == colorCode) {
 				return color;
 			}
 		}

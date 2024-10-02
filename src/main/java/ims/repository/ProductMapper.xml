@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ims.repository.ProductMapper">
-  <!-- insert product -->
+  <!-- 商品登録 -->
   <insert id="insertProduct"
     parameterType="ims.entity.Product"
     useGeneratedKeys="true"
@@ -13,6 +13,8 @@
         name,
         category_id,
         color_id,
+        price,
+        stock,
         description,
         image_name,
         image_path
@@ -20,60 +22,83 @@
         #{name},
         #{categoryId},
         #{colorId},
+        #{price},
+        #{stock},
         #{description},
         #{imageName},
         #{imagePath}
     )
   </insert>
   
-  <!-- get product list -->
+  <!-- 商品リスト取得 -->
   <select id="getProductList" resultType="ims.entity.Product">
     SELECT
-        product_entity.id,
-        product_entity.name,
-        product_entity.category_id,
-        product_entity.color_id,
-        price_stock.quantity,
-        price_stock.price,
-        price_stock.stock,
-        product_entity.image_name,
-        product_entity.image_path
+        id,
+        name,
+        category_id,
+        color_id,
+        price,
+        stock,
+        image_name,
+        image_path
     FROM
         product_entity
-    INNER JOIN price_stock
-    ON product_entity.id = price_stock.product_id
     WHERE
-        product_entity.deleted_at IS NULL
+        deleted_at IS NULL
     ORDER BY
-        product_entity.category_id ASC,
-        product_entity.id ASC
+        category_id ASC,
+        id ASC
   </select>
  
-  <!-- get product -->
+  <!-- 商品データ取得 -->
   <select id="getProduct" resultType="ims.entity.Product">
     SELECT
-        product_entity.id,
-        product_entity.name,
-        product_entity.category_id,
-        product_entity.color_id,
-        price_stock.quantity,
-        price_stock.price,
-        price_stock.stock,
-        product_entity.description,
-        product_entity.image_name,
-        product_entity.image_path
+        id,
+        name,
+        category_id,
+        color_id,
+        price,
+        stock,
+        description,
+        image_name,
+        image_path,
+        updated_at
     FROM
         product_entity
-    INNER JOIN price_stock
-    ON product_entity.id = price_stock.product_id
     WHERE
-        product_entity.id = #{id}
+        id = #{id}
     ORDER BY
-        product_entity.category_id ASC,
-        product_entity.id ASC
+        category_id ASC,
+        id ASC
   </select>
   
-  <!-- update product -->
+  <!-- フィルターした商品リスト取得 -->
+  <select id="getFilteredProducts" resultType="ims.entity.Product">
+    SELECT
+        id,
+        name,
+        category_id,
+        color_id,
+        price,
+        stock,
+        image_name,
+        image_path
+    FROM
+        product_entity
+    WHERE
+        deleted_at IS NULL
+    <if test = "categoryId != null">
+        AND category_id = #{categoryId}
+    </if>
+    <if test = "colorId != null">
+        AND color_id = #{colorId}
+    </if>
+    ORDER BY
+        category_id ASC,
+        id ASC
+  </select>
+  
+  <!-- 商品データ更新 -->
   <update id="updateProduct" parameterType="ims.entity.Product">
     UPDATE
         product_entity
@@ -81,15 +106,18 @@
         name = #{name},
         category_id = #{categoryId},
         color_id = #{colorId},
+        price = #{price},
+        stock = #{stock},
         description = #{description},
         image_name = #{imageName},
         image_path = #{imagePath},
         updated_at = CURRENT_TIMESTAMP
     WHERE
         id = #{id}
+        AND updated_at = #{updated_at}
   </update>
   
-  <!--  delete product -->
+  <!--  商品データ削除 -->
   <update id="deleteProduct" parameterType="ims.entity.Product">
     UPDATE
         product_entity

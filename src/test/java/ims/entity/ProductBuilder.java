@@ -1,7 +1,5 @@
 package ims.entity;
 
-import java.math.BigDecimal;
-
 public class ProductBuilder {
 
 	/** product */
@@ -15,10 +13,10 @@ public class ProductBuilder {
 	 */
 	public Product buildProduct() {
 		this.product.setName("test");
-		this.product.setCategoryId("0");
-		this.product.setColorId("0");
+		this.product.setCategoryId(0);
+		this.product.setColorId(0);
 		this.product.setStock(5);
-		this.product.setPrice(new BigDecimal("10.55"));
+		this.product.setPrice(1200);
 		return this.product;	
 	}
 }

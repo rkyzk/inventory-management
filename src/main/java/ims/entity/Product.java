@@ -1,6 +1,5 @@
 package ims.entity;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -8,8 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 import ims.annotation.FileName;
 import ims.annotation.FileSize;
 import ims.annotation.FileType;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -19,7 +16,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Entity class for 'Product' model.
+ * 商品のmodel.
  *
  * @author R.Yazaki
  * @version 1.0.0
@@ -27,55 +24,57 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Product {
-	/** Product ID */
+	/** プロダクト ID */
 	private int id;
 	
-	/** Product name */
+	/** プロダクト名 */
 	@NotBlank
-	@Size(max = 40, message = "must not exceed {max} characters")
+	@Size(max = 40)
 	private String name;
 	
-	/** Category */
+	/** カテゴリー */
+	@Min(0)
+	@Max(20)
+	private Integer categoryId;
+	
+	/** 色 */
+	@Min(0)
+	@Max(20)
+	private Integer colorId;
+	
+	/** 価格 */
 	@NotNull
-	private String categoryId;
+	@Min(0)
+	private Integer price;
 	
-	/** Color */
+	/** 在庫数 */
 	@NotNull
-	private String colorId;
-	
-	/** Price */
-	@NotNull(message = "must not be blank")
-	@DecimalMin(value = "0.00", inclusive = true)
-	@Digits(integer=5, fraction=2)
-	private BigDecimal price;
-	
-	/** Stock */
 	@Min(0)
 	@Max(99999)
-	private int stock;
+	private Integer stock;
 	
-	/** Description */
-	@Size(max = 200, message = "must not exceed {max} characters")
+	/** 商品説明 */
+	@Size(max = 200)
 	private String description;
 	
-	/** image file name */
+	/** 画像ファイル名 */
 	private String imageName;
 
-	/** image file path */
+	/** ファイルパス */
 	private String imagePath;
 	
-	/** image file (not to be inserted in DB) */
+	/** 画像ファイル */
 	@FileName(maxLength=30)
 	@FileType
 	@FileSize(maxSize = 819200)
 	private MultipartFile multipartFile;
 
-	/** created at */
+	/** 登録日 */
 	private LocalDateTime createdAt;
 
-	/** updated at */
+	/** 更新日 */
 	private LocalDateTime updatedAt;
 
-	/** deleted at */
+	/** 削除日 */
 	private LocalDateTime deletedAt;
 }
