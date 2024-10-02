@@ -9,6 +9,7 @@
     <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
     <script th:src="@{/js/displayMessage.js}" defer></script>
+    <script th:src="@{/js/movePages.js}" defer></script>
   </head>
   <body>
     <div th:replace="~{header :: header}"></div>
@@ -71,8 +72,10 @@
 	            <th class="text-center">更新/削除</th>
 	          </tr>
 	        </thead>
-	        <tbody>
-	          <tr class="table-rows" th:each="item: ${prodList}">
+	        <tbody class="page-1">
+	          <tr th:id="row- + ${iStat.index}"
+	              th:each="item, iStat: ${prodList}"
+	              class="t-row">
 	            <td class="px-1 image">
 	              <!-- イメージを表示　イメージURLが空文字のとき「no_image.png」を表示-->
 	              <img th:if="*{item.imagePath}" th:src="${awsUrl} + ${item.imagePath}"
@@ -115,6 +118,10 @@
 	          </tr>
 	        </tbody>
           </table>
+        </div>
+        <div th:if="${itemCount > 6}" class="d-flex justify-content-center mt-1">
+          <button class="prev-btn" onClick="showPrevPage();">&lt;&lt; 前ページ</button>
+          <button class="next-btn" onClick="showNextPage();">次ページ &gt;&gt;</button>
         </div>
       </div>
     </main>

@@ -11,6 +11,7 @@
       rel="stylesheet">
 	<link rel="stylesheet" th:href="@{/css/style.css}">
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/formatNums.js}" defer></script>
   </head>
   <body>
     <div th:replace="~{header :: header}"></div>
@@ -48,7 +49,8 @@
 	          <label for="price" class="item-label">価格：</label>
 	          <div class="d-flex">
 	            <input class="form-control price" id="price"
-	              th:field="*{price}" type="text" />
+	              onBlur="formatNumber('price');"
+	              th:field="*{price}" type="number" />
 	            <span class="currency">円</span>
 	          </div>
 	          <p class="text-danger error-msg" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"/>

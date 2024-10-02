@@ -127,6 +127,7 @@ nav {
 }
 
 .items-count {
+  font-size: 1.0rem;
   width: 180px;
 }
 
@@ -234,6 +235,17 @@ table, th, td {
   font-size: 0.9rem;
   text-align: right;
   margin-top: 2px;
+}
+
+.hidden {
+  display: none;
+}
+
+.prev-btn, .next-btn {
+  font-size: 0.9rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
 /** ---------------------------
