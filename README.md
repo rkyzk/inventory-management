@@ -1,6 +1,6 @@
-# Inventory Management System
+# 在庫管理システム
 
-Link to the deployed site:
+デプロイしたプロジェクト：
 
 ### Contents
 - [Overview](#overview)

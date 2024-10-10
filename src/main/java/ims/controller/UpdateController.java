@@ -21,6 +21,9 @@ import ims.service.ImageUploadService;
 import ims.service.ProductService;
 import jakarta.validation.Valid;
 
+/**
+ * 商品更新ページのコントローラークラス
+ */
 @Controller
 public class UpdateController {
 	@Autowired
@@ -43,9 +46,19 @@ public class UpdateController {
 	 * @return
 	 */
 	@GetMapping("/product-update")
-	public String getUpdate(Model model,
+	public String getUpdate(Model model, Locale locale,
+			RedirectAttributes redirectAttributes,
 			@RequestParam("id") int id) {
-		Product product = productService.getProduct(id);
+		Product product;
+		String message = "";
+		try {
+		    product = productService.getProduct(id);
+		} catch (Exception e) {
+			// データ取得失敗のとき
+			message = msg.getMessage("GETERR", null, locale);
+			redirectAttributes.addFlashAttribute("message", message);
+			return "redirect:/product-list";
+		}
 		model.addAttribute("product", product);
 		model.addAttribute("awsUrl", endpoint);
 		return "product-update";	
@@ -71,38 +84,37 @@ public class UpdateController {
 			RedirectAttributes redirectAttributes,
 			@ModelAttribute @Valid Product product,
 			BindingResult bindingResult) throws IOException {
-		// 更新成功メッセージを設定（失敗時はあとで変更）
-		String message = msg.getMessage("UPDSUC", null, locale);
-		// 入力エラーの時は更新ページを表示
+		// 入力エラーがあるとき
 		if (bindingResult.hasErrors()) {
 			return "product-update";
 		}
+		// 更新成功メッセージを設定（失敗時は先の処理で変更）
+		String message = msg.getMessage("UPDSUC", null, locale);
 		// 画像が削除されたときはS3 bucketから画像を削除し、
-		// imagePath と imageName をnullに設定
+		// imagePathとimageNameをnullに設定
 		if (currImg) {
 			boolean imgDeleted = imgUploadService.deleteImg(product.getImagePath());
-			if (imgDeleted) {
+			if (imgDeleted) {			
 			    product.setImagePath(null);
 			    product.setImageName(null);
 			} else {
-				// 「画像が削除されませんでした。」のメッセージを表示
+				// 画像削除失敗のメッセージを設定
 				message = msg.getMessage("IMGDELERR", null, locale);
 			}
 		}
-		// 画像が登録された場合 S3 bucketにアップロード
+		// 画像が登録された場合、S3 bucketにアップロード
 		if(product.getMultipartFile() != null && !product.getMultipartFile().isEmpty()) {
 		    String imageName = product.getMultipartFile().getOriginalFilename();
 		    String categoryName = CategoryEnum.getValueByCode(product.getCategoryId()).getCategoryEn();
 		    String imagePath = imgUploadService.uploadImg(
 				product.getMultipartFile(),
-				categoryName,
+				categoryName, // フォルダ名
 				imageName);
 		    if (imagePath == null) {
-				// 「商品データは保存されましたが画像は保存されませんでした。」の
-		    	//　メッセージを設定。
+				// 画像保存失敗のメッセージを設定
 				message = msg.getMessage("IMGUPLERR", null, locale);		    	
 		    } else {
-		    	// imageName と imagePathを設定
+		    	// imageNameとimagePathを設定
 			    product.setImageName(imageName);
 			    product.setImagePath(imagePath);
 		    }
@@ -111,14 +123,13 @@ public class UpdateController {
 		try {
 		    int retVal = productService.updateProduct(product);
 		    if (retVal == 0) {
-	    	    // 「当該商品データは他ユーザにより更新されています。データを再度ご確認ください。」と表示。
+		    	// "ほかユーザに更新された"のメッセージを設定
 	    	    message =  msg.getMessage("UPDERR1", null, locale);
-	        }
+		    }
 		} catch (Exception e) {
-			// 更新エラーメッセージを設定
+			// 更新失敗メッセージを設定
     	    message =  msg.getMessage("UPDERR2", null, locale);
-		}	
-		// メッセージをリダイレクトアトリビュートに設定
+		}
     	redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/product-list";	
 	}

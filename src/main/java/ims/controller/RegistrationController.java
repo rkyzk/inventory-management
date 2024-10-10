@@ -19,6 +19,9 @@ import ims.service.ImageUploadService;
 import ims.service.ProductService;
 import jakarta.validation.Valid;
 
+/**
+ * 登録画面のコントローラークラス
+ */
 @Controller
 public class RegistrationController {
 	
@@ -60,11 +63,11 @@ public class RegistrationController {
 			RedirectAttributes redirectAttributes,
 		    @ModelAttribute("product") @Valid Product product,
 			BindingResult bindingResult) throws IOException {
-		// エラーがあるときは登録画面を再度表示
+		// 入力エラーがあるときは登録画面を再表示
 		if (bindingResult.hasErrors()) {
 			return "product-registration";
 		}
-		// 登録完了メッセージを設定（登録に問題があるときは先の処理でメッセージを変更）
+		// 登録完了メッセージを設定（登録エラー発生時は先の処理でメッセージを変更）
 		String message = "";
 		message = msg.getMessage("REGSUC", null, locale);
 		// 画像がアップロードされたとき
@@ -78,8 +81,7 @@ public class RegistrationController {
 					product.getMultipartFile(),
 					categoryName,
 					imageName);
-			// 画像アップロードに失敗のとき「商品データは格納されましたが画像は保存されませんでした。」と
-			// メッセージを設定
+			// 画像アップロードに失敗のとき該当メッセージを設定
 			if (imagePath == null) { 
 				message = msg.getMessage("IMGUPLERR", null, locale);
 			} else {
