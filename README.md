@@ -2,18 +2,18 @@
 
 デプロイしたプロジェクト：
 
-### Contents
-- [Overview](#overview)
-- [Main Technologies Used](#main-technologies-used)
-- [Functions](#functions)
-- [User Stories](#user-stories)
-- [Data Modeling](#data-modeling)
-- [Each Page in Detail](#each-page-in-detail)
-- [Deployment Process](#deployment-process)
-- [Automated Testing](#automated-testing)
-- [Manual Testing](#manual-testing)
-- [Bugs](#bugs)
-- [Credit](#credit)
+#### 概要
+#### バグ
+1. 画像をしない商品を保存し画像以外のデータを更新してから削除しようとすると、
+  「画像が削除されませんでした」のメッセージが表示され、画像が保存されていたかのように
+   処理されていた。
+   対処：
+   ListController deleteProductメソッドのS3bucketnの画像削除処理の条件を下記のとおり変更
+   if (product.getImageName() != null)
+     => if (product.getImageName() != null && product.getImageName().length() != 0)
+    
+
+
 
 ### Overview
 With this Inventory Management System, shop owners can register/update/delete product data and

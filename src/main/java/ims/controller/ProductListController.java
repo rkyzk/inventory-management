@@ -76,12 +76,12 @@ public class ProductListController {
 	 */
 	@PutMapping("/delete")
 	public String deleteProduct(Model model, Locale locale,
-			@RequestParam("id") int id) {
+			@RequestParam("id") int id) {	
 		// 画像があるとき、S3 bucketから画像を削除
-	    Product product = productService.getProduct(id);
+	    Product product = productService.getProduct(id);	    
 	    // 削除成功メッセージを設定（失敗時は先の処理で変更）
 	    String message = msg.getMessage("DELSUC", null, locale);
-	    if (product.getImageName() != null) {
+	    if (product.getImageName() != null && product.getImageName().length() != 0) {
 	    	boolean deleted = imgUploadService.deleteImg(product.getImageName());
 	    	// 画像削除失敗のとき、該当メッセージを設定。
 	    	if (!deleted) message = msg.getMessage("DELIMGDELERR", null, locale);
