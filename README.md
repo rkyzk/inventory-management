@@ -3,6 +3,55 @@
 デプロイしたプロジェクト：
 
 #### 概要
+球根を販売する店で商品データを管理するシステム。
+
+中〜大きい画面で使用する想定のためスクリーンサイズ幅
+1000pxまでレスポンシブで対応
+
+
+
+#### 主要機能
+- 商品データの登録、更新、削除
+- 商品一覧を照会
+- 商品データをカテゴリーと色でフィルター
+
+#### その他の機能
+- 入力チェック（登録、更新画面）
+- 処理完了・エラーメッセージ表示
+- 削除前に確認ダイアログを表示
+- パジネーション（一覧画面）
+
+#### 使用言語、フレームワーク、DB、
+- Java, JavaScript, HTML/CSS, SQL
+- Spring Boot
+- PostgreSQL
+
+## ライブラリ
+- MyBatis
+- lombak
+
+### 画面・要素別詳細
+1. ヘッダー（全ページ共通）
+ロゴ、ブランド名、リンク（登録画面、商品リスト）
+
+2. 登録画面</br>
+＜ヘッダー＞</br>
+＜入力項目＞</br>
+a.商品名
+b.カテゴリー
+c.色
+d.値段
+e.在庫数
+f.商品説明
+g.画像
+＜ボタン＞
+登録：商品データを登録する。postProductを呼び出す。
+クリア
+
+
+
+ 
+
 #### バグ
 1. 画像をしない商品を保存し画像以外のデータを更新してから削除しようとすると、
   「画像が削除されませんでした」のメッセージが表示され、画像が保存されていたかのように
@@ -11,32 +60,6 @@
    ListController deleteProductメソッドのS3bucketnの画像削除処理の条件を下記のとおり変更
    if (product.getImageName() != null)
      => if (product.getImageName() != null && product.getImageName().length() != 0)
-    
-
-
-
-### Overview
-With this Inventory Management System, shop owners can register/update/delete product data and
-look at the list of product data.
-The app comes with functions such as input validation, delete confirmation,
-success/error messages upon registering, updating and deleting products.
-
-### Main Technologies Used
-HTML5, CSS3, Java (Spring Boot), Bootstrap5, jquery, PostgreSQL
-
-### Functions
-**Main functions**
-- Register product data including images
-- Display Product List
-- Update products data
-- Delete products
-
-**Supplementary functions**
-- Display success messages when products have been registered, updated or deleted.
-- Validate input data while registering and updating products and show error messages
-  if validation fails.
-- Display a confirmation modal before deleting products.
-- correct price format if the decimal digits are not complete (register & update pages)
 
 
 ### User Stories
