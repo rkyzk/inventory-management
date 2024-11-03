@@ -1,6 +1,6 @@
 package ims.entity;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -70,11 +70,11 @@ public class Product {
 	private MultipartFile multipartFile;
 
 	/** 登録日 */
-	private LocalDateTime createdAt;
+	private Instant createdAt;
 
 	/** 更新日 */
-	private LocalDateTime updatedAt;
+	private Instant updatedAt;
 
 	/** 削除日 */
-	private LocalDateTime deletedAt;
+	private Instant deletedAt;
 }

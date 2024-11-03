@@ -18,6 +18,9 @@ import ims.entity.Product;
 import ims.service.ImageUploadService;
 import ims.service.ProductService;
 
+/**
+ * 商品リストページのコントローラークラス
+ */
 @Controller
 @RequestMapping("/product-list")
 public class ProductListController {
@@ -41,8 +44,18 @@ public class ProductListController {
 	 * @return 商品リストページ
 	 */
 	@GetMapping("")
-	public String getProductList(Model model) {
-		List<Product> prodList = productService.getProductList();
+	public String getProductList(Model model, Locale locale) {
+		List<Product> prodList;
+		String message = null;
+		// 削除されていない全商品データを取得
+		try {
+		    prodList = productService.getProductList();
+		} catch (Exception e) {
+			// データ取得失敗エラーメッセージを設定
+			message = msg.getMessage("GETERR", null, locale);
+			model.addAttribute("message", message);
+			prodList = null;
+		}
 		model.addAttribute("prodList", prodList);
 		model.addAttribute("itemCount", prodList.size());
 		model.addAttribute("awsUrl", endpoint);
@@ -63,27 +76,23 @@ public class ProductListController {
 	 */
 	@PutMapping("/delete")
 	public String deleteProduct(Model model, Locale locale,
-			@RequestParam("id") int id) {
-		//　画像がある場合S3 bucket から画像を削除
-	    Product product = productService.getProduct(id);
+			@RequestParam("id") int id) {	
+		// 画像があるとき、S3 bucketから画像を削除
+	    Product product = productService.getProduct(id);	    
 	    // 削除成功メッセージを設定（失敗時は先の処理で変更）
 	    String message = msg.getMessage("DELSUC", null, locale);
-	    if (product.getImageName() != null) {
+	    if (product.getImageName() != null && product.getImageName().length() != 0) {
 	    	boolean deleted = imgUploadService.deleteImg(product.getImageName());
-	    	// 画像削除失敗のとき、「商品データは削除されましたが画像が削除されませんでした。」
-	    	// のメッセージを設定。
+	    	// 画像削除失敗のとき、該当メッセージを設定。
 	    	if (!deleted) message = msg.getMessage("DELIMGDELERR", null, locale);
 	    };
 	    try {
-		  int retVal = productService.deleteProduct(id);	
-		  if (retVal == 0) {
-	    	// 「当該商品データはすでに削除されています。」のメッセージを設定
-	    	message =  msg.getMessage("DELERR", null, locale);
-	      }
+		    productService.deleteProduct(id);
 	    } catch (Exception e) {
 	    	// 削除失敗メッセージを設定
 	    	message =  msg.getMessage("DELERR", null, locale);
 	    }
+	    // 削除されていない全商品データを取得
 		List<Product> prodList = productService.getProductList();
 		model.addAttribute("prodList", prodList);
 		model.addAttribute("itemCount", prodList.size());
@@ -109,10 +118,12 @@ public class ProductListController {
 			@RequestParam("color") Integer colorId) {
 		List<Product> prodList;
 		boolean unselected = false;
+		// カテゴリー、色が指定されなかったときnullを設定
+		// (ProductMapper.xmlのSQLのifタグが機能するよう)
         if (categoryId == 0) categoryId = null;
         if (colorId == 0) colorId = null;
 		if (categoryId == null && colorId == null) {
-			// selected をfalseに設定（「検索条件を選択してください」とメッセージを表示）
+			// selected をtrueに設定（「検索条件を選択してください」とメッセージを表示）
             unselected = true;
 			// 全件取得
 			prodList = productService.getProductList();
