@@ -57,7 +57,7 @@
       <p th:unless="${itemCount}" class="no-item-msg">商品なし</p>
       <div th:if="${itemCount}" class="list-content">
         <div class="d-flex flex-column">
-          <div class="d-flex justify-content-end mt-2">
+          <div class="d-flex justify-content-between mt-2">
             <span>※全商品1袋12個入り</span>
             <span class="items-count" th:text="'件数: ' + ${itemCount}"></span>
           </div>
@@ -85,7 +85,7 @@
 	                  '/images/no_image.png';" />
 	              <!-- イメージURLがNullのとき「no_image.png」を表示 -->
 	              <img th:unless="*{item.imagePath}"
-	                src="/images/no_image.png">        	              
+	                src="/images/no_image.png">     	              
                 </td>
 	            <td class="id-price-format px-1 text-center"><span th:text="${item.id}"></span></td>
 	            <td class="format text-center">

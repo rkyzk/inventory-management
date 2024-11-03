@@ -48,11 +48,7 @@ g.画像
 登録：商品データを登録する。postProductを呼び出す。
 クリア
 
-
-
- 
-
-#### バグ
+#### 修正したバグ
 1. 画像をしない商品を保存し画像以外のデータを更新してから削除しようとすると、
   「画像が削除されませんでした」のメッセージが表示され、画像が保存されていたかのように
    処理されていた。
@@ -62,23 +58,7 @@ g.画像
      => if (product.getImageName() != null && product.getImageName().length() != 0)
 
 
-### User Stories
-
-*As user I...*
-
-|Nr.| User Stories                               | How they are achieved |
-| - | :----------------------------------------- | --------------------- |
-| 1 | can register product information.          | register product page |
-| 2 | can upload product image.                  | image can be uploaded on register & update pages |
-| 3 | get notified if input data is inappropriate| validation messages  |
-| 4 | can look at the product list               | product list page     |
-| 5 | can find out how many products are registered. | total number of items is displayed above the table on the right side on product list page     |
-| 6 | can update product information             | update product page   |
-| 7 | can delete product                         | product list page     |
-| 8 | get confirmation before deleting product   | a confirmation dialog will show up when user attempts to delete products.   |
-| 9 | can easily navigate through all pages      | navigation links, update buttons on list page |
-
-### Data Modeling
+### データ
 
 ### Each Page in Detail
 
@@ -88,13 +68,13 @@ g.画像
 
 ### Deployment Process
 
-### Automated Testing
-Automated Testing is documented [here](./documents/AUTOMATED-TESTING.md).
+### Junitテスト
+テスト項目<br>
+./documents/AUTOMATED-TESTING.md
 
-### Manual Testing
-Manual Testing is documented [here](./documents/MANUAL-TESTING.md).
-
-### Bugs
+### 手動テスト
+テスト項目<br>
+./documents/MANUAL-TESTING.md
 
 ### Credit
 
